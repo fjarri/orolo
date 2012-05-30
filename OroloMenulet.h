@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "CalendarModel.h"
 
 @interface OroloMenulet : NSObject {
 	NSStatusItem *statusItem;
@@ -16,8 +16,11 @@
 //	NSMenuItem *ipMenuItem;
 
 	NSTimer *updateTimer;
+	CalendarModel *calendarModel;
 }
 
-- (IBAction)updateTime:(id)sender;
+- (void)calendarsChanged:(NSNotification *)notification;
+- (IBAction)timerUpdated:(id)sender;
+- (void)updateTime;
 
 @end

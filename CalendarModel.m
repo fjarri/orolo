@@ -11,33 +11,46 @@
 
 @implementation CalendarModel
 
-- (NSArray *)calendars {
-	return [[CalCalendarStore defaultCalendarStore] calendars];
+- (id) initWithTarget:(id)target selector:(SEL)selector {
+	self = [super init];
+
+	// TODO: may need non-defaults here
+	cstore = [[CalCalendarStore defaultCalendarStore] retain];
+	ncenter = [[NSNotificationCenter defaultCenter] retain];
+
+	[ncenter addObserver:target
+				selector:selector
+					name:CalCalendarsChangedExternallyNotification
+				  object:nil];
+    [ncenter addObserver:target
+				selector:selector
+					name:CalEventsChangedExternallyNotification
+				  object:nil];
+
+	return self;
 }
 
-- (NSArray *)events {
-	CalCalendarStore *store = [CalCalendarStore defaultCalendarStore];
-    // Pull all events starting now from all calendars in the CalendarStore
-	NSPredicate *allEventsPredicate = [CalCalendarStore eventPredicateWithStartDate:[NSDate date]
-																			endDate:[NSDate distantFuture]
-																		  calendars:[store calendars]];
-	return [store eventsWithPredicate:allEventsPredicate];
-}
-
-- (NSArray *)tasks {
-	CalCalendarStore *store = [CalCalendarStore defaultCalendarStore];
-    // Pull all uncompleted tasks from all calendars in the CalendarStore
-	return [store tasksWithPredicate:[CalCalendarStore taskPredicateWithUncompletedTasks:[store calendars]]];
+- (void)dealloc
+{
+    [ncenter release];
+	[cstore release];
+	[super dealloc];
 }
 
 - (CalEvent *)closest_event {
-	CalCalendarStore *store = [CalCalendarStore defaultCalendarStore];
-    // Pull all events starting now from all calendars in the CalendarStore
+	NSArray *cldrs = [cstore calendars];
 	NSPredicate *allEventsPredicate = [CalCalendarStore eventPredicateWithStartDate:[NSDate date]
 																			endDate:[NSDate distantFuture]
-																		  calendars:[store calendars]];
-	NSArray *events = [store eventsWithPredicate:allEventsPredicate];
-	return [events objectAtIndex:0];
+																		  calendars:cldrs];
+	NSArray *events = [cstore eventsWithPredicate:allEventsPredicate];
+	if ([events count] > 0) {
+		return [events objectAtIndex:0];
+	}
+	else {
+		return nil;
+	}
+
+
 }
 
 @end

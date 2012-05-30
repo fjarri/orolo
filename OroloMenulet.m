@@ -12,15 +12,14 @@
 
 @implementation OroloMenulet
 
-- (void)dealloc
-{
+- (void)dealloc {
+	[calendarModel release];
     [statusItem release];
 	[updateTimer release];
 	[super dealloc];
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
 	statusItem = [[[NSStatusBar systemStatusBar]
 				   statusItemWithLength:NSVariableStatusItemLength]
 				  retain];
@@ -38,22 +37,38 @@
 	//[statusItem setAction:@selector(updateTime:)];
 	//[statusItem setTarget:self];
 
+	calendarModel = [[[CalendarModel alloc] initWithTarget:self selector:@selector(calendarsChanged:)]
+					 retain];
+
+
+
 	updateTimer = [[NSTimer
 					scheduledTimerWithTimeInterval:60.0
 					target:self
-					selector:@selector(updateTime:)
+					selector:@selector(timerUpdated:)
 					userInfo:nil
 					repeats:YES]
 				   retain];
 	[updateTimer fire];
 }
 
-- (IBAction)updateTime:(id)sender
-{
+- (void)calendarsChanged:(NSNotification *)notification {
+	[self updateTime];
+}
+
+- (IBAction)timerUpdated:(id)sender {
+	[self updateTime];
+}
+
+- (void)updateTime {
 //	NSString *time = [NSString stringWithString:@"":];
-	CalendarModel *cm = [[CalendarModel alloc] init];
-	id event = [cm closest_event];
-	[statusItem setTitle: [event title]];
+	id event = [calendarModel closest_event];
+	if (event) {
+		[statusItem setTitle:[event title]];
+	}
+	else {
+		[statusItem setTitle:[NSString stringWithFormat:@"%C", 0x221E]];
+	}
 }
 
 @end

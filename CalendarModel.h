@@ -11,17 +11,16 @@
 
 
 @interface CalendarModel : NSObject {
-
+	NSNotificationCenter *ncenter;
+	CalCalendarStore *cstore;
 }
 
-@property(readonly) NSArray *calendars;
-@property(readonly) NSArray *events;
-@property(readonly) NSArray *tasks;
+- (id) initWithTarget:(id)target selector:(SEL)selector;
+
 @property(readonly) CalEvent *closest_event;
 
 //- (void)calendarsChanged:(NSNotification *)notification;
 //- (void)eventsChanged:(NSNotification *)notification;
 //- (void)tasksChanged:(NSNotification *)notification;
-
 
 @end
