@@ -1,0 +1,5 @@
+build/*
+orolo.xcodeproj/*.pbxuser
+orolo.xcodeproj/*.mode1v3
+*.pch
+
