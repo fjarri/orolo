@@ -39,18 +39,50 @@
 
 - (CalEvent *)closest_event {
 	NSArray *cldrs = [cstore calendars];
-	NSPredicate *allEventsPredicate = [CalCalendarStore eventPredicateWithStartDate:[NSDate date]
-																			endDate:[NSDate distantFuture]
+
+	NSTimeInterval window = 60 * 60; // FIXME: remove hardcoding
+	NSDate *now = [NSDate date];
+	NSDate *border = [now dateByAddingTimeInterval:window];
+
+	NSPredicate *allEventsPredicate = [CalCalendarStore eventPredicateWithStartDate:now
+																			endDate:border
 																		  calendars:cldrs];
 	NSArray *events = [cstore eventsWithPredicate:allEventsPredicate];
-	if ([events count] > 0) {
-		return [events objectAtIndex:0];
+
+	CalEvent *closest_start = nil;
+	CalEvent *closest_end = nil;
+
+	for(CalEvent *event in events) {
+		NSDate *start = [event startDate];
+		NSDate *end = [event endDate];
+
+		if ([now compare:start] == NSOrderedAscending) {
+			if (closest_start == nil || [[closest_start startDate] compare:start] == NSOrderedDescending) {
+				closest_start = event;
+			}
+		}
+		if ([border compare:end] == NSOrderedDescending) {
+			if (closest_end == nil || [[closest_end endDate] compare:end] == NSOrderedDescending) {
+				closest_end = event;
+			}
+		}
 	}
-	else {
+
+	if (closest_start == nil && closest_end == nil) {
 		return nil;
 	}
-
-
+	else if (closest_end == nil) {
+		return closest_start;
+	}
+	else if (closest_start == nil) {
+		return closest_end;
+	}
+	else if ([[closest_start startDate] compare:[closest_end endDate]] == NSOrderedAscending) {
+		return closest_start;
+	}
+	else {
+		return closest_end;
+	}
 }
 
 @end
