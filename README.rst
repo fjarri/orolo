@@ -12,6 +12,7 @@ Release history
 
 - Context menu: full event title, Show Time (in case the current time is needed for some reason), Preferences, Quit
 - Show time - how will it work? Show for fixed interval, show until next event? Former is better, but harder to implement
+  - Should be available as a global keybinding
 - Synchronize with chosen calendar(s) from iCal (set in preferences)
   - When the calendar is added or removed in appears instantly in preferences (can we do that?)
   - When the calendar is removed, stop watching it (shouldn't be any error thrown)
@@ -25,3 +26,5 @@ Release history
   - When there are no forward events, slowly fade away the last event
   - Color is set in preferences, proportional to distance from now
 - Find a way to specifically mark events (like, process only start date etc). Notes maybe?
+- Add "Launch on startup" to Preferences
+- Allow the menulet to be moved around the menubar, like others (with Cmd key pressed).
