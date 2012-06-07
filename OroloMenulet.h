@@ -13,7 +13,10 @@
 	NSStatusItem *statusItem;
 
 	IBOutlet NSMenu *theMenu;
-//	NSMenuItem *ipMenuItem;
+	IBOutlet NSMenuItem *menuFullTitle;
+	IBOutlet NSMenuItem *menuShowTime;
+	IBOutlet NSMenuItem	*menuPreferences;
+	IBOutlet NSMenuItem *menuQuit;
 
 	NSTimer *updateTimer;
 	CalendarModel *calendarModel;
@@ -22,5 +25,7 @@
 - (void)calendarsChanged:(NSNotification *)notification;
 - (IBAction)timerUpdated:(id)sender;
 - (void)updateTime;
+
+- (IBAction)quit:(id)sender;
 
 @end

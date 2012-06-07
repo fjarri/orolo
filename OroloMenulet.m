@@ -28,7 +28,13 @@
 	[statusItem setEnabled:YES];
 	[statusItem setToolTip:@"Orolo"];
 
+	// Tune menu
 	[statusItem setMenu:theMenu];
+	[theMenu setAutoenablesItems:NO];
+
+	[menuFullTitle setEnabled:NO];
+	[menuFullTitle setTitle:[NSString stringWithFormat:@"%C", 0x221E]];
+
 	//ipMenuItem = [[NSMenuItem alloc] initWithTitle:@"0.0.0.0"
 	//										action:@selector(updateIPAddress:) keyEquivalent:@""];
 	//[ipMenuItem setTarget:self];
@@ -69,6 +75,10 @@
 	else {
 		[statusItem setTitle:[NSString stringWithFormat:@"%C", 0x221E]];
 	}
+}
+
+- (IBAction)quit:(id)sender {
+	[NSApp terminate:sender];
 }
 
 @end
