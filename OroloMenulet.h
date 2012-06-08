@@ -18,6 +18,7 @@
 	IBOutlet NSMenuItem *menuFullTitle;
 	IBOutlet NSMenuItem *menuShowRealTime;
 	IBOutlet NSMenuItem	*menuPreferences;
+	IBOutlet NSMenuItem *menuAbout;
 	IBOutlet NSMenuItem *menuQuit;
 
 	NSTimer *colorUpdateTimer;
