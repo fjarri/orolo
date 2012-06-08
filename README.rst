@@ -7,24 +7,35 @@ Then it shows the event and slowly changes color to red.
 Release history
 ---------------
 
+Future
+~~~~~~
+
+- Click on event to go to iCal
+- Set global hotkey for Show Real Time in Preferences
+- A way to specifically mark events (like, process only start date etc). Notes maybe?
+- Add localization (at least remove string hardcoding)
+- Menulet can be moved around the menubar, like others (with Cmd key pressed). - seems to be impossible
+
 0.0.1
 ~~~~~
 
-- Context menu: full event title, Show Time (in case the current time is needed for some reason), Preferences, Quit
-- Show time - how will it work? Show for fixed interval, show until next event? Former is better, but harder to implement
-  - Should be available as a global keybinding
-- Synchronize with chosen calendar(s) from iCal (set in preferences)
-  - When the calendar is added or removed in appears instantly in preferences (can we do that?)
-  - When the calendar is removed, stop watching it (shouldn't be any error thrown)
-- Show only start of the event title in the status bar
-  - The limit on title length is set in preferences
+- Context menu: full event title, Show Real Time (in case the current time is needed for some reason), Preferences, Quit
+- Show Real Time:
+  - Has a global hotkey (fixed)
+  - Shows time for 5 seconds
+- Preferences:
+  - Changes are applied instantly
+  - Start at launch
+  - Set fade-in and fade-out colors and time frame
+    - Time is set with sliders, ranges from 1 min to 60 min (1, 2, 3, 5, 10, 15, 20, 30, 40, 50, 60)
+    - For fade-out, 0 is also available
+  - List of calendars to get events from
+    - Multiple choise
+    - Dynamically updated
+    - When the calendar is removed, stop watching it (shouldn't be any error thrown)
+  - Maximum title length
+  - Some pop-up help for elements of preferences
+- Status element:
+  - Show only start of the event title
   - The full title is shown as a first line in context menu
-- Set the looking-forward interval in preferences
-  - Fade in the closest event
-  - Color is set in preferences, proportional to distance from now
-- Set the looking-backward interval in preferences
-  - When there are no forward events, slowly fade away the last event
-  - Color is set in preferences, proportional to distance from now
-- Find a way to specifically mark events (like, process only start date etc). Notes maybe?
-- Add "Launch on startup" to Preferences
-- Allow the menulet to be moved around the menubar, like others (with Cmd key pressed).
+  - Color saturation is proportional to the distance from now
