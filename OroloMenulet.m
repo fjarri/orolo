@@ -81,4 +81,8 @@
 	[NSApp terminate:sender];
 }
 
+- (IBAction)actionShowRealTime:(id)sender {
+	[statusItem setTitle:@"FIXME: time here"];
+}
+
 @end

@@ -14,7 +14,7 @@
 
 	IBOutlet NSMenu *theMenu;
 	IBOutlet NSMenuItem *menuFullTitle;
-	IBOutlet NSMenuItem *menuShowTime;
+	IBOutlet NSMenuItem *menuShowRealTime;
 	IBOutlet NSMenuItem	*menuPreferences;
 	IBOutlet NSMenuItem *menuQuit;
 
@@ -27,5 +27,6 @@
 - (void)updateTime;
 
 - (IBAction)actionQuit:(id)sender;
+- (IBAction)actionShowRealTime:(id)sender;
 
 @end
