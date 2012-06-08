@@ -15,6 +15,8 @@ Future
 - A way to specifically mark events (like, process only start date etc). Notes maybe?
 - Add localization (at least remove string hardcoding)
 - Menulet can be moved around the menubar, like others (with Cmd key pressed). - seems to be impossible
+- Set the interval between timer updates in Preferences (governs the smoothness of color change)
+- Remove all hardcoding
 
 0.0.1
 ~~~~~
