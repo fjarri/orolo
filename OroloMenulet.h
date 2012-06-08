@@ -26,6 +26,7 @@
 	JFHotkeyManager *hkm;
 
 	CalEvent *closestEvent;
+	NSDateFormatter *dateFormatter;
 
 	Boolean showingRealTime;
 }

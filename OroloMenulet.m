@@ -18,12 +18,17 @@
 	[colorUpdateTimer release];
 	[realTimeTimer release];
 	[hkm release];
+	[dateFormatter release];
 	[super dealloc];
 }
 
 - (void)awakeFromNib {
 	showingRealTime = NO;
 	closestEvent = nil;
+
+	dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateStyle:NSDateFormatterNoStyle];
+	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 
 	statusItem = [[[NSStatusBar systemStatusBar]
 				   statusItemWithLength:NSVariableStatusItemLength]
@@ -75,7 +80,7 @@
 
 - (void)updateStatus {
 	if (showingRealTime) {
-		[statusItem setTitle:@"Real time here"];
+		[statusItem setTitle:[dateFormatter stringFromDate:[NSDate date]]];
 	}
 	else {
 		if (closestEvent) {
