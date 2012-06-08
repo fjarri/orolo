@@ -43,10 +43,10 @@
 	//[statusItem setAction:@selector(updateTime:)];
 	//[statusItem setTarget:self];
 
-	calendarModel = [[[CalendarModel alloc] initWithTarget:self selector:@selector(calendarsChanged:)]
-					 retain];
 
 
+	calendarModel = [[CalendarModel alloc] initWithTarget:self
+												  selector:@selector(calendarsChanged:)];
 
 	updateTimer = [[NSTimer
 					scheduledTimerWithTimeInterval:60.0
