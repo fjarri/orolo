@@ -15,26 +15,30 @@
 - (void)dealloc {
 	[calendarModel release];
     [statusItem release];
-	[updateTimer release];
+	[colorUpdateTimer release];
+	[realTimeTimer release];
 	[hkm release];
 	[super dealloc];
 }
 
 - (void)awakeFromNib {
+	showingRealTime = NO;
+	closestEvent = nil;
+
 	statusItem = [[[NSStatusBar systemStatusBar]
 				   statusItemWithLength:NSVariableStatusItemLength]
 				  retain];
 	[statusItem setHighlightMode:YES];
-	[statusItem setTitle:[NSString stringWithFormat:@"%C", 0x221E]];
+	[statusItem setTitle:[NSString stringWithFormat:@"%C", 0x221E]]; // FIXME: remove hardcode
 	[statusItem setEnabled:YES];
-	[statusItem setToolTip:@"Orolo"];
+	[statusItem setToolTip:@"Orolo"]; // FIXME: remove hardcode
 
 	// Tune menu
 	[statusItem setMenu:theMenu];
 	[theMenu setAutoenablesItems:NO];
 
 	[menuFullTitle setEnabled:NO];
-	[menuFullTitle setTitle:[NSString stringWithFormat:@"%C", 0x221E]];
+	[menuFullTitle setTitle:[NSString stringWithFormat:@"%C", 0x221E]]; // FIXME: remove hardcode
 
 	// Set a hotkey
 	hkm = [[JFHotkeyManager alloc] init];
@@ -44,38 +48,42 @@
 			 action:@selector(actionShowRealTime:)];
 
 	[menuShowRealTime setKeyEquivalentModifierMask: NSControlKeyMask | NSCommandKeyMask];
-	[menuShowRealTime setKeyEquivalent:@"s"];
+	[menuShowRealTime setKeyEquivalent:@"s"]; // FIXME: remove hardcode
 
 
 	calendarModel = [[CalendarModel alloc] initWithTarget:self
 												  selector:@selector(calendarsChanged:)];
 
-	updateTimer = [[NSTimer
-					scheduledTimerWithTimeInterval:60.0
+	colorUpdateTimer = [[NSTimer
+					scheduledTimerWithTimeInterval:60.0 // FIXME: remove hardcode
 					target:self
-					selector:@selector(timerUpdated:)
+					selector:@selector(updateColor:)
 					userInfo:nil
 					repeats:YES]
 				   retain];
-	[updateTimer fire];
+	[colorUpdateTimer fire];
 }
 
 - (void)calendarsChanged:(NSNotification *)notification {
-	[self updateTime];
+	closestEvent = [calendarModel closest_event];
+	[self updateStatus];
 }
 
-- (IBAction)timerUpdated:(id)sender {
-	[self updateTime];
+- (IBAction)updateColor:(NSTimer*)theTimer {
+	[self updateStatus];
 }
 
-- (void)updateTime {
-//	NSString *time = [NSString stringWithString:@"":];
-	id event = [calendarModel closest_event];
-	if (event) {
-		[statusItem setTitle:[event title]];
+- (void)updateStatus {
+	if (showingRealTime) {
+		[statusItem setTitle:@"Real time here"];
 	}
 	else {
-		[statusItem setTitle:[NSString stringWithFormat:@"%C", 0x221E]];
+		if (closestEvent) {
+			[statusItem setTitle:[closestEvent title]];
+		}
+		else {
+			[statusItem setTitle:[NSString stringWithFormat:@"%C", 0x221E]]; // FIXME: remove hardcode
+		}
 	}
 }
 
@@ -83,8 +91,22 @@
 	[NSApp terminate:sender];
 }
 
+- (void)stopShowingRealTime:(NSTimer*)theTimer {
+	showingRealTime = NO;
+	[self updateStatus];
+}
+
 - (IBAction)actionShowRealTime:(id)sender {
-	[statusItem setTitle:@"FIXME: time here"];
+	if (!showingRealTime) {
+		showingRealTime = YES;
+		realTimeTimer = [NSTimer
+						  scheduledTimerWithTimeInterval:5.0 // FIXME: remove hardcode
+						  target:self
+						  selector:@selector(stopShowingRealTime:)
+						  userInfo:nil
+						  repeats:NO];
+		[self updateStatus];
+	}
 }
 
 @end

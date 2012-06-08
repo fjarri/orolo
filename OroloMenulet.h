@@ -20,16 +20,23 @@
 	IBOutlet NSMenuItem	*menuPreferences;
 	IBOutlet NSMenuItem *menuQuit;
 
-	NSTimer *updateTimer;
+	NSTimer *colorUpdateTimer;
+	NSTimer *realTimeTimer;
 	CalendarModel *calendarModel;
 	JFHotkeyManager *hkm;
+
+	CalEvent *closestEvent;
+
+	Boolean showingRealTime;
 }
 
 - (void)calendarsChanged:(NSNotification *)notification;
-- (IBAction)timerUpdated:(id)sender;
-- (void)updateTime;
+- (void)updateColor:(NSTimer*)theTimer;
+- (void)updateStatus;
 
 - (IBAction)actionQuit:(id)sender;
+
+- (void)stopShowingRealTime:(NSTimer*)theTimer;
 - (IBAction)actionShowRealTime:(id)sender;
 
 @end
