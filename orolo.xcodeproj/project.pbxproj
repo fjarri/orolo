@@ -12,6 +12,8 @@
 		437CFB3115750ED400B8BE1E /* OroloMenulet.m in Sources */ = {isa = PBXBuildFile; fileRef = 437CFB3015750ED400B8BE1E /* OroloMenulet.m */; };
 		4397DAC11575FBF7001FF33A /* CalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397DAC01575FBF7001FF33A /* CalendarModel.m */; };
 		4397DADC1576054D001FF33A /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4397DADB1576054D001FF33A /* CalendarStore.framework */; };
+		43F20EE315822A7B001EB39A /* JFHotkeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F20EE115822A7B001EB39A /* JFHotkeyManager.m */; };
+		43F20F0115822BFD001EB39A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F20F0015822BFD001EB39A /* Carbon.framework */; };
 		43F815B41575204A00BD214A /* README.rst in Resources */ = {isa = PBXBuildFile; fileRef = 43F815B31575204A00BD214A /* README.rst */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -34,6 +36,9 @@
 		4397DABF1575FBF7001FF33A /* CalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarModel.h; sourceTree = "<group>"; };
 		4397DAC01575FBF7001FF33A /* CalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarModel.m; sourceTree = "<group>"; };
 		4397DADB1576054D001FF33A /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
+		43F20EE015822A7B001EB39A /* JFHotkeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHotkeyManager.h; sourceTree = "<group>"; };
+		43F20EE115822A7B001EB39A /* JFHotkeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHotkeyManager.m; sourceTree = "<group>"; };
+		43F20F0015822BFD001EB39A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		43F815B31575204A00BD214A /* README.rst */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.rst; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* orolo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "orolo-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* orolo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orolo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +51,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				4397DADC1576054D001FF33A /* CalendarStore.framework in Frameworks */,
+				43F20F0115822BFD001EB39A /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +61,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				43F20EE015822A7B001EB39A /* JFHotkeyManager.h */,
+				43F20EE115822A7B001EB39A /* JFHotkeyManager.m */,
 				437CFB2F15750ED400B8BE1E /* OroloMenulet.h */,
 				437CFB3015750ED400B8BE1E /* OroloMenulet.m */,
 				256AC3D80F4B6AC300CF3369 /* OroloAppDelegate.h */,
@@ -68,6 +76,8 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4397DADB1576054D001FF33A /* CalendarStore.framework */,
+				43F20F0015822BFD001EB39A /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -118,7 +128,7 @@
 			children = (
 				8D1107310486CEB800E47090 /* orolo-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				1DDD58140DA1D0A300B32029 /* Main.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -128,7 +138,6 @@
 			children = (
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
-				4397DADB1576054D001FF33A /* CalendarStore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -200,6 +209,7 @@
 				256AC3DA0F4B6AC300CF3369 /* OroloAppDelegate.m in Sources */,
 				437CFB3115750ED400B8BE1E /* OroloMenulet.m in Sources */,
 				4397DAC11575FBF7001FF33A /* CalendarModel.m in Sources */,
+				43F20EE315822A7B001EB39A /* JFHotkeyManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@
 	[calendarModel release];
     [statusItem release];
 	[updateTimer release];
+	[hkm release];
 	[super dealloc];
 }
 
@@ -35,14 +36,15 @@
 	[menuFullTitle setEnabled:NO];
 	[menuFullTitle setTitle:[NSString stringWithFormat:@"%C", 0x221E]];
 
-	//ipMenuItem = [[NSMenuItem alloc] initWithTitle:@"0.0.0.0"
-	//										action:@selector(updateIPAddress:) keyEquivalent:@""];
-	//[ipMenuItem setTarget:self];
-	//[theMenu insertItem:ipMenuItem atIndex:1];
+	// Set a hotkey
+	hkm = [[JFHotkeyManager alloc] init];
+	[hkm bindKeyRef:1 // 's' key
+	  withModifiers:cmdKey + controlKey
+			 target:self
+			 action:@selector(actionShowRealTime:)];
 
-	//[statusItem setAction:@selector(updateTime:)];
-	//[statusItem setTarget:self];
-
+	[menuShowRealTime setKeyEquivalentModifierMask: NSControlKeyMask | NSCommandKeyMask];
+	[menuShowRealTime setKeyEquivalent:@"s"];
 
 
 	calendarModel = [[CalendarModel alloc] initWithTarget:self

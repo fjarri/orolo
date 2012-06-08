@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "CalendarModel.h"
+#import "JFHotkeyManager.h"
+
 
 @interface OroloMenulet : NSObject {
 	NSStatusItem *statusItem;
@@ -20,6 +22,7 @@
 
 	NSTimer *updateTimer;
 	CalendarModel *calendarModel;
+	JFHotkeyManager *hkm;
 }
 
 - (void)calendarsChanged:(NSNotification *)notification;
