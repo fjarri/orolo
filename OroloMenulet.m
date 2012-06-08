@@ -77,7 +77,7 @@
 	}
 }
 
-- (IBAction)quit:(id)sender {
+- (IBAction)actionQuit:(id)sender {
 	[NSApp terminate:sender];
 }
 

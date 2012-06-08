@@ -26,6 +26,6 @@
 - (IBAction)timerUpdated:(id)sender;
 - (void)updateTime;
 
-- (IBAction)quit:(id)sender;
+- (IBAction)actionQuit:(id)sender;
 
 @end
