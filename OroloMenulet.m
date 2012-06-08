@@ -42,7 +42,6 @@
 	[statusItem setMenu:theMenu];
 	[theMenu setAutoenablesItems:NO];
 
-	[menuFullTitle setEnabled:NO];
 	[menuFullTitle setTitle:[NSString stringWithFormat:@"%C", 0x221E]]; // FIXME: remove hardcode
 
 	// Set a hotkey

@@ -1326,6 +1326,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSMenuItem" id="428915796">
 						<reference key="NSMenu" ref="393496882"/>
+						<bool key="NSIsDisabled">YES</bool>
 						<string key="NSTitle">Full Title</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
