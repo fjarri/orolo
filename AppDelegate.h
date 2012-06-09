@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface OroloAppDelegate : NSObject <NSApplicationDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
 }
 

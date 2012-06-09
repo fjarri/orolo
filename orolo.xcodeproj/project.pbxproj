@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* Main.xib */; };
-		256AC3DA0F4B6AC300CF3369 /* OroloAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* OroloAppDelegate.m */; };
+		256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */; };
 		437CFB3115750ED400B8BE1E /* Menulet.m in Sources */ = {isa = PBXBuildFile; fileRef = 437CFB3015750ED400B8BE1E /* Menulet.m */; };
 		4397DAC11575FBF7001FF33A /* CalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397DAC01575FBF7001FF33A /* CalendarModel.m */; };
 		4397DADC1576054D001FF33A /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4397DADB1576054D001FF33A /* CalendarStore.framework */; };
@@ -25,8 +25,8 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Main.xib; sourceTree = "<group>"; };
-		256AC3D80F4B6AC300CF3369 /* OroloAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OroloAppDelegate.h; sourceTree = "<group>"; };
-		256AC3D90F4B6AC300CF3369 /* OroloAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OroloAppDelegate.m; sourceTree = "<group>"; };
+		256AC3D80F4B6AC300CF3369 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		256AC3D90F4B6AC300CF3369 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* orolo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = orolo_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -65,8 +65,8 @@
 				43F20EE115822A7B001EB39A /* JFHotkeyManager.m */,
 				437CFB2F15750ED400B8BE1E /* Menulet.h */,
 				437CFB3015750ED400B8BE1E /* Menulet.m */,
-				256AC3D80F4B6AC300CF3369 /* OroloAppDelegate.h */,
-				256AC3D90F4B6AC300CF3369 /* OroloAppDelegate.m */,
+				256AC3D80F4B6AC300CF3369 /* AppDelegate.h */,
+				256AC3D90F4B6AC300CF3369 /* AppDelegate.m */,
 				4397DABF1575FBF7001FF33A /* CalendarModel.h */,
 				4397DAC01575FBF7001FF33A /* CalendarModel.m */,
 			);
@@ -206,7 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				256AC3DA0F4B6AC300CF3369 /* OroloAppDelegate.m in Sources */,
+				256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */,
 				437CFB3115750ED400B8BE1E /* Menulet.m in Sources */,
 				4397DAC11575FBF7001FF33A /* CalendarModel.m in Sources */,
 				43F20EE315822A7B001EB39A /* JFHotkeyManager.m in Sources */,

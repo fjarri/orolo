@@ -6,9 +6,9 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "OroloAppDelegate.h"
+#import "AppDelegate.h"
 
-@implementation OroloAppDelegate
+@implementation AppDelegate
 
 @synthesize window;
 
