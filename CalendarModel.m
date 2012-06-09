@@ -7,6 +7,7 @@
 //
 
 #import "CalendarModel.h"
+#import <CalendarStore/CalendarStore.h>
 
 
 @implementation CalendarModel

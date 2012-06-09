@@ -7,7 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <CalendarStore/CalendarStore.h>
+
+@class CalCalendarStore;
+@class CalEvent;
 
 
 @interface CalendarModel : NSObject {
