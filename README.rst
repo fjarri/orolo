@@ -16,6 +16,9 @@ Future
 - Add localization (at least remove string hardcoding)
 - Menulet can be moved around the menubar, like others (with Cmd key pressed). - seems to be impossible
 - Set the interval between timer updates in Preferences (governs the smoothness of color change)
+- Add "always real time mode" for cases when one needs to turn off the oven in 20 minutes or something
+- Add 12/24 and AM-PM/not switch, to mimic usual clock (or take these from System Preferences)
+- Add showing date too
 - Remove all hardcoding
 
 0.0.1
