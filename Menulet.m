@@ -19,6 +19,7 @@
 	[realTimeTimer release];
 	[hkm release];
 	[dateFormatter release];
+	[statusIcon release];
 	[super dealloc];
 }
 
@@ -30,11 +31,14 @@
 	[dateFormatter setDateStyle:NSDateFormatterNoStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 
+	NSString* imageName = [[NSBundle mainBundle] pathForResource:@"icon-menubar" ofType:@"png"];
+	statusIcon = [[NSImage alloc] initWithContentsOfFile:imageName];
+
 	statusItem = [[[NSStatusBar systemStatusBar]
 				   statusItemWithLength:NSVariableStatusItemLength]
 				  retain];
 	[statusItem setHighlightMode:YES];
-	[statusItem setTitle:[NSString stringWithFormat:@"%C", 0x221E]]; // FIXME: remove hardcode
+	[self setNoEventsStatus];
 	[statusItem setEnabled:YES];
 	[statusItem setToolTip:@"Orolo"]; // FIXME: remove hardcode
 
@@ -79,14 +83,14 @@
 
 - (void)updateStatus {
 	if (showingRealTime) {
-		[statusItem setTitle:[dateFormatter stringFromDate:[NSDate date]]];
+		[self setTextStatus:[dateFormatter stringFromDate:[NSDate date]]];
 	}
 	else {
 		if (closestEvent) {
-			[statusItem setTitle:[closestEvent title]];
+			[self setTextStatus:[closestEvent title]];
 		}
 		else {
-			[statusItem setTitle:[NSString stringWithFormat:@"%C", 0x221E]]; // FIXME: remove hardcode
+			[self setNoEventsStatus];
 		}
 	}
 }
@@ -111,6 +115,16 @@
 						  repeats:NO];
 		[self updateStatus];
 	}
+}
+
+- (void)setNoEventsStatus {
+	[statusItem setTitle:@""];
+	[statusItem setImage:statusIcon];
+}
+
+- (void)setTextStatus:(NSString *)title {
+	[statusItem setImage:nil];
+	[statusItem setTitle:title];
 }
 
 @end

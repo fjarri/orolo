@@ -30,7 +30,11 @@
 	NSDateFormatter *dateFormatter;
 
 	Boolean showingRealTime;
+	NSImage *statusIcon;
 }
+
+- (void)setNoEventsStatus;
+- (void)setTextStatus:(NSString *)title;
 
 - (void)calendarsChanged:(NSNotification *)notification;
 - (void)updateColor:(NSTimer*)theTimer;
