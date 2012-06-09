@@ -1318,7 +1318,7 @@
 				<string key="NSClassName">NSFontManager</string>
 			</object>
 			<object class="NSCustomObject" id="200809320">
-				<string key="NSClassName">OroloMenulet</string>
+				<string key="NSClassName">Menulet</string>
 			</object>
 			<object class="NSMenu" id="393496882">
 				<string key="NSTitle"/>
@@ -1359,7 +1359,7 @@
 						<reference key="NSOnImage" ref="35465992"/>
 						<reference key="NSMixedImage" ref="502551668"/>
 					</object>
-					<object class="NSMenuItem" id="211308921">
+					<object class="NSMenuItem" id="866550764">
 						<reference key="NSMenu" ref="393496882"/>
 						<string key="NSTitle">About Orolo</string>
 						<string key="NSKeyEquiv"/>
@@ -2246,22 +2246,6 @@
 					<int key="connectionID">530</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">theMenu</string>
-						<reference key="source" ref="200809320"/>
-						<reference key="destination" ref="393496882"/>
-					</object>
-					<int key="connectionID">540</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">menuFullTitle</string>
-						<reference key="source" ref="200809320"/>
-						<reference key="destination" ref="428915796"/>
-					</object>
-					<int key="connectionID">546</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">actionQuit:</string>
 						<reference key="source" ref="200809320"/>
@@ -2279,19 +2263,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">menuQuit</string>
+						<string key="label">theMenu</string>
 						<reference key="source" ref="200809320"/>
-						<reference key="destination" ref="564867506"/>
+						<reference key="destination" ref="393496882"/>
 					</object>
-					<int key="connectionID">550</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">menuPreferences</string>
-						<reference key="source" ref="200809320"/>
-						<reference key="destination" ref="533114416"/>
-					</object>
-					<int key="connectionID">551</int>
+					<int key="connectionID">572</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2299,15 +2275,39 @@
 						<reference key="source" ref="200809320"/>
 						<reference key="destination" ref="783363434"/>
 					</object>
-					<int key="connectionID">553</int>
+					<int key="connectionID">574</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menuPreferences</string>
+						<reference key="source" ref="200809320"/>
+						<reference key="destination" ref="533114416"/>
+					</object>
+					<int key="connectionID">575</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">menuAbout</string>
 						<reference key="source" ref="200809320"/>
-						<reference key="destination" ref="211308921"/>
+						<reference key="destination" ref="866550764"/>
 					</object>
-					<int key="connectionID">571</int>
+					<int key="connectionID">576</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menuQuit</string>
+						<reference key="source" ref="200809320"/>
+						<reference key="destination" ref="564867506"/>
+					</object>
+					<int key="connectionID">577</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menuFullTitle</string>
+						<reference key="source" ref="200809320"/>
+						<reference key="destination" ref="428915796"/>
+					</object>
+					<int key="connectionID">578</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3342,6 +3342,7 @@
 						<int key="objectID">533</int>
 						<reference key="object" ref="200809320"/>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">Menulet</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">536</int>
@@ -3354,7 +3355,7 @@
 							<reference ref="428915796"/>
 							<reference ref="703641817"/>
 							<reference ref="564867506"/>
-							<reference ref="211308921"/>
+							<reference ref="866550764"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Popup Menu</string>
@@ -3500,7 +3501,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">570</int>
-						<reference key="object" ref="211308921"/>
+						<reference key="object" ref="866550764"/>
 						<reference key="parent" ref="393496882"/>
 						<string key="objectName">About</string>
 					</object>
@@ -4100,40 +4101,13 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">571</int>
+			<int key="maxID">578</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">OroloAppDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">window</string>
-						<string key="NS.object.0">NSWindow</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">window</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">window</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">OroloAppDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">OroloAppDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">OroloMenulet</string>
+					<string key="className">Menulet</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="actions">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -4229,23 +4203,31 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">OroloMenulet.h</string>
+						<string key="minorKey">Menulet.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">OroloMenulet</string>
+					<string key="className">OroloAppDelegate</string>
 					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">updateTime:</string>
-						<string key="NS.object.0">id</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">window</string>
+						<string key="NS.object.0">NSWindow</string>
 					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">updateTime:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">updateTime:</string>
-							<string key="candidateClassName">id</string>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">window</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">window</string>
+							<string key="candidateClassName">NSWindow</string>
 						</object>
 					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">OroloAppDelegate.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OroloAppDelegate</string>
+					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>

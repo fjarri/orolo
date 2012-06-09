@@ -6,11 +6,11 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "OroloMenulet.h"
+#import "Menulet.h"
 #import "CalendarModel.h"
 
 
-@implementation OroloMenulet
+@implementation Menulet
 
 - (void)dealloc {
 	[calendarModel release];

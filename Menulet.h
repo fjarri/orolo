@@ -11,7 +11,7 @@
 #import "JFHotkeyManager.h"
 
 
-@interface OroloMenulet : NSObject {
+@interface Menulet : NSObject {
 	NSStatusItem *statusItem;
 
 	IBOutlet NSMenu *theMenu;
