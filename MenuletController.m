@@ -14,6 +14,11 @@
 
 @implementation MenuletController
 
++ (void)initialize {
+	[PreferencesController setDefaults];
+}
+
+
 - (void)dealloc {
 	[calendarModel release];
     [statusItem release];

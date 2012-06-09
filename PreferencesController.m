@@ -8,7 +8,61 @@
 
 #import "PreferencesController.h"
 
+static NSString * const keyFadeInColor = @"FadeInColor";
+static NSString * const keyFadeOutColor = @"FadeOutColor";
+static NSString * const keyFadeInInterval = @"FadeInInterval";
+static NSString * const keyFadeOutInterval = @"FadeOutInterval";
+
+
 @implementation PreferencesController
+
++ (void)setDefaults {
+	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
+
+	[defaultValues setObject:[NSKeyedArchiver archivedDataWithRootObject:[NSColor redColor]]
+					  forKey:keyFadeInColor];
+	[defaultValues setObject:[NSKeyedArchiver archivedDataWithRootObject:[NSColor blueColor]]
+					  forKey:keyFadeOutColor];
+
+	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
+}
+
++ (NSColor *)prefFadeInColor {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSData *colorAsData = [defaults objectForKey:keyFadeInColor];
+	return [NSKeyedUnarchiver unarchiveObjectWithData:colorAsData];
+}
+
++ (void)setPrefFadeInColor:(NSColor *)color {
+	NSData *colorAsData = [NSKeyedArchiver archivedDataWithRootObject:color];
+	[[NSUserDefaults standardUserDefaults] setObject:colorAsData forKey:keyFadeInColor];
+}
+
++ (NSColor *)prefFadeOutColor {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSData *colorAsData = [defaults objectForKey:keyFadeOutColor];
+	return [NSKeyedUnarchiver unarchiveObjectWithData:colorAsData];
+}
+
++ (void)setPrefFadeOutColor:(NSColor *)color {
+	NSData *colorAsData = [NSKeyedArchiver archivedDataWithRootObject:color];
+	[[NSUserDefaults standardUserDefaults] setObject:colorAsData forKey:keyFadeOutColor];
+}
+
++ (BOOL)prefLaunchAtLogin {
+	//NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	//return [defaults boolForKey:keyStartAtLogin];
+
+	// check if self is in login items
+	return NO;
+}
+
++ (void)setPrefLaunchAtLogin:(BOOL)start {
+//	[[NSUserDefaults standardUserDefaults] setBool:start forKey:keyStartAtLogin];
+
+	// Add self to login items
+}
+
 
 - (id)init {
 	self = [super initWithWindowNibName:@"Preferences"];
@@ -17,7 +71,9 @@
 
 - (void)windowDidLoad {
 	[super windowDidLoad];
-	// initialization here
+	[fadeInColorWell setColor:[PreferencesController prefFadeInColor]];
+	[fadeOutColorWell setColor:[PreferencesController prefFadeOutColor]];
+	[launchAtLogin setState:[PreferencesController prefLaunchAtLogin]];
 }
 
 - (IBAction)showWindow:(id)sender {
@@ -34,15 +90,15 @@
 }
 
 - (IBAction)changeFadeInColor:(id)sender {
-	//NSColor *color = [fadeInColorWell color];
+	[PreferencesController setPrefFadeInColor:[fadeInColorWell color]];
 }
 
 - (IBAction)changeFadeOutColor:(id)sender {
-	//NSColor *color = [fadeOutColorWell color];
+	[PreferencesController setPrefFadeOutColor:[fadeOutColorWell color]];
 }
 
-- (IBAction)changeLaunchAtStartup:(id)sender {
-
+- (IBAction)changeLaunchAtLogin:(id)sender {
+	[PreferencesController setPrefLaunchAtLogin:[launchAtLogin state]];
 }
 
 @end
