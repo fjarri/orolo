@@ -106,7 +106,6 @@
 		29B97314FDCFA39411CA2CEA /* orolo */ = {
 			isa = PBXGroup;
 			children = (
-				43F815B31575204A00BD214A /* README.rst */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -128,6 +127,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				43F815B31575204A00BD214A /* README.rst */,
 				43F210941582E8A5001EB39A /* icon-big.png */,
 				8D1107310486CEB800E47090 /* orolo-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
