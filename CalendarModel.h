@@ -18,8 +18,6 @@
 + (void)addEventsObserver:(id)target selector:(SEL)selector;
 
 - (id) init;
-- (void)calculateClosestEvent:(NSNotification *)notification;
-
 - (CalEvent *)closestEvent;
 
 @end
