@@ -13,8 +13,15 @@ static NSString * const keyFadeOutColor = @"FadeOutColor";
 static NSString * const keyFadeInInterval = @"FadeInInterval";
 static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 
-
 @implementation PreferencesController
+
++ (void)addObserver:(id)target selector:(SEL)selector {
+	NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
+	[ncenter addObserver:target
+				selector:selector
+					name:NSUserDefaultsDidChangeNotification
+				  object:nil];
+}
 
 + (void)setDefaults {
 	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];

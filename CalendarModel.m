@@ -11,33 +11,39 @@
 
 @implementation CalendarModel
 
-- (id) initWithTarget:(id)target selector:(SEL)selector {
-	self = [super init];
-
-	// TODO: may need non-defaults here
-	cstore = [[CalCalendarStore defaultCalendarStore] retain];
-	ncenter = [[NSNotificationCenter defaultCenter] retain];
-
++ (void)addCalendarsObserver:(id)target selector:(SEL)selector {
+	NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
 	[ncenter addObserver:target
 				selector:selector
 					name:CalCalendarsChangedExternallyNotification
 				  object:nil];
-    [ncenter addObserver:target
+}
+
++ (void)addEventsObserver:(id)target selector:(SEL)selector {
+	NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
+	[ncenter addObserver:target
 				selector:selector
 					name:CalEventsChangedExternallyNotification
 				  object:nil];
+}
+
+- (id)init {
+	self = [super init];
+
+	// TODO: may need non-defaults here
+	cstore = [[CalCalendarStore defaultCalendarStore] retain];
 
 	return self;
 }
 
 - (void)dealloc
 {
-    [ncenter release];
 	[cstore release];
 	[super dealloc];
 }
 
-- (CalEvent *)closest_event {
+- (CalEvent *)closestEvent {
+
 	NSArray *cldrs = [cstore calendars];
 
 	NSTimeInterval window = 60 * 60; // FIXME: remove hardcoding

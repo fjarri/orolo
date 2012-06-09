@@ -10,7 +10,11 @@
 #import "CalendarModel.h"
 #import "PreferencesController.h"
 #import "AboutController.h"
+#import "JFHotkeyManager.h"
 
+// TODO: move to preferences?
+static float colorUpdateInterval = 10.0;
+static float realTimeInterval = 5.0;
 
 @implementation MenuletController
 
@@ -34,6 +38,7 @@
 	showingRealTime = NO;
 	closestEvent = nil;
 
+	// prepare date formatter
 	dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateStyle:NSDateFormatterNoStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
@@ -66,25 +71,33 @@
 	[menuShowRealTime setKeyEquivalent:@"s"]; // FIXME: remove hardcode
 
 
-	calendarModel = [[CalendarModel alloc] initWithTarget:self
-												  selector:@selector(calendarsChanged:)];
+	calendarModel = [[CalendarModel alloc] init];
+	[CalendarModel addEventsObserver:self selector:@selector(calendarsChanged:)];
+	[CalendarModel addCalendarsObserver:self selector:@selector(calendarsChanged:)];
 
 	colorUpdateTimer = [[NSTimer
-					scheduledTimerWithTimeInterval:60.0 // FIXME: remove hardcode
+					scheduledTimerWithTimeInterval:colorUpdateInterval
 					target:self
 					selector:@selector(updateColor:)
 					userInfo:nil
 					repeats:YES]
 				   retain];
 	[colorUpdateTimer fire];
+
+	// prepare notification for changed settings
+	[PreferencesController addObserver:self selector:@selector(preferencesChanged:)];
 }
 
-- (void)calendarsChanged:(NSNotification *)notification {
-	closestEvent = [calendarModel closest_event];
+- (void)preferencesChanged:(NSNotification *)notification {
 	[self updateStatus];
 }
 
-- (IBAction)updateColor:(NSTimer*)theTimer {
+- (void)calendarsChanged:(NSNotification *)notification {
+	closestEvent = [calendarModel closestEvent];
+	[self updateStatus];
+}
+
+- (void)updateColor:(NSTimer*)theTimer {
 	[self updateStatus];
 }
 
@@ -93,8 +106,9 @@
 		[self setTextStatus:[dateFormatter stringFromDate:[NSDate date]]];
 	}
 	else {
-		if (closestEvent) {
-			[self setTextStatus:[closestEvent title]];
+		CalEvent *closest_event = [calendarModel closestEvent];
+		if (closest_event) {
+			[self setTextStatus:[closest_event title]];
 		}
 		else {
 			[self setNoEventsStatus];
@@ -129,7 +143,7 @@
 	if (!showingRealTime) {
 		showingRealTime = YES;
 		realTimeTimer = [NSTimer
-						  scheduledTimerWithTimeInterval:5.0 // FIXME: remove hardcode
+						  scheduledTimerWithTimeInterval:realTimeInterval
 						  target:self
 						  selector:@selector(stopShowingRealTime:)
 						  userInfo:nil

@@ -11,16 +11,15 @@
 
 
 @interface CalendarModel : NSObject {
-	NSNotificationCenter *ncenter;
 	CalCalendarStore *cstore;
 }
 
-- (id) initWithTarget:(id)target selector:(SEL)selector;
++ (void)addCalendarsObserver:(id)target selector:(SEL)selector;
++ (void)addEventsObserver:(id)target selector:(SEL)selector;
 
-@property(readonly) CalEvent *closest_event;
+- (id) init;
+- (void)calculateClosestEvent:(NSNotification *)notification;
 
-//- (void)calendarsChanged:(NSNotification *)notification;
-//- (void)eventsChanged:(NSNotification *)notification;
-//- (void)tasksChanged:(NSNotification *)notification;
+- (CalEvent *)closestEvent;
 
 @end

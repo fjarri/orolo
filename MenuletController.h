@@ -7,11 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "CalendarModel.h"
-#import "JFHotkeyManager.h"
 
 @class PreferencesController;
 @class AboutController;
+@class CalendarModel;
+@class JFHotkeyManager;
+@class CalEvent;
 
 @interface MenuletController : NSObject {
 	PreferencesController *preferencesController;
@@ -29,9 +30,9 @@
 	NSTimer *colorUpdateTimer;
 	NSTimer *realTimeTimer;
 	CalendarModel *calendarModel;
+	CalEvent *closestEvent;
 	JFHotkeyManager *hkm;
 
-	CalEvent *closestEvent;
 	NSDateFormatter *dateFormatter;
 
 	Boolean showingRealTime;
@@ -41,6 +42,7 @@
 - (void)setNoEventsStatus;
 - (void)setTextStatus:(NSString *)title;
 
+- (void)preferencesChanged:(NSNotification *)notification;
 - (void)calendarsChanged:(NSNotification *)notification;
 - (void)updateColor:(NSTimer*)theTimer;
 - (void)updateStatus;

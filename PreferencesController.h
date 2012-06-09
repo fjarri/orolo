@@ -15,6 +15,7 @@
 	IBOutlet NSButton *launchAtLogin;
 }
 
++ (void)addObserver:(id)target selector:(SEL)selector;
 + (void)setDefaults;
 + (NSColor *)prefFadeInColor;
 + (void)setPrefFadeInColor:(NSColor *)color;
