@@ -6,11 +6,13 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Menulet.h"
+#import "MenuletController.h"
 #import "CalendarModel.h"
+#import "PreferencesController.h"
+#import "AboutController.h"
 
 
-@implementation Menulet
+@implementation MenuletController
 
 - (void)dealloc {
 	[calendarModel release];
@@ -93,6 +95,20 @@
 			[self setNoEventsStatus];
 		}
 	}
+}
+
+- (IBAction)actionPreferences:(id)sender {
+	if (!preferencesController) {
+		preferencesController = [[PreferencesController alloc] init];
+	}
+	[preferencesController showWindow:self];
+}
+
+- (IBAction)actionAbout:(id)sender {
+	if (!aboutController) {
+		aboutController = [[AboutController alloc] init];
+	}
+	[aboutController showWindow:self];
 }
 
 - (IBAction)actionQuit:(id)sender {

@@ -10,8 +10,13 @@
 #import "CalendarModel.h"
 #import "JFHotkeyManager.h"
 
+@class PreferencesController;
+@class AboutController;
 
-@interface Menulet : NSObject {
+@interface MenuletController : NSObject {
+	PreferencesController *preferencesController;
+	AboutController *aboutController;
+
 	NSStatusItem *statusItem;
 
 	IBOutlet NSMenu *theMenu;
@@ -40,6 +45,8 @@
 - (void)updateColor:(NSTimer*)theTimer;
 - (void)updateStatus;
 
+- (IBAction)actionPreferences:(id)sender;
+- (IBAction)actionAbout:(id)sender;
 - (IBAction)actionQuit:(id)sender;
 
 - (void)stopShowingRealTime:(NSTimer*)theTimer;
