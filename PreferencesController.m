@@ -31,6 +31,8 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 					  forKey:keyFadeInColor];
 	[defaultValues setObject:[NSKeyedArchiver archivedDataWithRootObject:[NSColor blueColor]]
 					  forKey:keyFadeOutColor];
+	[defaultValues setObject:[NSNumber numberWithInt:60] forKey:keyFadeInInterval];
+	[defaultValues setObject:[NSNumber numberWithInt:30] forKey:keyFadeOutInterval];
 
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
 }
@@ -71,11 +73,23 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 	// Add self to login items
 }
 
-+ (int)fadeInInterval {
++ (int)prefFadeInInterval {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	return [defaults integerForKey:keyFadeInInterval];
 }
 
++ (void)setPrefFadeInInterval:(int)interval {
+	[[NSUserDefaults standardUserDefaults] setInteger:interval forKey:keyFadeInInterval];
+}
+
++ (int)prefFadeOutInterval {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	return [defaults integerForKey:keyFadeOutInterval];
+}
+
++ (void)setPrefFadeOutInterval:(int)interval {
+	[[NSUserDefaults standardUserDefaults] setInteger:interval forKey:keyFadeOutInterval];
+}
 
 - (id)init {
 	self = [super initWithWindowNibName:@"Preferences"];
