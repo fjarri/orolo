@@ -135,8 +135,21 @@
 				  fraction:1.0];
 	}
 	if(title) {
+		CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+		CGSize size = CGSizeMake(0, -1);
+		CGFloat components[] = {1.0, 1.0, 1.0, 0.3};
+		CGColorSpaceRef cs = CGColorSpaceCreateDeviceRGB();
+		CGColorRef cref = CGColorCreate(cs, components);
+
+		CGContextSaveGState(context);
+
+		CGContextSetShadowWithColor(context, size, 1.0, cref);
+		CGColorSpaceRelease(cs);
+		CGColorRelease(cref);
 		[title drawAtPoint:titleOrigin
 			withAttributes:[self titleAttributes]];
+
+		CGContextRestoreGState(context);
 	}
 }
 
