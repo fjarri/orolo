@@ -8,7 +8,8 @@
 
 #import "StatusItemView.h"
 
-#define StatusItemViewPaddingWidth  6
+#define StatusItemViewTitlePaddingWidth  6
+#define StatusItemViewImagePaddingWidth  2
 #define StatusItemViewPaddingHeight 3
 
 
@@ -83,14 +84,32 @@
 }
 
 - (void)setImage:(NSImage *)newImage withTitle:(NSString *)newTitle {
-    if (![title isEqual:newTitle]) {
+    if (![title isEqual:newTitle] || ![image isEqual:newImage]) {
         [newTitle retain];
         [title release];
         title = newTitle;
 
+		[newImage retain];
+		[image release];
+		image = newImage;
+
         // Update status item size (which will also update this view's bounds)
-        NSRect titleBounds = [self titleBoundingRect];
-        int newWidth = titleBounds.size.width + (2 * StatusItemViewPaddingWidth);
+        int newWidth;
+		NSRect titleBounds = [self titleBoundingRect];
+		if (newTitle && newImage) {
+			newWidth = image.size.width + titleBounds.size.width +
+				2 * StatusItemViewTitlePaddingWidth + StatusItemViewImagePaddingWidth;
+		}
+		else if (newTitle) {
+			newWidth = titleBounds.size.width + 2 * StatusItemViewTitlePaddingWidth;
+		}
+		else if (newImage) {
+			newWidth = image.size.width + 2 * StatusItemViewImagePaddingWidth;
+		}
+		else {
+			newWidth = StatusItemViewTitlePaddingWidth;
+		}
+
         [statusItem setLength:newWidth];
 
         [self setNeedsDisplay:YES];
@@ -103,11 +122,22 @@
     [statusItem drawStatusBarBackgroundInRect:[self bounds]
                                 withHighlight:isMenuVisible];
 
-    // Draw title string
-    NSPoint origin = NSMakePoint(StatusItemViewPaddingWidth,
-                                 StatusItemViewPaddingHeight);
-    [title drawAtPoint:origin
-        withAttributes:[self titleAttributes]];
+    // Draw image and title string
+	int titleShift = image ? StatusItemViewImagePaddingWidth + image.size.width : 0;
+    NSPoint imageOrigin = NSMakePoint(StatusItemViewImagePaddingWidth, 0);
+	NSPoint titleOrigin = NSMakePoint(StatusItemViewTitlePaddingWidth + titleShift,
+									  StatusItemViewPaddingHeight);
+
+	if(image) {
+		[image drawAtPoint:imageOrigin
+				  fromRect:NSZeroRect
+				 operation:NSCompositeSourceOver
+				  fraction:1.0];
+	}
+	if(title) {
+		[title drawAtPoint:titleOrigin
+			withAttributes:[self titleAttributes]];
+	}
 }
 
 @end
