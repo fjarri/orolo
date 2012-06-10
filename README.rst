@@ -20,6 +20,7 @@ Future
 - Add 12/24 and AM-PM/not switch, to mimic usual clock (or take these from System Preferences)
 - Add showing date too
 - Remove all hardcoding
+- Make text in status bar more aesthetical
 
 0.0.1
 ~~~~~
