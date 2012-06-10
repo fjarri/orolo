@@ -48,7 +48,7 @@
 
 	NSArray *cldrs = [cstore calendars];
 
-	NSTimeInterval window = [PreferencesController fadeInInterval];
+	NSTimeInterval window = [PreferencesController prefFadeInInterval] * 60;
 	NSDate *now = [NSDate date];
 	NSDate *border = [now dateByAddingTimeInterval:window];
 
