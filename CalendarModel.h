@@ -11,6 +11,24 @@
 @class CalCalendarStore;
 @class CalEvent;
 
+@interface CalResult : NSObject
+{
+	CalEvent *event; // event itself
+	BOOL isForward; // YES if it is event in the future
+	BOOL isBeginning; // YES if we caught a beginning of the event
+	float fraction; // time from event till now divided by the time interval
+}
+
+@property (readonly) CalEvent *event;
+@property (readonly) BOOL isForward;
+@property (readonly) BOOL isBeginning;
+@property (readonly) float fraction;
+
+- (CalResult *)initWithEvent:(CalEvent *)ev forward:(BOOL)forward beginning:(BOOL)beginning fraction:(float)frac;
+
+@end
+
+
 
 @interface CalendarModel : NSObject {
 	CalCalendarStore *cstore;
@@ -20,6 +38,7 @@
 + (void)addEventsObserver:(id)target selector:(SEL)selector;
 
 - (id) init;
-- (CalEvent *)closestEvent;
+- (CalResult *)closestEvent;
+- (CalResult *)closestEventInRange:(int)range fadeIn:(BOOL)fadeIn;
 
 @end

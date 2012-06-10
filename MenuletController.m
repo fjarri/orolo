@@ -100,7 +100,7 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)updateClosestEvent {
-	CalEvent *newClosestEvent = [[calendarModel closestEvent] retain];
+	CalResult *newClosestEvent = [[calendarModel closestEvent] retain];
 	[closestEvent release];
 	closestEvent = newClosestEvent;
 }
@@ -119,16 +119,16 @@ static float realTimeInterval = 5.0;
 		[self setTextStatus:[dateFormatter stringFromDate:[NSDate date]] withColor:[NSColor blackColor]];
 	}
 	else if (closestEvent) {
-		NSDate *date = [closestEvent startDate];
-		int fadeInInterval = [PreferencesController prefFadeInInterval] * 60;
-		int timeToEvent = [date timeIntervalSinceNow];
-		float fraction = (float)timeToEvent / fadeInInterval;
+		float fraction = [closestEvent fraction];
 
-		NSColor *fadeInColor = [PreferencesController prefFadeInColor];
+		NSColor *targetColor = [closestEvent isForward] ?
+			[PreferencesController prefFadeInColor] :
+			[PreferencesController prefFadeOutColor];
+
 		NSColor *startingColor = [NSColor controlTextColor];
-		NSColor *color = [fadeInColor blendedColorWithFraction:fraction ofColor:startingColor];
+		NSColor *color = [targetColor blendedColorWithFraction:fraction ofColor:startingColor];
 
-		[self setTextStatus:[closestEvent title] withColor:color];
+		[self setTextStatus:[[closestEvent event] title] withColor:color];
 	}
 	else {
 		[self setNoEventsStatus];

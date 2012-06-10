@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CalendarModel.h"
 
 @class PreferencesController;
 @class AboutController;
@@ -32,7 +33,7 @@
 	NSTimer *colorUpdateTimer;
 	NSTimer *realTimeTimer;
 	CalendarModel *calendarModel;
-	CalEvent *closestEvent;
+	CalResult *closestEvent;
 	JFHotkeyManager *hkm;
 
 	NSDateFormatter *dateFormatter;

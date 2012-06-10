@@ -11,6 +11,33 @@
 #import "PreferencesController.h"
 
 
+@implementation CalResult
+
+@synthesize event;
+@synthesize isForward;
+@synthesize isBeginning;
+@synthesize fraction;
+
+- (CalResult *)initWithEvent:(CalEvent *)ev forward:(BOOL)forward beginning:(BOOL)beginning fraction:(float)frac {
+	self = [super init];
+
+	[event retain];
+	event = ev;
+	isForward = forward;
+	isBeginning = beginning;
+	fraction = frac;
+
+	return self;
+}
+
+- (void)dealloc {
+	[event release];
+	[super dealloc];
+}
+
+@end
+
+
 @implementation CalendarModel
 
 + (void)addCalendarsObserver:(id)target selector:(SEL)selector {
@@ -44,52 +71,64 @@
 	[super dealloc];
 }
 
-- (CalEvent *)closestEvent {
+- (CalResult *)closestEvent {
+	int fadeInInterval = [PreferencesController prefFadeInInterval] * 60;
+	int fadeOutInterval = [PreferencesController prefFadeOutInterval] * 60;
 
+	CalResult *fwResult = [self closestEventInRange:fadeInInterval fadeIn:YES];
+	if (fwResult || fadeOutInterval == 0) {
+		return fwResult;
+	}
+
+	return [self closestEventInRange:fadeOutInterval fadeIn:NO];
+}
+
+- (CalResult *)closestEventInRange:(int)range fadeIn:(BOOL)fadeIn {
 	NSArray *cldrs = [cstore calendars];
 
-	NSTimeInterval window = [PreferencesController prefFadeInInterval] * 60;
+	float time_direction = fadeIn ? 1 : -1;
 	NSDate *now = [NSDate date];
-	NSDate *border = [now dateByAddingTimeInterval:window];
+	NSDate *border = [now dateByAddingTimeInterval:range * time_direction];
 
-	NSPredicate *allEventsPredicate = [CalCalendarStore eventPredicateWithStartDate:now
-																			endDate:border
+	NSPredicate *allEventsPredicate = [CalCalendarStore eventPredicateWithStartDate:(fadeIn ? now : border)
+																			endDate:(fadeIn ? border : now)
 																		  calendars:cldrs];
 	NSArray *events = [cstore eventsWithPredicate:allEventsPredicate];
 
-	CalEvent *closest_start = nil;
-	CalEvent *closest_end = nil;
+	SEL closeDate = fadeIn ? @selector(startDate) : @selector(endDate);
+	SEL farDate = fadeIn ? @selector(endDate) : @selector(startDate);
+
+	CalEvent *best_event = nil;
+	BOOL best_beginning = NO;
+	float best_distance = 1e10; // hope that's big enough
 
 	for(CalEvent *event in events) {
-		NSDate *start = [event startDate];
-		NSDate *end = [event endDate];
+		NSDate *close_end = [event performSelector:closeDate];
+		NSDate *far_end = [event performSelector:farDate];
 
-		if ([now compare:start] == NSOrderedAscending) {
-			if (closest_start == nil || [[closest_start startDate] compare:start] == NSOrderedDescending) {
-				closest_start = event;
-			}
+		float close_end_distance = [close_end timeIntervalSinceNow] * time_direction;
+		float far_end_distance = [far_end timeIntervalSinceNow] * time_direction;
+
+		if (close_end_distance >= 0 && close_end_distance < best_distance) {
+			best_event = event;
+			best_beginning = fadeIn;
+			best_distance = close_end_distance;
 		}
-		if ([border compare:end] == NSOrderedDescending) {
-			if (closest_end == nil || [[closest_end endDate] compare:end] == NSOrderedDescending) {
-				closest_end = event;
-			}
+		else if (far_end_distance >= 0 && far_end_distance < best_distance) {
+			best_event = event;
+			best_beginning = !fadeIn;
+			best_distance = far_end_distance;
 		}
 	}
 
-	if (closest_start == nil && closest_end == nil) {
-		return nil;
-	}
-	else if (closest_end == nil) {
-		return closest_start;
-	}
-	else if (closest_start == nil) {
-		return closest_end;
-	}
-	else if ([[closest_start startDate] compare:[closest_end endDate]] == NSOrderedAscending) {
-		return closest_start;
+	if (best_event) {
+		return [[[CalResult alloc] initWithEvent:best_event
+										 forward:fadeIn
+									   beginning:best_beginning
+										fraction:best_distance / range] autorelease];
 	}
 	else {
-		return closest_end;
+		return nil;
 	}
 }
 
