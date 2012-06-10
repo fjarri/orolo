@@ -21,6 +21,7 @@ Future
 - Add showing date too
 - Remove all hardcoding
 - Make text in status bar more aesthetical
+- Hotkey for "Show time till closest event"
 
 0.0.1
 ~~~~~
