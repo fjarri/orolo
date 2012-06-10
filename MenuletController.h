@@ -13,12 +13,14 @@
 @class CalendarModel;
 @class JFHotkeyManager;
 @class CalEvent;
+@class StatusItemView;
 
 @interface MenuletController : NSObject {
 	PreferencesController *preferencesController;
 	AboutController *aboutController;
 
 	NSStatusItem *statusItem;
+	StatusItemView *statusItemView;
 
 	IBOutlet NSMenu *theMenu;
 	IBOutlet NSMenuItem *menuFullTitle;

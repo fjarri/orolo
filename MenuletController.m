@@ -11,6 +11,7 @@
 #import "PreferencesController.h"
 #import "AboutController.h"
 #import "JFHotkeyManager.h"
+#import "StatusItemView.h"
 
 // TODO: move to preferences?
 static float colorUpdateInterval = 10.0;
@@ -49,10 +50,12 @@ static float realTimeInterval = 5.0;
 	statusItem = [[[NSStatusBar systemStatusBar]
 				   statusItemWithLength:NSVariableStatusItemLength]
 				  retain];
-	[statusItem setHighlightMode:YES];
+	statusItemView = [[[StatusItemView alloc] init] retain];
+	statusItemView.statusItem = statusItem;
+	[statusItemView setMenu:theMenu];
+	[statusItem setView:statusItemView];
+
 	[self setNoEventsStatus];
-	[statusItem setEnabled:YES];
-	[statusItem setToolTip:@"Orolo"]; // FIXME: remove hardcode
 
 	// Tune menu
 	[statusItem setMenu:theMenu];
@@ -153,13 +156,11 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)setNoEventsStatus {
-	[statusItem setTitle:@""];
-	[statusItem setImage:statusIcon];
+	[statusItemView setImage:statusIcon withTitle:@""];
 }
 
 - (void)setTextStatus:(NSString *)title {
-	[statusItem setImage:nil];
-	[statusItem setTitle:title];
+	[statusItemView setImage:nil withTitle:title];
 }
 
 @end
