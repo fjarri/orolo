@@ -42,12 +42,13 @@
 }
 
 - (void)setNoEventsStatus;
-- (void)setTextStatus:(NSString *)title;
+- (void)setTextStatus:(NSString *)title withColor:(NSColor *)color;
 
 - (void)preferencesChanged:(NSNotification *)notification;
 - (void)calendarsChanged:(NSNotification *)notification;
 - (void)updateColor:(NSTimer*)theTimer;
 - (void)updateStatus;
+- (void)updateClosestEvent;
 
 - (IBAction)actionPreferences:(id)sender;
 - (IBAction)actionAbout:(id)sender;

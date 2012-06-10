@@ -6,6 +6,7 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <CalendarStore/CalendarStore.h>
 #import "MenuletController.h"
 #import "CalendarModel.h"
 #import "PreferencesController.h"
@@ -89,14 +90,23 @@ static float realTimeInterval = 5.0;
 
 	// prepare notification for changed settings
 	[PreferencesController addObserver:self selector:@selector(preferencesChanged:)];
+
+	[self updateClosestEvent];
+	[self updateStatus];
 }
 
 - (void)preferencesChanged:(NSNotification *)notification {
 	[self updateStatus];
 }
 
+- (void)updateClosestEvent {
+	CalEvent *newClosestEvent = [[calendarModel closestEvent] retain];
+	[closestEvent release];
+	closestEvent = newClosestEvent;
+}
+
 - (void)calendarsChanged:(NSNotification *)notification {
-	closestEvent = [calendarModel closestEvent];
+	closestEvent = [[calendarModel closestEvent] retain];
 	[self updateStatus];
 }
 
@@ -106,16 +116,22 @@ static float realTimeInterval = 5.0;
 
 - (void)updateStatus {
 	if (showingRealTime) {
-		[self setTextStatus:[dateFormatter stringFromDate:[NSDate date]]];
+		[self setTextStatus:[dateFormatter stringFromDate:[NSDate date]] withColor:[NSColor blackColor]];
+	}
+	else if (closestEvent) {
+		NSDate *date = [closestEvent startDate];
+		int fadeInInterval = [PreferencesController prefFadeInInterval] * 60;
+		int timeToEvent = [date timeIntervalSinceNow];
+		float fraction = (float)timeToEvent / fadeInInterval;
+
+		NSColor *fadeInColor = [PreferencesController prefFadeInColor];
+		NSColor *startingColor = [NSColor controlTextColor];
+		NSColor *color = [fadeInColor blendedColorWithFraction:fraction ofColor:startingColor];
+
+		[self setTextStatus:[closestEvent title] withColor:color];
 	}
 	else {
-		CalEvent *closest_event = [calendarModel closestEvent];
-		if (closest_event) {
-			[self setTextStatus:[closest_event title]];
-		}
-		else {
-			[self setNoEventsStatus];
-		}
+		[self setNoEventsStatus];
 	}
 }
 
@@ -156,11 +172,11 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)setNoEventsStatus {
-	[statusItemView setImage:statusIcon withTitle:nil];
+	[statusItemView setImage:statusIcon withTitle:nil withColor:nil];
 }
 
-- (void)setTextStatus:(NSString *)title {
-	[statusItemView setImage:nil withTitle:title];
+- (void)setTextStatus:(NSString *)title withColor:(NSColor *)color {
+	[statusItemView setImage:nil withTitle:title withColor:color];
 }
 
 @end
