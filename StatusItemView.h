@@ -13,6 +13,7 @@
 	NSStatusItem *statusItem;
     NSString *title;
 	NSImage *image;
+	NSColor *color;
     BOOL isMenuVisible;
 }
 
@@ -24,6 +25,6 @@
 - (NSColor *)titleForegroundColor;
 - (NSDictionary *)titleAttributes;
 - (NSRect)titleBoundingRect;
-- (void)setImage:(NSImage *)newImage withTitle:(NSString *)newTitle;
+- (void)setImage:(NSImage *)newImage withTitle:(NSString *)newTitle withColor:(NSColor *)newColor;
 
 @end

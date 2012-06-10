@@ -22,7 +22,8 @@
     if (self) {
         statusItem = nil;
 		image = nil;
-        title = @"";
+        title = nil;
+		color = nil;
         isMenuVisible = NO;
     }
     return self;
@@ -31,6 +32,8 @@
 - (void)dealloc {
     [statusItem release];
     [title release];
+	[image release];
+	[color release];
     [super dealloc];
 }
 
@@ -61,7 +64,7 @@
         return [NSColor whiteColor];
     }
     else {
-        return [NSColor blackColor];
+        return color;
     }
 }
 
@@ -83,7 +86,7 @@
                             attributes:[self titleAttributes]];
 }
 
-- (void)setImage:(NSImage *)newImage withTitle:(NSString *)newTitle {
+- (void)setImage:(NSImage *)newImage withTitle:(NSString *)newTitle withColor:(NSColor *)newColor {
     if (![title isEqual:newTitle] || ![image isEqual:newImage]) {
         [newTitle retain];
         [title release];
@@ -114,6 +117,14 @@
 
         [self setNeedsDisplay:YES];
     }
+
+	if(![color isEqual:newColor]) {
+        [newColor retain];
+        [color release];
+        color = newColor;
+
+		[self setNeedsDisplay:YES];
+	}
 }
 
 
