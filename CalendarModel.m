@@ -6,8 +6,9 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "CalendarModel.h"
 #import <CalendarStore/CalendarStore.h>
+#import "CalendarModel.h"
+#import "PreferencesController.h"
 
 
 @implementation CalendarModel
@@ -47,7 +48,7 @@
 
 	NSArray *cldrs = [cstore calendars];
 
-	NSTimeInterval window = 60 * 60; // FIXME: remove hardcoding
+	NSTimeInterval window = [PreferencesController fadeInInterval];
 	NSDate *now = [NSDate date];
 	NSDate *border = [now dateByAddingTimeInterval:window];
 

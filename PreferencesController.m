@@ -13,6 +13,7 @@ static NSString * const keyFadeOutColor = @"FadeOutColor";
 static NSString * const keyFadeInInterval = @"FadeInInterval";
 static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 
+
 @implementation PreferencesController
 
 + (void)addObserver:(id)target selector:(SEL)selector {
@@ -68,6 +69,11 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 //	[[NSUserDefaults standardUserDefaults] setBool:start forKey:keyStartAtLogin];
 
 	// Add self to login items
+}
+
++ (int)fadeInInterval {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	return [defaults integerForKey:keyFadeInInterval];
 }
 
 
