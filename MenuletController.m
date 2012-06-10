@@ -156,7 +156,7 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)setNoEventsStatus {
-	[statusItemView setImage:statusIcon withTitle:@""];
+	[statusItemView setImage:statusIcon withTitle:nil];
 }
 
 - (void)setTextStatus:(NSString *)title {
