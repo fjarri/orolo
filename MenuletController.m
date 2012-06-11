@@ -123,8 +123,9 @@ static float realTimeInterval = 5.0;
 
 		NSString *event_title = [[closest_event event] title];
 		NSString *type_marker = [closest_event isBeginning] ? @"Starts: " : @"Ends: "; // FIXME: remove hardcoding
+		NSString *type_symbol = [NSString stringWithFormat:@"%C ", [closest_event isBeginning] ? 0x25B8 : 0x25A0];
 
-		[self setTextStatus:event_title withColor:color];
+		[self setTextStatus:[type_symbol stringByAppendingString:event_title] withColor:color];
 		[menuFullTitle setTitle:[type_marker stringByAppendingString:event_title]];
 	}
 	else {
