@@ -23,6 +23,7 @@ Future
 - Make text in status bar more aesthetical
 - Hotkey for "Show time till closest event"
 - Use sliders for intervals in Preferences?
+- Add preference for the number of symbols shown in status bar
 
 0.0.1
 ~~~~~

@@ -17,6 +17,7 @@
 // TODO: move to preferences?
 static float colorUpdateInterval = 10.0;
 static float realTimeInterval = 5.0;
+static int StatusTitleLength = 10;
 
 @implementation MenuletController
 
@@ -121,12 +122,17 @@ static float realTimeInterval = 5.0;
 		NSColor *starting_color = [NSColor controlTextColor];
 		NSColor *color = [target_color blendedColorWithFraction:fraction ofColor:starting_color];
 
-		NSString *event_title = [[closest_event event] title];
+		NSString *full_event_title = [[closest_event event] title];
+		NSString *event_title = [full_event_title substringToIndex:StatusTitleLength];
+		if (full_event_title.length > StatusTitleLength) {
+			event_title = [event_title stringByAppendingString:@"..."];
+		}
+
 		NSString *type_marker = [closest_event isBeginning] ? @"Starts: " : @"Ends: "; // FIXME: remove hardcoding
 		NSString *type_symbol = [NSString stringWithFormat:@"%C ", [closest_event isBeginning] ? 0x25B8 : 0x25A0];
 
 		[self setTextStatus:[type_symbol stringByAppendingString:event_title] withColor:color];
-		[menuFullTitle setTitle:[type_marker stringByAppendingString:event_title]];
+		[menuFullTitle setTitle:[type_marker stringByAppendingString:full_event_title]];
 	}
 	else {
 		[self setNoEventsStatus];
