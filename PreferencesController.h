@@ -13,6 +13,9 @@
 	IBOutlet NSColorWell *fadeOutColorWell;
 
 	IBOutlet NSButton *launchAtLogin;
+
+	IBOutlet NSTextField *fadeInInterval;
+	IBOutlet NSTextField *fadeOutInterval;
 }
 
 + (void)addObserver:(id)target selector:(SEL)selector;

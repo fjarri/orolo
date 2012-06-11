@@ -22,6 +22,7 @@ Future
 - Remove all hardcoding
 - Make text in status bar more aesthetical
 - Hotkey for "Show time till closest event"
+- Use sliders for intervals in Preferences?
 
 0.0.1
 ~~~~~
