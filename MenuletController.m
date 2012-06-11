@@ -96,6 +96,7 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)preferencesChanged:(NSNotification *)notification {
+	[self updateClosestEvent];
 	[self updateStatus];
 }
 
@@ -111,6 +112,7 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)updateColor:(NSTimer*)theTimer {
+	[self updateClosestEvent];
 	[self updateStatus];
 }
 
