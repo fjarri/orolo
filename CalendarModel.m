@@ -21,7 +21,7 @@
 - (CalResult *)initWithEvent:(CalEvent *)ev forward:(BOOL)forward beginning:(BOOL)beginning fraction:(float)frac {
 	self = [super init];
 
-	[event retain];
+	[ev retain];
 	event = ev;
 	isForward = forward;
 	isBeginning = beginning;
