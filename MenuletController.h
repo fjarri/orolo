@@ -33,7 +33,6 @@
 	NSTimer *colorUpdateTimer;
 	NSTimer *realTimeTimer;
 	CalendarModel *calendarModel;
-	CalResult *closestEvent;
 	JFHotkeyManager *hkm;
 
 	NSDateFormatter *dateFormatter;
@@ -49,7 +48,6 @@
 - (void)calendarsChanged:(NSNotification *)notification;
 - (void)updateColor:(NSTimer*)theTimer;
 - (void)updateStatus;
-- (void)updateClosestEvent;
 
 - (IBAction)actionPreferences:(id)sender;
 - (IBAction)actionAbout:(id)sender;

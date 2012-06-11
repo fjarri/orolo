@@ -38,7 +38,6 @@ static float realTimeInterval = 5.0;
 
 - (void)awakeFromNib {
 	showingRealTime = NO;
-	closestEvent = nil;
 
 	// prepare date formatter
 	dateFormatter = [[NSDateFormatter alloc] init];
@@ -91,46 +90,41 @@ static float realTimeInterval = 5.0;
 	// prepare notification for changed settings
 	[PreferencesController addObserver:self selector:@selector(preferencesChanged:)];
 
-	[self updateClosestEvent];
 	[self updateStatus];
 }
 
 - (void)preferencesChanged:(NSNotification *)notification {
-	[self updateClosestEvent];
 	[self updateStatus];
 }
 
-- (void)updateClosestEvent {
-	CalResult *newClosestEvent = [[calendarModel closestEvent] retain];
-	[closestEvent release];
-	closestEvent = newClosestEvent;
-}
-
 - (void)calendarsChanged:(NSNotification *)notification {
-	[self updateClosestEvent];
 	[self updateStatus];
 }
 
 - (void)updateColor:(NSTimer*)theTimer {
-	[self updateClosestEvent];
 	[self updateStatus];
 }
 
 - (void)updateStatus {
 	if (showingRealTime) {
 		[self setTextStatus:[dateFormatter stringFromDate:[NSDate date]] withColor:[NSColor blackColor]];
+		return;
 	}
-	else if (closestEvent) {
-		float fraction = [closestEvent fraction];
 
-		NSColor *targetColor = [closestEvent isForward] ?
+	CalResult *closest_event = [calendarModel closestEvent];
+
+	if (closest_event) {
+		float fraction = [closest_event fraction];
+
+		NSColor *target_color = [closest_event isForward] ?
 			[PreferencesController prefFadeInColor] :
 			[PreferencesController prefFadeOutColor];
 
-		NSColor *startingColor = [NSColor controlTextColor];
-		NSColor *color = [targetColor blendedColorWithFraction:fraction ofColor:startingColor];
+		NSColor *starting_color = [NSColor controlTextColor];
+		NSColor *color = [target_color blendedColorWithFraction:fraction ofColor:starting_color];
 
-		[self setTextStatus:[[closestEvent event] title] withColor:color];
+		NSString *event_title = [[closest_event event] title];
+		[self setTextStatus:event_title withColor:color];
 	}
 	else {
 		[self setNoEventsStatus];
