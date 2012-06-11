@@ -7,6 +7,7 @@
 //
 
 #import "PreferencesController.h"
+#import "LoginItemsModel.h"
 
 static NSString * const keyFadeInColor = @"FadeInColor";
 static NSString * const keyFadeOutColor = @"FadeOutColor";
@@ -60,17 +61,18 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 }
 
 + (BOOL)prefLaunchAtLogin {
-	//NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	//return [defaults boolForKey:keyStartAtLogin];
-
-	// check if self is in login items
-	return NO;
+	LoginItemsModel *loginItems = [[[LoginItemsModel alloc] init] autorelease];
+	return [loginItems loginItemExists];
 }
 
-+ (void)setPrefLaunchAtLogin:(BOOL)start {
-//	[[NSUserDefaults standardUserDefaults] setBool:start forKey:keyStartAtLogin];
-
-	// Add self to login items
++ (void)setPrefLaunchAtLogin:(BOOL)launch {
+	LoginItemsModel *loginItems = [[[LoginItemsModel alloc] init] autorelease];
+	if (launch) {
+		[loginItems enableLoginItem];
+	}
+	else {
+		[loginItems disableLoginItem];
+	}
 }
 
 + (int)prefFadeInInterval {

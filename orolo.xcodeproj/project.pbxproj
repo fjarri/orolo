@@ -21,6 +21,7 @@
 		43F2110615832363001EB39A /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F2110515832363001EB39A /* Preferences.xib */; };
 		43F2111915832753001EB39A /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F2111815832753001EB39A /* About.xib */; };
 		43F211F7158420F8001EB39A /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F211F6158420F8001EB39A /* StatusItemView.m */; };
+		43F214FE1585B1B9001EB39A /* LoginItemsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F214FD1585B1B9001EB39A /* LoginItemsModel.m */; };
 		43F815B41575204A00BD214A /* README.rst in Resources */ = {isa = PBXBuildFile; fileRef = 43F815B31575204A00BD214A /* README.rst */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -56,6 +57,8 @@
 		43F2111815832753001EB39A /* About.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = About.xib; sourceTree = "<group>"; };
 		43F211F5158420F8001EB39A /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
 		43F211F6158420F8001EB39A /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
+		43F214FC1585B1B9001EB39A /* LoginItemsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItemsModel.h; sourceTree = "<group>"; };
+		43F214FD1585B1B9001EB39A /* LoginItemsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginItemsModel.m; sourceTree = "<group>"; };
 		43F815B31575204A00BD214A /* README.rst */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.rst; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* orolo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "orolo-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* orolo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orolo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +81,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				43F214FC1585B1B9001EB39A /* LoginItemsModel.h */,
+				43F214FD1585B1B9001EB39A /* LoginItemsModel.m */,
 				43F211F5158420F8001EB39A /* StatusItemView.h */,
 				43F211F6158420F8001EB39A /* StatusItemView.m */,
 				43F210ED158321EA001EB39A /* AboutController.h */,
@@ -244,6 +249,7 @@
 				43F210DB15831E11001EB39A /* PreferencesController.m in Sources */,
 				43F210EF158321EA001EB39A /* AboutController.m in Sources */,
 				43F211F7158420F8001EB39A /* StatusItemView.m in Sources */,
+				43F214FE1585B1B9001EB39A /* LoginItemsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

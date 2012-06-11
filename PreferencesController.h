@@ -22,7 +22,7 @@
 + (NSColor *)prefFadeOutColor;
 + (void)setPrefFadeOutColor:(NSColor *)color;
 + (BOOL)prefLaunchAtLogin;
-+ (void)setPrefLaunchAtLogin:(BOOL)start;
++ (void)setPrefLaunchAtLogin:(BOOL)launch;
 + (int)prefFadeInInterval;
 + (void)setPrefFadeInInterval:(int)interval;
 + (int)prefFadeOutInterval;
