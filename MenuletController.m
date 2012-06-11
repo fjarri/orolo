@@ -106,7 +106,7 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)calendarsChanged:(NSNotification *)notification {
-	closestEvent = [[calendarModel closestEvent] retain];
+	[self updateClosestEvent];
 	[self updateStatus];
 }
 
