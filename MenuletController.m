@@ -55,13 +55,11 @@ static float realTimeInterval = 5.0;
 	[statusItemView setMenu:theMenu];
 	[statusItem setView:statusItemView];
 
-	[self setNoEventsStatus];
-
 	// Tune menu
 	[statusItem setMenu:theMenu];
 	[theMenu setAutoenablesItems:NO];
 
-	[menuFullTitle setTitle:[NSString stringWithFormat:@"%C", 0x221E]]; // FIXME: remove hardcode
+	[self setNoEventsStatus];
 
 	// Set a hotkey
 	hkm = [[JFHotkeyManager alloc] init];
@@ -124,7 +122,10 @@ static float realTimeInterval = 5.0;
 		NSColor *color = [target_color blendedColorWithFraction:fraction ofColor:starting_color];
 
 		NSString *event_title = [[closest_event event] title];
+		NSString *type_marker = [closest_event isBeginning] ? @"Starts: " : @"Ends: "; // FIXME: remove hardcoding
+
 		[self setTextStatus:event_title withColor:color];
+		[menuFullTitle setTitle:[type_marker stringByAppendingString:event_title]];
 	}
 	else {
 		[self setNoEventsStatus];
@@ -169,6 +170,7 @@ static float realTimeInterval = 5.0;
 
 - (void)setNoEventsStatus {
 	[statusItemView setImage:statusIcon withTitle:nil withColor:nil];
+	[menuFullTitle setTitle:@"<No events>"]; // FIXME: remove hardcoding
 }
 
 - (void)setTextStatus:(NSString *)title withColor:(NSColor *)color {
