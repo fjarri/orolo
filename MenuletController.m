@@ -44,8 +44,8 @@ static float realTimeInterval = 5.0;
 	[dateFormatter setDateStyle:NSDateFormatterNoStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 
-	NSString* imageName = [[NSBundle mainBundle] pathForResource:@"icon-menubar" ofType:@"png"];
-	statusIcon = [[NSImage alloc] initWithContentsOfFile:imageName];
+	statusIcon = [[NSImage alloc] initWithContentsOfFile:
+				  [[NSBundle mainBundle] pathForResource:@"icon-menubar" ofType:@"png"]];
 
 	statusItem = [[[NSStatusBar systemStatusBar]
 				   statusItemWithLength:NSVariableStatusItemLength]
