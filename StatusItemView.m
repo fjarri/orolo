@@ -61,7 +61,7 @@
 
 - (NSColor *)titleForegroundColor {
     if (isMenuVisible) {
-        return [NSColor whiteColor];
+        return [NSColor alternateSelectedControlTextColor];
     }
     else {
         return color;
