@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -41,9 +41,9 @@
 			<object class="NSWindowTemplate" id="1069760029">
 				<int key="NSWindowStyleMask">3</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{157, 178}, {486, 283}}</string>
+				<string key="NSWindowRect">{{157, 327}, {303, 134}}</string>
 				<int key="NSWTFlags">611844096</int>
-				<string key="NSWindowTitle"/>
+				<string key="NSWindowTitle">Orolo Preferences</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
@@ -55,7 +55,7 @@
 						<object class="NSButton" id="935974584">
 							<reference key="NSNextResponder" ref="410105126"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{18, 247}, {137, 18}}</string>
+							<string key="NSFrame">{{18, 98}, {137, 18}}</string>
 							<reference key="NSSuperview" ref="410105126"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="234735793">
@@ -70,11 +70,11 @@
 								<reference key="NSControlView" ref="935974584"/>
 								<int key="NSButtonFlags">1211912703</int>
 								<int key="NSButtonFlags2">2</int>
-								<object class="NSCustomResource" key="NSNormalImage" id="341157973">
+								<object class="NSCustomResource" key="NSNormalImage" id="1000280215">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">NSSwitch</string>
 								</object>
-								<object class="NSButtonImageSource" key="NSAlternateImage" id="677849891">
+								<object class="NSButtonImageSource" key="NSAlternateImage" id="997428932">
 									<string key="NSImageName">NSSwitch</string>
 								</object>
 								<string key="NSAlternateContents"/>
@@ -93,7 +93,7 @@
 									<string>NSColor pasteboard type</string>
 								</object>
 							</object>
-							<string key="NSFrame">{{240, 201}, {44, 23}}</string>
+							<string key="NSFrame">{{239, 51}, {44, 23}}</string>
 							<reference key="NSSuperview" ref="410105126"/>
 							<bool key="NSEnabled">YES</bool>
 							<bool key="NSIsBordered">YES</bool>
@@ -112,7 +112,7 @@
 									<string>NSColor pasteboard type</string>
 								</object>
 							</object>
-							<string key="NSFrame">{{240, 160}, {44, 23}}</string>
+							<string key="NSFrame">{{239, 20}, {44, 23}}</string>
 							<reference key="NSSuperview" ref="410105126"/>
 							<bool key="NSEnabled">YES</bool>
 							<bool key="NSIsBordered">YES</bool>
@@ -124,7 +124,7 @@
 						<object class="NSTextField" id="53571246">
 							<reference key="NSNextResponder" ref="410105126"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{295, 203}, {50, 17}}</string>
+							<string key="NSFrame">{{46, 57}, {50, 17}}</string>
 							<reference key="NSSuperview" ref="410105126"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="108423044">
@@ -146,43 +146,27 @@
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">controlTextColor</string>
-									<object class="NSColor" key="NSColor" id="210327040">
+									<object class="NSColor" key="NSColor" id="548150388">
 										<int key="NSColorSpace">3</int>
 										<bytes key="NSWhite">MAA</bytes>
 									</object>
 								</object>
 							</object>
 						</object>
-						<object class="NSTextField" id="281098699">
+						<object class="NSTextField" id="334815240">
 							<reference key="NSNextResponder" ref="410105126"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{295, 163}, {59, 17}}</string>
+							<string key="NSFrame">{{104, 52}, {49, 22}}</string>
 							<reference key="NSSuperview" ref="410105126"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="1013941211">
-								<int key="NSCellFlags">68288064</int>
-								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Fade out</string>
-								<reference key="NSSupport" ref="751585902"/>
-								<reference key="NSControlView" ref="281098699"/>
-								<reference key="NSBackgroundColor" ref="296056366"/>
-								<reference key="NSTextColor" ref="192209716"/>
-							</object>
-						</object>
-						<object class="NSTextField" id="852869942">
-							<reference key="NSNextResponder" ref="410105126"/>
-							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{136, 201}, {96, 22}}</string>
-							<reference key="NSSuperview" ref="410105126"/>
-							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="529064509">
+							<object class="NSTextFieldCell" key="NSCell" id="265606046">
 								<int key="NSCellFlags">-1804468671</int>
 								<int key="NSCellFlags2">272630784</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="751585902"/>
-								<reference key="NSControlView" ref="852869942"/>
+								<reference key="NSControlView" ref="334815240"/>
 								<bool key="NSDrawsBackground">YES</bool>
-								<object class="NSColor" key="NSBackgroundColor" id="199860010">
+								<object class="NSColor" key="NSBackgroundColor" id="403015973">
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">textBackgroundColor</string>
@@ -191,55 +175,87 @@
 										<bytes key="NSWhite">MQA</bytes>
 									</object>
 								</object>
-								<object class="NSColor" key="NSTextColor" id="538849443">
+								<object class="NSColor" key="NSTextColor" id="255009918">
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">textColor</string>
-									<reference key="NSColor" ref="210327040"/>
+									<reference key="NSColor" ref="548150388"/>
 								</object>
 							</object>
 						</object>
-						<object class="NSTextField" id="362075444">
+						<object class="NSTextField" id="102219650">
 							<reference key="NSNextResponder" ref="410105126"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{136, 160}, {96, 22}}</string>
+							<string key="NSFrame">{{104, 20}, {49, 22}}</string>
 							<reference key="NSSuperview" ref="410105126"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="1035560483">
+							<object class="NSTextFieldCell" key="NSCell" id="215659960">
 								<int key="NSCellFlags">-1804468671</int>
 								<int key="NSCellFlags2">272630784</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="751585902"/>
-								<reference key="NSControlView" ref="362075444"/>
+								<reference key="NSControlView" ref="102219650"/>
 								<bool key="NSDrawsBackground">YES</bool>
-								<reference key="NSBackgroundColor" ref="199860010"/>
-								<reference key="NSTextColor" ref="538849443"/>
+								<reference key="NSBackgroundColor" ref="403015973"/>
+								<reference key="NSTextColor" ref="255009918"/>
 							</object>
 						</object>
-						<object class="NSButton" id="509847427">
+						<object class="NSButton" id="978960938">
 							<reference key="NSNextResponder" ref="410105126"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{7, 158}, {100, 18}}</string>
+							<string key="NSFrame">{{18, 22}, {77, 18}}</string>
 							<reference key="NSSuperview" ref="410105126"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="361851842">
+							<object class="NSButtonCell" key="NSCell" id="230095613">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">Fade-out</string>
+								<string key="NSContents">Fade out</string>
 								<reference key="NSSupport" ref="751585902"/>
-								<reference key="NSControlView" ref="509847427"/>
+								<reference key="NSControlView" ref="978960938"/>
 								<int key="NSButtonFlags">1211912703</int>
 								<int key="NSButtonFlags2">2</int>
-								<reference key="NSNormalImage" ref="341157973"/>
-								<reference key="NSAlternateImage" ref="677849891"/>
+								<reference key="NSNormalImage" ref="1000280215"/>
+								<reference key="NSAlternateImage" ref="997428932"/>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">200</int>
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
+						<object class="NSTextField" id="70069420">
+							<reference key="NSNextResponder" ref="410105126"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{158, 57}, {55, 17}}</string>
+							<reference key="NSSuperview" ref="410105126"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="629752982">
+								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags2">272630784</int>
+								<string key="NSContents">minutes</string>
+								<reference key="NSSupport" ref="751585902"/>
+								<reference key="NSControlView" ref="70069420"/>
+								<reference key="NSBackgroundColor" ref="296056366"/>
+								<reference key="NSTextColor" ref="192209716"/>
+							</object>
+						</object>
+						<object class="NSTextField" id="1035812369">
+							<reference key="NSNextResponder" ref="410105126"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{158, 24}, {55, 17}}</string>
+							<reference key="NSSuperview" ref="410105126"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="854714207">
+								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags2">272630784</int>
+								<string key="NSContents">minutes</string>
+								<reference key="NSSupport" ref="751585902"/>
+								<reference key="NSControlView" ref="1035812369"/>
+								<reference key="NSBackgroundColor" ref="296056366"/>
+								<reference key="NSTextColor" ref="192209716"/>
+							</object>
+						</object>
 					</object>
-					<string key="NSFrameSize">{486, 283}</string>
+					<string key="NSFrameSize">{303, 134}</string>
 					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
@@ -309,7 +325,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">fadeInInterval</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="852869942"/>
+						<reference key="destination" ref="334815240"/>
 					</object>
 					<int key="connectionID">35</int>
 				</object>
@@ -317,7 +333,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">fadeOutInterval</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="362075444"/>
+						<reference key="destination" ref="102219650"/>
 					</object>
 					<int key="connectionID">36</int>
 				</object>
@@ -325,7 +341,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">changeFadeOutEnabled:</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="509847427"/>
+						<reference key="destination" ref="978960938"/>
 					</object>
 					<int key="connectionID">37</int>
 				</object>
@@ -333,7 +349,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">changeFadeOutInterval:</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="362075444"/>
+						<reference key="destination" ref="102219650"/>
 					</object>
 					<int key="connectionID">38</int>
 				</object>
@@ -341,7 +357,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">changeFadeInInterval:</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="852869942"/>
+						<reference key="destination" ref="334815240"/>
 					</object>
 					<int key="connectionID">39</int>
 				</object>
@@ -349,7 +365,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">fadeOutEnabled</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="509847427"/>
+						<reference key="destination" ref="978960938"/>
 					</object>
 					<int key="connectionID">40</int>
 				</object>
@@ -396,26 +412,17 @@
 						<reference key="object" ref="410105126"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="281098699"/>
-							<reference ref="53571246"/>
-							<reference ref="872096302"/>
-							<reference ref="894427357"/>
 							<reference ref="935974584"/>
-							<reference ref="509847427"/>
-							<reference ref="362075444"/>
-							<reference ref="852869942"/>
+							<reference ref="978960938"/>
+							<reference ref="334815240"/>
+							<reference ref="102219650"/>
+							<reference ref="53571246"/>
+							<reference ref="70069420"/>
+							<reference ref="1035812369"/>
+							<reference ref="894427357"/>
+							<reference ref="872096302"/>
 						</object>
 						<reference key="parent" ref="1069760029"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">3</int>
-						<reference key="object" ref="281098699"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1013941211"/>
-						</object>
-						<reference key="parent" ref="410105126"/>
-						<string key="objectName">Fade Out Label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
@@ -460,54 +467,79 @@
 						<reference key="parent" ref="53571246"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">14</int>
-						<reference key="object" ref="1013941211"/>
-						<reference key="parent" ref="281098699"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">25</int>
-						<reference key="object" ref="852869942"/>
+						<reference key="object" ref="334815240"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="529064509"/>
+							<reference ref="265606046"/>
 						</object>
 						<reference key="parent" ref="410105126"/>
 						<string key="objectName">Fade In Interval</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">26</int>
-						<reference key="object" ref="529064509"/>
-						<reference key="parent" ref="852869942"/>
+						<reference key="object" ref="265606046"/>
+						<reference key="parent" ref="334815240"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
-						<reference key="object" ref="362075444"/>
+						<reference key="object" ref="102219650"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1035560483"/>
+							<reference ref="215659960"/>
 						</object>
 						<reference key="parent" ref="410105126"/>
 						<string key="objectName">Fade Out Interval</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">28</int>
-						<reference key="object" ref="1035560483"/>
-						<reference key="parent" ref="362075444"/>
+						<reference key="object" ref="215659960"/>
+						<reference key="parent" ref="102219650"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">29</int>
-						<reference key="object" ref="509847427"/>
+						<reference key="object" ref="978960938"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="361851842"/>
+							<reference ref="230095613"/>
 						</object>
 						<reference key="parent" ref="410105126"/>
 						<string key="objectName">Fade Out Checkbox</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">30</int>
-						<reference key="object" ref="361851842"/>
-						<reference key="parent" ref="509847427"/>
+						<reference key="object" ref="230095613"/>
+						<reference key="parent" ref="978960938"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">41</int>
+						<reference key="object" ref="70069420"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="629752982"/>
+						</object>
+						<reference key="parent" ref="410105126"/>
+						<string key="objectName">Fade In Units</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">42</int>
+						<reference key="object" ref="629752982"/>
+						<reference key="parent" ref="70069420"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">43</int>
+						<reference key="object" ref="1035812369"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="854714207"/>
+						</object>
+						<reference key="parent" ref="410105126"/>
+						<string key="objectName">Fade Out Units</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">44</int>
+						<reference key="object" ref="854714207"/>
+						<reference key="parent" ref="1035812369"/>
 					</object>
 				</object>
 			</object>
@@ -521,7 +553,6 @@
 					<string>1.NSWindowTemplate.visibleAtLaunch</string>
 					<string>10.IBPluginDependency</string>
 					<string>13.IBPluginDependency</string>
-					<string>14.IBPluginDependency</string>
 					<string>2.IBPluginDependency</string>
 					<string>2.IBUserGuides</string>
 					<string>25.IBPluginDependency</string>
@@ -531,10 +562,16 @@
 					<string>27.IBViewBoundsToFrameTransform</string>
 					<string>28.IBPluginDependency</string>
 					<string>29.IBPluginDependency</string>
-					<string>3.IBPluginDependency</string>
+					<string>29.IBViewBoundsToFrameTransform</string>
 					<string>30.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>4.IBViewBoundsToFrameTransform</string>
+					<string>41.IBPluginDependency</string>
+					<string>41.IBViewBoundsToFrameTransform</string>
+					<string>42.IBPluginDependency</string>
+					<string>43.IBPluginDependency</string>
+					<string>43.IBViewBoundsToFrameTransform</string>
+					<string>44.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBViewBoundsToFrameTransform</string>
 					<string>6.IBPluginDependency</string>
@@ -544,11 +581,10 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>{{642, 98}, {486, 283}}</string>
+					<string>{{642, 247}, {303, 134}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{642, 98}, {486, 283}}</string>
+					<string>{{642, 247}, {303, 134}}</string>
 					<boolean value="NO"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -562,28 +598,40 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCmAAAw14AAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABC+AAAw10AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCmAAAwzIAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABC+AAAwz0AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABBkAAAwzsAAA</bytes>
+					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDk4AAw1oAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCRAAAw10AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AUGgAABCiAAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDHgAAwxsAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDIwAAwxYAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AUOQAABCzgAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AUGgAABC2AAAA</bytes>
+						<bytes key="NSTransformStruct">AUOQAABDBgAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
@@ -607,7 +655,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">40</int>
+			<int key="maxID">44</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
