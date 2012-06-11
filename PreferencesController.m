@@ -137,6 +137,18 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 	[fadeOutColorWell setColor:[PreferencesController prefFadeOutColor]];
 	[launchAtLogin setState:[PreferencesController prefLaunchAtLogin]];
 
+	int fade_in = [PreferencesController prefFadeInInterval];
+	int fade_out = [PreferencesController prefFadeOutInterval];
+	[fadeInInterval setIntValue:fade_in];
+	if (fade_out == 0) {
+		[fadeOutEnabled setState:NO];
+	}
+	else {
+		[fadeOutEnabled setState:YES];
+		[fadeOutInterval setIntValue:fade_out];
+	}
+	[self changeFadeOutEnabled:nil];
+
 	[fadeInInterval setDelegate:ifDelegate];
 	[fadeOutInterval setDelegate:ifDelegate];
 }
@@ -164,6 +176,29 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 
 - (IBAction)changeLaunchAtLogin:(id)sender {
 	[PreferencesController setPrefLaunchAtLogin:[launchAtLogin state]];
+}
+
+- (IBAction)changeFadeInInterval:(id)sender {
+	[PreferencesController setPrefFadeInInterval:[fadeInInterval intValue]];
+}
+
+- (IBAction)changeFadeOutInterval:(id)sender {
+	[PreferencesController setPrefFadeOutInterval:[fadeOutInterval intValue]];
+}
+
+- (IBAction)changeFadeOutEnabled:(id)sender {
+	if ([fadeOutEnabled state]) {
+		[fadeOutInterval setEnabled:YES];
+		[fadeOutColorWell setEnabled:YES];
+		[fadeOutInterval setIntValue:1];
+		[self changeFadeOutInterval:sender];
+	}
+	else {
+		[fadeOutInterval setEnabled:NO];
+		[fadeOutColorWell setEnabled:NO];
+		[fadeOutInterval setStringValue:@""];
+		[PreferencesController setPrefFadeOutInterval:0];
+	}
 }
 
 @end

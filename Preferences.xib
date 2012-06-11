@@ -70,11 +70,11 @@
 								<reference key="NSControlView" ref="935974584"/>
 								<int key="NSButtonFlags">1211912703</int>
 								<int key="NSButtonFlags2">2</int>
-								<object class="NSCustomResource" key="NSNormalImage" id="307206442">
+								<object class="NSCustomResource" key="NSNormalImage" id="341157973">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">NSSwitch</string>
 								</object>
-								<object class="NSButtonImageSource" key="NSAlternateImage" id="323051467">
+								<object class="NSButtonImageSource" key="NSAlternateImage" id="677849891">
 									<string key="NSImageName">NSSwitch</string>
 								</object>
 								<string key="NSAlternateContents"/>
@@ -146,7 +146,7 @@
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">controlTextColor</string>
-									<object class="NSColor" key="NSColor" id="568770343">
+									<object class="NSColor" key="NSColor" id="210327040">
 										<int key="NSColorSpace">3</int>
 										<bytes key="NSWhite">MAA</bytes>
 									</object>
@@ -169,20 +169,20 @@
 								<reference key="NSTextColor" ref="192209716"/>
 							</object>
 						</object>
-						<object class="NSTextField" id="436271374">
+						<object class="NSTextField" id="852869942">
 							<reference key="NSNextResponder" ref="410105126"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{136, 201}, {96, 22}}</string>
 							<reference key="NSSuperview" ref="410105126"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="461709262">
+							<object class="NSTextFieldCell" key="NSCell" id="529064509">
 								<int key="NSCellFlags">-1804468671</int>
 								<int key="NSCellFlags2">272630784</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="751585902"/>
-								<reference key="NSControlView" ref="436271374"/>
+								<reference key="NSControlView" ref="852869942"/>
 								<bool key="NSDrawsBackground">YES</bool>
-								<object class="NSColor" key="NSBackgroundColor" id="527452590">
+								<object class="NSColor" key="NSBackgroundColor" id="199860010">
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">textBackgroundColor</string>
@@ -191,47 +191,47 @@
 										<bytes key="NSWhite">MQA</bytes>
 									</object>
 								</object>
-								<object class="NSColor" key="NSTextColor" id="501164243">
+								<object class="NSColor" key="NSTextColor" id="538849443">
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">textColor</string>
-									<reference key="NSColor" ref="568770343"/>
+									<reference key="NSColor" ref="210327040"/>
 								</object>
 							</object>
 						</object>
-						<object class="NSTextField" id="442511448">
+						<object class="NSTextField" id="362075444">
 							<reference key="NSNextResponder" ref="410105126"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{136, 160}, {96, 22}}</string>
 							<reference key="NSSuperview" ref="410105126"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="420733891">
+							<object class="NSTextFieldCell" key="NSCell" id="1035560483">
 								<int key="NSCellFlags">-1804468671</int>
 								<int key="NSCellFlags2">272630784</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="751585902"/>
-								<reference key="NSControlView" ref="442511448"/>
+								<reference key="NSControlView" ref="362075444"/>
 								<bool key="NSDrawsBackground">YES</bool>
-								<reference key="NSBackgroundColor" ref="527452590"/>
-								<reference key="NSTextColor" ref="501164243"/>
+								<reference key="NSBackgroundColor" ref="199860010"/>
+								<reference key="NSTextColor" ref="538849443"/>
 							</object>
 						</object>
-						<object class="NSButton" id="110284897">
+						<object class="NSButton" id="509847427">
 							<reference key="NSNextResponder" ref="410105126"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{7, 158}, {100, 18}}</string>
 							<reference key="NSSuperview" ref="410105126"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="328525401">
+							<object class="NSButtonCell" key="NSCell" id="361851842">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">0</int>
 								<string key="NSContents">Fade-out</string>
 								<reference key="NSSupport" ref="751585902"/>
-								<reference key="NSControlView" ref="110284897"/>
+								<reference key="NSControlView" ref="509847427"/>
 								<int key="NSButtonFlags">1211912703</int>
 								<int key="NSButtonFlags2">2</int>
-								<reference key="NSNormalImage" ref="307206442"/>
-								<reference key="NSAlternateImage" ref="323051467"/>
+								<reference key="NSNormalImage" ref="341157973"/>
+								<reference key="NSAlternateImage" ref="677849891"/>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">200</int>
@@ -309,7 +309,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">fadeInInterval</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="436271374"/>
+						<reference key="destination" ref="852869942"/>
 					</object>
 					<int key="connectionID">35</int>
 				</object>
@@ -317,9 +317,41 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">fadeOutInterval</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="442511448"/>
+						<reference key="destination" ref="362075444"/>
 					</object>
 					<int key="connectionID">36</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeFadeOutEnabled:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="509847427"/>
+					</object>
+					<int key="connectionID">37</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeFadeOutInterval:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="362075444"/>
+					</object>
+					<int key="connectionID">38</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeFadeInInterval:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="852869942"/>
+					</object>
+					<int key="connectionID">39</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">fadeOutEnabled</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="509847427"/>
+					</object>
+					<int key="connectionID">40</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -369,9 +401,9 @@
 							<reference ref="872096302"/>
 							<reference ref="894427357"/>
 							<reference ref="935974584"/>
-							<reference ref="110284897"/>
-							<reference ref="442511448"/>
-							<reference ref="436271374"/>
+							<reference ref="509847427"/>
+							<reference ref="362075444"/>
+							<reference ref="852869942"/>
 						</object>
 						<reference key="parent" ref="1069760029"/>
 					</object>
@@ -434,48 +466,48 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">25</int>
-						<reference key="object" ref="436271374"/>
+						<reference key="object" ref="852869942"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="461709262"/>
+							<reference ref="529064509"/>
 						</object>
 						<reference key="parent" ref="410105126"/>
 						<string key="objectName">Fade In Interval</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">26</int>
-						<reference key="object" ref="461709262"/>
-						<reference key="parent" ref="436271374"/>
+						<reference key="object" ref="529064509"/>
+						<reference key="parent" ref="852869942"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
-						<reference key="object" ref="442511448"/>
+						<reference key="object" ref="362075444"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="420733891"/>
+							<reference ref="1035560483"/>
 						</object>
 						<reference key="parent" ref="410105126"/>
 						<string key="objectName">Fade Out Interval</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">28</int>
-						<reference key="object" ref="420733891"/>
-						<reference key="parent" ref="442511448"/>
+						<reference key="object" ref="1035560483"/>
+						<reference key="parent" ref="362075444"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">29</int>
-						<reference key="object" ref="110284897"/>
+						<reference key="object" ref="509847427"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="328525401"/>
+							<reference ref="361851842"/>
 						</object>
 						<reference key="parent" ref="410105126"/>
 						<string key="objectName">Fade Out Checkbox</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">30</int>
-						<reference key="object" ref="328525401"/>
-						<reference key="parent" ref="110284897"/>
+						<reference key="object" ref="361851842"/>
+						<reference key="parent" ref="509847427"/>
 					</object>
 				</object>
 			</object>
@@ -575,7 +607,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">36</int>
+			<int key="maxID">40</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -588,11 +620,17 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>changeFadeInColor:</string>
+							<string>changeFadeInInterval:</string>
 							<string>changeFadeOutColor:</string>
+							<string>changeFadeOutEnabled:</string>
+							<string>changeFadeOutInterval:</string>
 							<string>changeLaunchAtLogin:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -603,7 +641,10 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>changeFadeInColor:</string>
+							<string>changeFadeInInterval:</string>
 							<string>changeFadeOutColor:</string>
+							<string>changeFadeOutEnabled:</string>
+							<string>changeFadeOutInterval:</string>
 							<string>changeLaunchAtLogin:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -613,7 +654,19 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">changeFadeInInterval:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">changeFadeOutColor:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">changeFadeOutEnabled:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">changeFadeOutInterval:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -629,6 +682,7 @@
 							<string>fadeInColorWell</string>
 							<string>fadeInInterval</string>
 							<string>fadeOutColorWell</string>
+							<string>fadeOutEnabled</string>
 							<string>fadeOutInterval</string>
 							<string>launchAtLogin</string>
 						</object>
@@ -637,6 +691,7 @@
 							<string>NSColorWell</string>
 							<string>NSTextField</string>
 							<string>NSColorWell</string>
+							<string>NSButton</string>
 							<string>NSTextField</string>
 							<string>NSButton</string>
 						</object>
@@ -648,6 +703,7 @@
 							<string>fadeInColorWell</string>
 							<string>fadeInInterval</string>
 							<string>fadeOutColorWell</string>
+							<string>fadeOutEnabled</string>
 							<string>fadeOutInterval</string>
 							<string>launchAtLogin</string>
 						</object>
@@ -664,6 +720,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">fadeOutColorWell</string>
 								<string key="candidateClassName">NSColorWell</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">fadeOutEnabled</string>
+								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">fadeOutInterval</string>

@@ -28,6 +28,7 @@
 
 	IBOutlet NSTextField *fadeInInterval;
 	IBOutlet NSTextField *fadeOutInterval;
+	IBOutlet NSButton *fadeOutEnabled;
 }
 
 + (void)addObserver:(id)target selector:(SEL)selector;
@@ -46,5 +47,8 @@
 - (IBAction)changeFadeInColor:(id)sender;
 - (IBAction)changeFadeOutColor:(id)sender;
 - (IBAction)changeLaunchAtLogin:(id)sender;
+- (IBAction)changeFadeInInterval:(id)sender;
+- (IBAction)changeFadeOutInterval:(id)sender;
+- (IBAction)changeFadeOutEnabled:(id)sender;
 
 @end
