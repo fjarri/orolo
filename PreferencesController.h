@@ -8,7 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+@interface IntegerForcingDelegate : NSObject <NSTextFieldDelegate> {
+
+}
+
+- (void)controlTextDidChange:(NSNotification *)aNotification;
+
+@end
+
+
 @interface PreferencesController : NSWindowController {
+
+	IntegerForcingDelegate *ifDelegate;
+
 	IBOutlet NSColorWell *fadeInColorWell;
 	IBOutlet NSColorWell *fadeOutColorWell;
 

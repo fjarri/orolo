@@ -15,6 +15,33 @@ static NSString * const keyFadeInInterval = @"FadeInInterval";
 static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 
 
+@implementation IntegerForcingDelegate
+
+- (IBAction)controlTextDidChange:(NSNotification *)aNotification
+{
+    NSControl *text_field = [aNotification object];
+    NSString *text = [text_field stringValue];
+
+	NSMutableString *new_text = [NSMutableString
+								 stringWithCapacity:text.length];
+
+	for (int i=0; i < text.length; i++) {
+		unichar c = [text characterAtIndex:i];
+        if (isdigit(c)) {
+			[new_text appendFormat:@"%c", c];
+        }
+	}
+
+	if (new_text.length == 0) {
+		[new_text appendString:@"1"];
+	}
+
+	[text_field setStringValue:new_text];
+}
+
+@end
+
+
 @implementation PreferencesController
 
 + (void)addObserver:(id)target selector:(SEL)selector {
@@ -95,7 +122,13 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 
 - (id)init {
 	self = [super initWithWindowNibName:@"Preferences"];
+	ifDelegate = [[IntegerForcingDelegate alloc] init];
 	return self;
+}
+
+- (void)dealloc {
+	[ifDelegate dealloc];
+	[super dealloc];
 }
 
 - (void)windowDidLoad {
@@ -103,6 +136,9 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 	[fadeInColorWell setColor:[PreferencesController prefFadeInColor]];
 	[fadeOutColorWell setColor:[PreferencesController prefFadeOutColor]];
 	[launchAtLogin setState:[PreferencesController prefLaunchAtLogin]];
+
+	[fadeInInterval setDelegate:ifDelegate];
+	[fadeOutInterval setDelegate:ifDelegate];
 }
 
 - (IBAction)showWindow:(id)sender {
