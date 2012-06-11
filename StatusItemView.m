@@ -134,10 +134,11 @@
                                 withHighlight:isMenuVisible];
 
     // Draw image and title string
-	int titleShift = image ? StatusItemViewImagePaddingWidth + image.size.width : 0;
+	int titleShift = image ?
+		StatusItemViewImagePaddingWidth * 2 + image.size.width :
+		StatusItemViewTitlePaddingWidth;
     NSPoint imageOrigin = NSMakePoint(StatusItemViewImagePaddingWidth, 0);
-	NSPoint titleOrigin = NSMakePoint(StatusItemViewTitlePaddingWidth + titleShift,
-									  StatusItemViewPaddingHeight);
+	NSPoint titleOrigin = NSMakePoint(titleShift, StatusItemViewPaddingHeight);
 
 	if(image) {
 		[image drawAtPoint:imageOrigin
