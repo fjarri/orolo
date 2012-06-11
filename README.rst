@@ -23,28 +23,14 @@ Future
 - Make text in status bar more aesthetical
 - Hotkey for "Show time till closest event"
 - Use sliders for intervals in Preferences?
-- Add preference for the number of symbols shown in status bar
 
 0.0.1
 ~~~~~
 
-- Context menu: full event title, Show Real Time (in case the current time is needed for some reason), Preferences, Quit
-- Show Real Time:
-  - Has a global hotkey (fixed)
-  - Shows time for 5 seconds
-- Preferences:
-  - Changes are applied instantly
-  - Start at launch
-  - Set fade-in and fade-out colors and time frame
-    - Time is set with sliders, ranges from 1 min to 60 min (1, 2, 3, 5, 10, 15, 20, 30, 40, 50, 60)
-    - For fade-out, 0 is also available
++ Preferences: Launch at login, Fade-in/out colors and intervals
   - List of calendars to get events from
     - Multiple choise
     - Dynamically updated
     - When the calendar is removed, stop watching it (shouldn't be any error thrown)
   - Maximum title length
   - Some pop-up help for elements of preferences
-- Status element:
-  - Show only start of the event title
-  - The full title is shown as a first line in context menu
-  - Color saturation is proportional to the distance from now
