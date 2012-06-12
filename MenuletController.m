@@ -127,9 +127,13 @@ static int StatusTitleLength = 10;
 		NSColor *color = [target_color blendedColorWithFraction:fraction ofColor:starting_color];
 
 		NSString *full_event_title = [[closest_event event] title];
-		NSString *event_title = [full_event_title substringToIndex:StatusTitleLength];
+		NSString *event_title;
 		if (full_event_title.length > StatusTitleLength) {
+			event_title = [full_event_title substringToIndex:StatusTitleLength];
 			event_title = [event_title stringByAppendingString:@"..."];
+		}
+		else {
+			event_title = full_event_title;
 		}
 
 		NSString *type_marker = [closest_event isBeginning] ? @"Starts: " : @"Ends: "; // FIXME: remove hardcoding
