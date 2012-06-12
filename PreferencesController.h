@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class CalendarModel;
+
 @interface IntegerForcingDelegate : NSObject <NSTextFieldDelegate> {
 
 }
@@ -16,10 +18,30 @@
 
 @end
 
+@interface CalendarListSource : NSObject <NSTableViewDataSource> {
+	CalendarModel *calendarModel;
+	NSMutableArray *calendarUIDs;
+	NSMutableArray *calendarTitles;
+	NSMutableArray *watchedList;
+	BOOL viewIsEnabled;
+}
+
+- (void)setViewIsEnabled:(BOOL)enabled;
+
+- (void)update;
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
+
+@end
+
+
 
 @interface PreferencesController : NSWindowController {
 
 	IntegerForcingDelegate *ifDelegate;
+	CalendarListSource *calendarListSource;
+	CalendarModel *calendarModel;
 
 	IBOutlet NSColorWell *fadeInColorWell;
 	IBOutlet NSColorWell *fadeOutColorWell;
@@ -29,6 +51,9 @@
 	IBOutlet NSTextField *fadeInInterval;
 	IBOutlet NSTextField *fadeOutInterval;
 	IBOutlet NSButton *fadeOutEnabled;
+
+	IBOutlet NSTableView *calendarList;
+	IBOutlet NSButton *watchAllCalendars;
 }
 
 + (void)addObserver:(id)target selector:(SEL)selector;
@@ -46,6 +71,10 @@
 + (void)setPrefFadeInInterval:(int)interval;
 + (int)prefFadeOutInterval;
 + (void)setPrefFadeOutInterval:(int)interval;
++ (NSArray *)prefCalendarUIDs;
++ (void)setPrefCalendarUIDs:(NSArray *)uids;
+
+- (void)calendarsUpdated:(NSNotification *)notification;
 
 - (IBAction)changeFadeInColor:(id)sender;
 - (IBAction)changeFadeOutColor:(id)sender;
@@ -53,5 +82,6 @@
 - (IBAction)changeFadeInInterval:(id)sender;
 - (IBAction)changeFadeOutInterval:(id)sender;
 - (IBAction)changeFadeOutEnabled:(id)sender;
+- (IBAction)changeWatchAllCalendars:(id)sender;
 
 @end

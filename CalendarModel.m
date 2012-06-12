@@ -85,20 +85,41 @@
 	[super dealloc];
 }
 
+- (NSArray *)calendars {
+	return [cstore calendars];
+}
+
+- (NSArray *)watchedCalendars {
+	NSArray *cldrs = [self calendars];
+	NSArray *uids = [PreferencesController prefCalendarUIDs];
+
+	if (!uids) {
+		return cldrs;
+	}
+
+	NSMutableArray *result = [[[NSMutableArray alloc] init] autorelease];
+	for (CalCalendar *cldr in cldrs) {
+		if ([uids containsObject:[cldr uid]]) {
+			[result addObject:cldr];
+		}
+	}
+	return result;
+}
+
 - (CalResult *)closestEvent {
 	int fadeInInterval = [PreferencesController prefFadeInInterval] * 60;
 	int fadeOutInterval = [PreferencesController prefFadeOutInterval] * 60;
+	NSArray *cldrs = [self watchedCalendars];
 
-	CalResult *fwResult = [self closestEventInRange:fadeInInterval fadeIn:YES];
+	CalResult *fwResult = [self closestEventInRange:fadeInInterval fadeIn:YES calendars:cldrs];
 	if (fwResult || fadeOutInterval == 0) {
 		return fwResult;
 	}
 
-	return [self closestEventInRange:fadeOutInterval fadeIn:NO];
+	return [self closestEventInRange:fadeOutInterval fadeIn:NO calendars:cldrs];
 }
 
-- (CalResult *)closestEventInRange:(int)range fadeIn:(BOOL)fadeIn {
-	NSArray *cldrs = [cstore calendars];
+- (CalResult *)closestEventInRange:(int)range fadeIn:(BOOL)fadeIn calendars:(NSArray *)cldrs {
 
 	float time_direction = fadeIn ? 1 : -1;
 	NSDate *now = [NSDate date];

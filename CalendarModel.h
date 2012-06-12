@@ -40,7 +40,9 @@
 + (void)removeEventsObserver:(id)target;
 
 - (id) init;
+- (NSArray *)calendars;
+- (NSArray *)watchedCalendars;
 - (CalResult *)closestEvent;
-- (CalResult *)closestEventInRange:(int)range fadeIn:(BOOL)fadeIn;
+- (CalResult *)closestEventInRange:(int)range fadeIn:(BOOL)fadeIn calendars:(NSArray *)cldrs;
 
 @end

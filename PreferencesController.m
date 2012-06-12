@@ -6,13 +6,17 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <CalendarStore/CalendarStore.h>
 #import "PreferencesController.h"
 #import "LoginItemsModel.h"
+#import "CalendarModel.h"
 
 static NSString * const keyFadeInColor = @"FadeInColor";
 static NSString * const keyFadeOutColor = @"FadeOutColor";
 static NSString * const keyFadeInInterval = @"FadeInInterval";
 static NSString * const keyFadeOutInterval = @"FadeOutInterval";
+static NSString * const keyCalendarUIDs = @"CalendarUIDs";
+static NSString * const keyWatchAllCalendars = @"WatchAllCalendars";
 
 
 @implementation IntegerForcingDelegate
@@ -42,7 +46,125 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 @end
 
 
+@implementation CalendarListSource
+
+- (CalendarListSource *)init {
+	self = [super init];
+
+	calendarModel = [[[CalendarModel alloc] init] retain];
+
+	calendarTitles = [[NSMutableArray alloc] init];
+	watchedList = [[NSMutableArray alloc] init];
+	calendarUIDs = [[NSMutableArray alloc] init];
+
+	viewIsEnabled = NO;
+
+	[self update];
+
+	return self;
+}
+
+- (void)dealloc {
+	[calendarModel release];
+	[calendarTitles release];
+	[calendarUIDs release];
+	[watchedList release];
+	[super dealloc];
+}
+
+- (void)setViewIsEnabled:(BOOL)enabled {
+	viewIsEnabled = enabled;
+	if (enabled) {
+		[self update];
+	}
+}
+
+- (void)update {
+	NSArray *calendars = [calendarModel calendars];
+
+	NSArray *watched_uids = [PreferencesController prefCalendarUIDs];
+
+	[calendarUIDs removeAllObjects];
+	[calendarTitles removeAllObjects];
+	for (CalCalendar *cldr in calendars) {
+		[calendarTitles addObject:[cldr title]];
+		[calendarUIDs addObject:[cldr uid]];
+	}
+
+	[watchedList removeAllObjects];
+	for (CalCalendar *cldr in calendars) {
+		BOOL is_watched = (!watched_uids) || [watched_uids containsObject:[cldr uid]];
+		[watchedList addObject:[NSNumber numberWithBool:is_watched]];
+	}
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
+	if(viewIsEnabled) {
+		return calendarTitles.count;
+	}
+	else {
+		return 0;
+	}
+}
+
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+	if ([[aTableColumn identifier] isEqualToString:@"IsWatched"]) {
+		return [watchedList objectAtIndex:rowIndex];
+	}
+	else {
+		return [calendarTitles objectAtIndex:rowIndex];
+	}
+}
+
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+	if ([[aTableColumn identifier] isEqualToString:@"IsWatched"]) {
+		[watchedList replaceObjectAtIndex:rowIndex withObject:[NSNumber numberWithBool:[anObject boolValue]]];
+
+		NSMutableArray *watched_uids = [[[NSMutableArray alloc] init] autorelease];
+		for (int i = 0; i < watchedList.count; i++) {
+			if ([[watchedList objectAtIndex:i] boolValue]) {
+				[watched_uids addObject:[calendarUIDs objectAtIndex:i]];
+			}
+		}
+		[PreferencesController setPrefCalendarUIDs:watched_uids];
+	}
+}
+
+@end
+
+
 @implementation PreferencesController
+
++ (void)initialize {
+	[CalendarModel addCalendarsObserver:self selector:@selector(calendarsUpdated:)];
+}
+
++ (void)calendarsUpdated:(NSNotification *)notification {
+	// This method cleans preferences from outdated UIDs.
+	// It may be called at the same time with instance calendarsUpdated: method,
+	// but that's ok, since old UIDs will just be ignored there.
+
+	NSArray *uids = [PreferencesController prefCalendarUIDs];
+	if (!uids) {
+		return;
+	}
+
+	CalendarModel *calendarModel = [[[CalendarModel alloc] init] autorelease];
+	NSArray *calendars = [calendarModel calendars];
+	NSMutableArray *existing_uids = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *result = [[[NSMutableArray alloc] init] autorelease];
+
+	for (CalCalendar *cldr in calendars) {
+		[existing_uids addObject:[cldr uid]];
+	}
+
+	for (NSString *uid in uids) {
+		if ([existing_uids containsObject:uid]) {
+			[result addObject:uid];
+		}
+	}
+	[PreferencesController setPrefCalendarUIDs:result];
+}
 
 + (void)addObserver:(id)target selector:(SEL)selector {
 	NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
@@ -66,8 +188,10 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 					  forKey:keyFadeInColor];
 	[defaultValues setObject:[NSKeyedArchiver archivedDataWithRootObject:[NSColor blueColor]]
 					  forKey:keyFadeOutColor];
-	[defaultValues setObject:[NSNumber numberWithInt:60] forKey:keyFadeInInterval];
-	[defaultValues setObject:[NSNumber numberWithInt:30] forKey:keyFadeOutInterval];
+	[defaultValues setObject:[NSNumber numberWithInt:5] forKey:keyFadeInInterval];
+	[defaultValues setObject:[NSNumber numberWithInt:3] forKey:keyFadeOutInterval];
+	[defaultValues setObject:[[[NSArray alloc] init] autorelease] forKey:keyCalendarUIDs];
+	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:keyWatchAllCalendars];
 
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
 }
@@ -127,19 +251,59 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 	[[NSUserDefaults standardUserDefaults] setInteger:interval forKey:keyFadeOutInterval];
 }
 
++ (NSArray *)prefCalendarUIDs {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSNumber *watchAllCalendars = [defaults objectForKey:keyWatchAllCalendars];
+	if ([watchAllCalendars boolValue]) {
+		return nil;
+	}
+	else {
+		return [defaults objectForKey:keyCalendarUIDs];
+	}
+}
+
++ (void)setPrefCalendarUIDs:(NSArray *)uids {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	if (uids) {
+		[defaults setObject:uids forKey:keyCalendarUIDs];
+		[defaults setObject:[NSNumber numberWithBool:NO] forKey:keyWatchAllCalendars];
+	}
+	else {
+		[defaults setObject:[[[NSArray alloc] init] autorelease] forKey:keyCalendarUIDs];
+		[defaults setObject:[NSNumber numberWithBool:YES] forKey:keyWatchAllCalendars];
+	}
+}
+
 - (id)init {
 	self = [super initWithWindowNibName:@"Preferences"];
 	ifDelegate = [[IntegerForcingDelegate alloc] init];
+	calendarListSource = [[CalendarListSource alloc] init];
+	calendarModel = [[CalendarModel alloc] init];
+
+	[CalendarModel addCalendarsObserver:self selector:@selector(calendarsUpdated:)];
+
 	return self;
 }
 
 - (void)dealloc {
-	[ifDelegate dealloc];
+	[CalendarModel removeCalendarsObserver:self];
+
+	[calendarModel release];
+	[calendarListSource release];
+	[ifDelegate release];
 	[super dealloc];
+}
+
+- (void)awakeFromNib {
+	[fadeInInterval setDelegate:ifDelegate];
+	[fadeOutInterval setDelegate:ifDelegate];
+	[calendarList setDataSource:calendarListSource];
+	[calendarList reloadData];
 }
 
 - (void)windowDidLoad {
 	[super windowDidLoad];
+
 	[fadeInColorWell setColor:[PreferencesController prefFadeInColor]];
 	[fadeOutColorWell setColor:[PreferencesController prefFadeOutColor]];
 	[launchAtLogin setState:[PreferencesController prefLaunchAtLogin]];
@@ -156,8 +320,16 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 	}
 	[self changeFadeOutEnabled:nil];
 
-	[fadeInInterval setDelegate:ifDelegate];
-	[fadeOutInterval setDelegate:ifDelegate];
+	BOOL watching_all = ![PreferencesController prefCalendarUIDs];
+	[watchAllCalendars setState:watching_all];
+	[calendarListSource setViewIsEnabled:!watching_all];
+	[calendarList setEnabled:!watching_all];
+	[calendarList reloadData];
+}
+
+- (void)calendarsUpdated:(NSNotification *)aNotification {
+	[calendarListSource update];
+	[calendarList reloadData];
 }
 
 - (IBAction)showWindow:(id)sender {
@@ -194,17 +366,36 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 }
 
 - (IBAction)changeFadeOutEnabled:(id)sender {
-	if ([fadeOutEnabled state]) {
-		[fadeOutInterval setEnabled:YES];
-		[fadeOutColorWell setEnabled:YES];
+	BOOL state = [fadeOutEnabled state];
+	[fadeOutInterval setEnabled:state];
+	[fadeOutColorWell setEnabled:state];
+
+	if (state) {
 		[fadeOutInterval setIntValue:1];
 		[self changeFadeOutInterval:sender];
 	}
 	else {
-		[fadeOutInterval setEnabled:NO];
-		[fadeOutColorWell setEnabled:NO];
 		[fadeOutInterval setStringValue:@""];
 		[PreferencesController setPrefFadeOutInterval:0];
+	}
+}
+
+- (IBAction)changeWatchAllCalendars:(id)sender {
+	BOOL state = [watchAllCalendars state];
+	[calendarListSource setViewIsEnabled:!state];
+	[calendarList setEnabled:!state];
+	[calendarList reloadData];
+
+	if (state) {
+		[PreferencesController setPrefCalendarUIDs:nil];
+	}
+	else {
+		NSArray *calendars = [calendarModel calendars];
+		NSMutableArray *uids = [[[NSMutableArray alloc] init] autorelease];
+		for (CalCalendar *cldr in calendars) {
+			[uids addObject:[cldr uid]];
+		}
+		[PreferencesController setPrefCalendarUIDs:uids];
 	}
 }
 
