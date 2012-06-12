@@ -27,10 +27,6 @@ Future
 0.0.1
 ~~~~~
 
-+ Preferences: Launch at login, Fade-in/out colors and intervals
-  - List of calendars to get events from
-    - Multiple choise
-    - Dynamically updated
-    - When the calendar is removed, stop watching it (shouldn't be any error thrown)
++ Preferences: Launch at login, Fade-in/out colors and intervals, list of watched calendars
   - Maximum title length
   - Some pop-up help for elements of preferences
