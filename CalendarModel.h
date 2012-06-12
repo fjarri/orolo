@@ -36,6 +36,8 @@
 
 + (void)addCalendarsObserver:(id)target selector:(SEL)selector;
 + (void)addEventsObserver:(id)target selector:(SEL)selector;
++ (void)removeCalendarsObserver:(id)target;
++ (void)removeEventsObserver:(id)target;
 
 - (id) init;
 - (CalResult *)closestEvent;

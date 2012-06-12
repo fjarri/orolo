@@ -56,6 +56,20 @@
 				  object:nil];
 }
 
++ (void)removeCalendarsObserver:(id)target {
+	NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
+	[ncenter removeObserver:target
+					   name:CalCalendarsChangedExternallyNotification
+					 object:nil];
+}
+
++ (void)removeEventsObserver:(id)target {
+	NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
+	[ncenter removeObserver:target
+					   name:CalEventsChangedExternallyNotification
+					 object:nil];
+}
+
 - (id)init {
 	self = [super init];
 

@@ -52,6 +52,13 @@ static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 				  object:nil];
 }
 
++ (void)removeObserver:(id)target {
+	NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
+	[ncenter removeObserver:target
+					   name:NSUserDefaultsDidChangeNotification
+					 object:nil];
+}
+
 + (void)setDefaults {
 	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
 

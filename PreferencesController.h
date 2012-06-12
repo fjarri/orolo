@@ -32,7 +32,10 @@
 }
 
 + (void)addObserver:(id)target selector:(SEL)selector;
++ (void)removeObserver:(id)target;
+
 + (void)setDefaults;
+
 + (NSColor *)prefFadeInColor;
 + (void)setPrefFadeInColor:(NSColor *)color;
 + (NSColor *)prefFadeOutColor;

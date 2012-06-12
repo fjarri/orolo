@@ -27,6 +27,10 @@ static int StatusTitleLength = 10;
 
 
 - (void)dealloc {
+	[PreferencesController removeObserver:self];
+	[CalendarModel removeEventsObserver:self];
+	[CalendarModel removeCalendarsObserver:self];
+
 	[calendarModel release];
     [statusItem release];
 	[colorUpdateTimer release];
@@ -74,8 +78,6 @@ static int StatusTitleLength = 10;
 
 
 	calendarModel = [[CalendarModel alloc] init];
-	[CalendarModel addEventsObserver:self selector:@selector(calendarsChanged:)];
-	[CalendarModel addCalendarsObserver:self selector:@selector(calendarsChanged:)];
 
 	colorUpdateTimer = [[NSTimer
 					scheduledTimerWithTimeInterval:colorUpdateInterval
@@ -86,7 +88,9 @@ static int StatusTitleLength = 10;
 				   retain];
 	[colorUpdateTimer fire];
 
-	// prepare notification for changed settings
+	// prepare notifications
+	[CalendarModel addEventsObserver:self selector:@selector(calendarsChanged:)];
+	[CalendarModel addCalendarsObserver:self selector:@selector(calendarsChanged:)];
 	[PreferencesController addObserver:self selector:@selector(preferencesChanged:)];
 
 	[self updateStatus];
