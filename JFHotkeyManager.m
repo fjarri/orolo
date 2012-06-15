@@ -11,15 +11,15 @@
 static OSStatus hotkeyHandler(EventHandlerCallRef hnd,
 							  EventRef evt,
 							  void *data) {
-	
+
 	EventHotKeyID hkID;
 	GetEventParameter(evt, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(hkID), NULL, &hkID);
-	
+
 	JFHotkeyManager *hkm = (JFHotkeyManager *)data;
 	[hkm _dispatch:hkID.id];
-	
+
 	return noErr;
-	
+
 }
 
 static NSMutableDictionary *keyMap;
@@ -41,17 +41,17 @@ static void mapMod(NSString *s, NSUInteger mod) {
 				target:(id)target
 				action:(SEL)selector {
 	if (self = [super init]) {
-		
+
 		EventHotKeyID kID;
 		kID.id = kID.signature = hotkeyID;
-		
+
 		RegisterEventHotKey(keyRef, modifiers, kID, GetApplicationEventTarget(), 0, &_ref);
-		
+
 		_target = target;
 		_action = selector;
-		
+
 		[_target retain];
-		
+
 	}
 	return self;
 }
@@ -71,16 +71,16 @@ static void mapMod(NSString *s, NSUInteger mod) {
 @implementation JFHotkeyManager
 
 + (void)initialize {
-	
+
 	modMap = [[NSMutableDictionary alloc] init];
 	keyMap = [[NSMutableDictionary alloc] init];
-	
+
 	// Is this guaranteed to be the same across systems/keyboards?
 	// Probably not.
-	
+
 	//
 	// Keys
-	
+
 	mapKey(@"a",		0x00);
 	mapKey(@"b",		0x0B);
 	mapKey(@"c",		0x09);
@@ -107,7 +107,7 @@ static void mapMod(NSString *s, NSUInteger mod) {
 	mapKey(@"x",		0x07);
 	mapKey(@"y",		0x10);
 	mapKey(@"z",		0x06);
-	
+
 	mapKey(@"0",		0x1D);
 	mapKey(@"1",		0x12);
 	mapKey(@"2",		0x13);
@@ -118,11 +118,11 @@ static void mapMod(NSString *s, NSUInteger mod) {
 	mapKey(@"7",		0x1A);
 	mapKey(@"8",		0x1C);
 	mapKey(@"9",		0x19);
-	
+
 	mapKey(@",",		0x2B);
 	mapKey(@".",		0x2F);
 	mapKey(@"/",		0x2C);
-	
+
 	mapKey(@"f1",		0x7A);
 	mapKey(@"f2",		0x79);
 	mapKey(@"f3",		0x63);
@@ -138,7 +138,7 @@ static void mapMod(NSString *s, NSUInteger mod) {
 	mapKey(@"f13",		0x69);
 	mapKey(@"f14",		0x6B);
 	mapKey(@"f15",		0x71);
-	
+
 	mapKey(@"escape",	0x35);
 	mapKey(@"esc",		0x35);
 	mapKey(@"space",	0x31);
@@ -146,39 +146,39 @@ static void mapMod(NSString *s, NSUInteger mod) {
 	mapKey(@"tab",		0x30);
 	mapKey(@"backspace",0x33);
 	mapKey(@"bkspc",	0x33);
-	
+
 	mapKey(@"left",		0x7B);
 	mapKey(@"right",	0x7C);
 	mapKey(@"down",		0x7D);
 	mapKey(@"up",		0x7E);
-	
+
 	//
 	// Modifiers
-	
+
 	mapMod(@"apple",	cmdKey);
-	
+
 	mapMod(@"ctrl",		controlKey);
 	mapMod(@"ctl",		controlKey);
 	mapMod(@"control",	controlKey);
-	
+
 	mapMod(@"opt",		optionKey);
 	mapMod(@"option",	optionKey);
 	mapMod(@"alt",		optionKey);
-	
+
 	mapMod(@"cmd",		cmdKey);
 	mapMod(@"command",	cmdKey);
 	mapMod(@"apple",	cmdKey);
-	
+
 	mapMod(@"shift",	shiftKey);
-	
+
 }
 
 - (id)init {
 	if (self = [super init]) {
-		
+
 		_hotkeys = [[NSMutableDictionary alloc] init];
 		_nextId = 1;
-		
+
 		EventTypeSpec evtType;
 		evtType.eventClass = kEventClassKeyboard;
 		evtType.eventKind = kEventHotKeyPressed;
@@ -187,16 +187,16 @@ static void mapMod(NSString *s, NSUInteger mod) {
 									   &evtType,
 									   self,
 									   NULL);
-		
+
 	}
 	return self;
 }
 
 - (void)dealloc {
-	
+
 	// TODO: uninstall application event handler? couldn't find
 	// relevant method. didn't look for long though.
-	
+
 	[_hotkeys release];
 	[super dealloc];
 
@@ -205,27 +205,27 @@ static void mapMod(NSString *s, NSUInteger mod) {
 - (JFHotKeyRef)bind:(NSString *)commandString
 	  target:(id)target
 	  action:(SEL)selector {
-	
+
 	NSUInteger keyRef		= 0;
 	NSUInteger modifiers	= 0;
-	
+
 	NSArray *bits = [[commandString lowercaseString] componentsSeparatedByString:@" "];
 	for (NSString *bit in bits) {
-		
+
 		NSNumber *code = [modMap objectForKey:bit];
 		if (code != nil) {
 			modifiers += [code unsignedLongValue];
 			continue;
 		}
-		
+
 		code = [keyMap objectForKey:bit];
 		if (code != nil) {
 			keyRef = [code unsignedLongValue];
 			continue;
 		}
-		
+
 	}
-	
+
 	return [self bindKeyRef:keyRef
 			  withModifiers:modifiers
 				     target:target
@@ -237,19 +237,19 @@ static void mapMod(NSString *s, NSUInteger mod) {
 	 withModifiers:(NSUInteger)modifiers
 		    target:(id)target
 			action:(SEL)selector {
-	
+
 	NSUInteger keyID = _nextId;
 	_nextId++;
-	
+
 	__JFHotkey *hk = [[__JFHotkey alloc] initWithHotkeyID:keyID
 												   keyRef:keyRef
 												modifiers:modifiers
 												   target:target
 												   action:selector];
-	
+
 	[_hotkeys setObject:hk forKey:[NSNumber numberWithUnsignedInt:keyID]];
 	[hk release];
-	
+
 	return keyID;
 
 }
