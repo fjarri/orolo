@@ -13,10 +13,9 @@
 		4397DAC11575FBF7001FF33A /* CalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397DAC01575FBF7001FF33A /* CalendarModel.m */; };
 		4397DADC1576054D001FF33A /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4397DADB1576054D001FF33A /* CalendarStore.framework */; };
 		43DC6083158B6A2C00ADE8D9 /* PreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DC6082158B6A2C00ADE8D9 /* PreferencesModel.m */; };
+		43DC6124158B855000ADE8D9 /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 43DC6123158B855000ADE8D9 /* app.icns */; };
 		43F20EE315822A7B001EB39A /* JFHotkeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F20EE115822A7B001EB39A /* JFHotkeyManager.m */; };
 		43F20F0115822BFD001EB39A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F20F0015822BFD001EB39A /* Carbon.framework */; };
-		43F210951582E8A5001EB39A /* icon-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F210941582E8A5001EB39A /* icon-big.png */; };
-		43F2109F1582EE87001EB39A /* icon-menubar.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F2109E1582EE87001EB39A /* icon-menubar.png */; };
 		43F210DB15831E11001EB39A /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F210DA15831E11001EB39A /* PreferencesController.m */; };
 		43F210EF158321EA001EB39A /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F210EE158321EA001EB39A /* AboutController.m */; };
 		43F2110615832363001EB39A /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F2110515832363001EB39A /* Preferences.xib */; };
@@ -47,11 +46,10 @@
 		4397DADB1576054D001FF33A /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
 		43DC6081158B6A2C00ADE8D9 /* PreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesModel.h; sourceTree = "<group>"; };
 		43DC6082158B6A2C00ADE8D9 /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesModel.m; sourceTree = "<group>"; };
+		43DC6123158B855000ADE8D9 /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = app.icns; sourceTree = "<group>"; };
 		43F20EE015822A7B001EB39A /* JFHotkeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHotkeyManager.h; sourceTree = "<group>"; };
 		43F20EE115822A7B001EB39A /* JFHotkeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHotkeyManager.m; sourceTree = "<group>"; };
 		43F20F0015822BFD001EB39A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		43F210941582E8A5001EB39A /* icon-big.png */ = {isa = PBXFileReference; explicitFileType = image.png; path = "icon-big.png"; sourceTree = "<group>"; };
-		43F2109E1582EE87001EB39A /* icon-menubar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-menubar.png"; sourceTree = "<group>"; };
 		43F210D915831E11001EB39A /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		43F210DA15831E11001EB39A /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		43F210ED158321EA001EB39A /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
@@ -158,9 +156,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				43F2109E1582EE87001EB39A /* icon-menubar.png */,
+				43DC6123158B855000ADE8D9 /* app.icns */,
 				43F815B31575204A00BD214A /* README.rst */,
-				43F210941582E8A5001EB39A /* icon-big.png */,
 				8D1107310486CEB800E47090 /* orolo-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* Main.xib */,
@@ -232,10 +229,9 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* Main.xib in Resources */,
 				43F815B41575204A00BD214A /* README.rst in Resources */,
-				43F210951582E8A5001EB39A /* icon-big.png in Resources */,
-				43F2109F1582EE87001EB39A /* icon-menubar.png in Resources */,
 				43F2110615832363001EB39A /* Preferences.xib in Resources */,
 				43F2111915832753001EB39A /* About.xib in Resources */,
+				43DC6124158B855000ADE8D9 /* app.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
