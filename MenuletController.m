@@ -186,7 +186,9 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)setNoEventsStatus {
-	[statusItemView setImage:statusIcon withTitle:nil withColor:nil];
+	[statusItemView setImage:nil
+				   withTitle:[NSString stringWithFormat:@"%C", 0x221E]
+				   withColor:[NSColor controlTextColor]];
 	[menuFullTitle setTitle:@"<No events>"]; // FIXME: remove hardcoding
 }
 
