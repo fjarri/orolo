@@ -633,7 +633,6 @@
 						<reference key="object" ref="410105126"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="935974584"/>
 							<reference ref="472384609"/>
 							<reference ref="264415458"/>
 							<reference ref="724850410"/>
@@ -645,6 +644,7 @@
 							<reference ref="478260272"/>
 							<reference ref="993611428"/>
 							<reference ref="691013957"/>
+							<reference ref="935974584"/>
 						</object>
 						<reference key="parent" ref="1069760029"/>
 					</object>
@@ -869,9 +869,11 @@
 					<string>13.IBPluginDependency</string>
 					<string>2.IBPluginDependency</string>
 					<string>2.IBUserGuides</string>
+					<string>25.IBAttributePlaceholdersKey</string>
 					<string>25.IBPluginDependency</string>
 					<string>25.IBViewBoundsToFrameTransform</string>
 					<string>26.IBPluginDependency</string>
+					<string>27.IBAttributePlaceholdersKey</string>
 					<string>27.IBPluginDependency</string>
 					<string>27.IBViewBoundsToFrameTransform</string>
 					<string>28.IBPluginDependency</string>
@@ -891,6 +893,7 @@
 					<string>46.IBPluginDependency</string>
 					<string>47.IBPluginDependency</string>
 					<string>48.IBPluginDependency</string>
+					<string>5.IBAttributePlaceholdersKey</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBViewBoundsToFrameTransform</string>
 					<string>50.IBPluginDependency</string>
@@ -902,8 +905,10 @@
 					<string>58.IBPluginDependency</string>
 					<string>58.IBViewBoundsToFrameTransform</string>
 					<string>59.IBPluginDependency</string>
+					<string>6.IBAttributePlaceholdersKey</string>
 					<string>6.IBPluginDependency</string>
 					<string>6.IBViewBoundsToFrameTransform</string>
+					<string>9.IBAttributePlaceholdersKey</string>
 					<string>9.IBPluginDependency</string>
 					<string>9.IBViewBoundsToFrameTransform</string>
 				</object>
@@ -919,11 +924,27 @@
 					<object class="NSMutableArray">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 					</object>
+					<object class="NSMutableDictionary">
+						<string key="NS.key.0">ToolTip</string>
+						<object class="IBToolTipAttribute" key="NS.object.0">
+							<string key="name">ToolTip</string>
+							<reference key="object" ref="264415458"/>
+							<string key="toolTip">Time frame where incoming events will be monitored.</string>
+						</object>
+					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABC+AAAw10AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSMutableDictionary">
+						<string key="NS.key.0">ToolTip</string>
+						<object class="IBToolTipAttribute" key="NS.object.0">
+							<string key="name">ToolTip</string>
+							<reference key="object" ref="724850410"/>
+							<string key="toolTip">Time frame where recently passed events will be monitored.</string>
+						</object>
+					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABC+AAAwz0AAA</bytes>
@@ -955,6 +976,14 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSMutableDictionary">
+						<string key="NS.key.0">ToolTip</string>
+						<object class="IBToolTipAttribute" key="NS.object.0">
+							<string key="name">ToolTip</string>
+							<reference key="object" ref="872096302"/>
+							<string key="toolTip">Menulet title color for passed events.</string>
+						</object>
+					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AUOQAABCzgAAA</bytes>
@@ -970,13 +999,29 @@
 						<bytes key="NSTransformStruct">P4AAAL+AAABBkAAAwkwAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSMutableDictionary">
+						<string key="NS.key.0">ToolTip</string>
+						<object class="IBToolTipAttribute" key="NS.object.0">
+							<string key="name">ToolTip</string>
+							<reference key="object" ref="894427357"/>
+							<string key="toolTip">Menulet title color for incoming events.</string>
+						</object>
+					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AUOQAABDBgAAA</bytes>
 					</object>
+					<object class="NSMutableDictionary">
+						<string key="NS.key.0">ToolTip</string>
+						<object class="IBToolTipAttribute" key="NS.object.0">
+							<string key="name">ToolTip</string>
+							<reference key="object" ref="935974584"/>
+							<string key="toolTip">Add/remove the menulet to/from your login items.</string>
+						</object>
+					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABB0AAAw4CAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABBkAAAw6kAAA</bytes>
 					</object>
 				</object>
 			</object>
@@ -1076,7 +1121,6 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>calendarList</string>
-							<string>calendarListScrollView</string>
 							<string>fadeInColorWell</string>
 							<string>fadeInInterval</string>
 							<string>fadeOutColorWell</string>
@@ -1088,7 +1132,6 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSTableView</string>
-							<string>NSScrollView</string>
 							<string>NSColorWell</string>
 							<string>NSTextField</string>
 							<string>NSColorWell</string>
@@ -1103,7 +1146,6 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>calendarList</string>
-							<string>calendarListScrollView</string>
 							<string>fadeInColorWell</string>
 							<string>fadeInInterval</string>
 							<string>fadeOutColorWell</string>
@@ -1117,10 +1159,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">calendarList</string>
 								<string key="candidateClassName">NSTableView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">calendarListScrollView</string>
-								<string key="candidateClassName">NSScrollView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">fadeInColorWell</string>
