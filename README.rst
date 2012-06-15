@@ -26,6 +26,7 @@ Future
 - Add "always real time mode" for cases when one needs to turn off the oven in 20 minutes or something
 - Add localization (at least remove string hardcoding)
 - Set global hotkey for Show Real Time in Preferences
+- Put a link to project page in About
 
 0.0.1
 ~~~~~
