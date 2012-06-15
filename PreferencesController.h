@@ -26,8 +26,6 @@
 	BOOL viewIsEnabled;
 }
 
-- (void)setViewIsEnabled:(BOOL)enabled;
-
 - (void)update;
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
@@ -58,6 +56,7 @@
 }
 
 - (void)calendarsUpdated:(NSNotification *)notification;
+- (void)updateCalendarList:(BOOL)enabled;
 
 - (IBAction)changeFadeInColor:(id)sender;
 - (IBAction)changeFadeOutColor:(id)sender;

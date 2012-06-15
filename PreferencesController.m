@@ -51,8 +51,6 @@
 	watchedList = [[NSMutableArray alloc] init];
 	calendarUIDs = [[NSMutableArray alloc] init];
 
-	viewIsEnabled = NO;
-
 	[self update];
 
 	return self;
@@ -64,13 +62,6 @@
 	[calendarUIDs release];
 	[watchedList release];
 	[super dealloc];
-}
-
-- (void)setViewIsEnabled:(BOOL)enabled {
-	viewIsEnabled = enabled;
-	if (enabled) {
-		[self update];
-	}
 }
 
 - (void)update {
@@ -93,12 +84,7 @@
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
-	if(viewIsEnabled) {
-		return calendarTitles.count;
-	}
-	else {
-		return 0;
-	}
+	return calendarTitles.count;
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
@@ -210,9 +196,7 @@
 
 	BOOL watching_all = ![PreferencesModel prefCalendarUIDs];
 	[watchAllCalendars setState:watching_all];
-	[calendarListSource setViewIsEnabled:!watching_all];
-	[calendarList setEnabled:!watching_all];
-	[calendarList reloadData];
+	[self updateCalendarList:!watching_all];
 
 	[titleLength setIntValue:[PreferencesModel prefTitleLength]];
 }
@@ -220,6 +204,16 @@
 - (void)calendarsUpdated:(NSNotification *)aNotification {
 	[calendarListSource update];
 	[calendarList reloadData];
+}
+
+- (void)updateCalendarList:(BOOL)enabled {
+	[calendarListSource update];
+	if (!enabled) {
+		// setting to enabled because otherwise reloadData: will have no effect
+		[calendarList setEnabled:YES]; 
+	}
+	[calendarList reloadData];
+	[calendarList setEnabled:enabled];
 }
 
 - (IBAction)showWindow:(id)sender {
@@ -272,9 +266,6 @@
 
 - (IBAction)changeWatchAllCalendars:(id)sender {
 	BOOL state = [watchAllCalendars state];
-	[calendarListSource setViewIsEnabled:!state];
-	[calendarList setEnabled:!state];
-	[calendarList reloadData];
 
 	if (state) {
 		[PreferencesModel setPrefCalendarUIDs:nil];
@@ -287,6 +278,8 @@
 		}
 		[PreferencesModel setPrefCalendarUIDs:uids];
 	}
+
+	[self updateCalendarList:!state];
 }
 
 - (IBAction)changeTitleLength:(id)sender {
