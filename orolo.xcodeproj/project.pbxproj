@@ -12,6 +12,7 @@
 		437CFB3115750ED400B8BE1E /* MenuletController.m in Sources */ = {isa = PBXBuildFile; fileRef = 437CFB3015750ED400B8BE1E /* MenuletController.m */; };
 		4397DAC11575FBF7001FF33A /* CalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4397DAC01575FBF7001FF33A /* CalendarModel.m */; };
 		4397DADC1576054D001FF33A /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4397DADB1576054D001FF33A /* CalendarStore.framework */; };
+		43DC6083158B6A2C00ADE8D9 /* PreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DC6082158B6A2C00ADE8D9 /* PreferencesModel.m */; };
 		43F20EE315822A7B001EB39A /* JFHotkeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F20EE115822A7B001EB39A /* JFHotkeyManager.m */; };
 		43F20F0115822BFD001EB39A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F20F0015822BFD001EB39A /* Carbon.framework */; };
 		43F210951582E8A5001EB39A /* icon-big.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F210941582E8A5001EB39A /* icon-big.png */; };
@@ -44,6 +45,8 @@
 		4397DABF1575FBF7001FF33A /* CalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarModel.h; sourceTree = "<group>"; };
 		4397DAC01575FBF7001FF33A /* CalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarModel.m; sourceTree = "<group>"; };
 		4397DADB1576054D001FF33A /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
+		43DC6081158B6A2C00ADE8D9 /* PreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesModel.h; sourceTree = "<group>"; };
+		43DC6082158B6A2C00ADE8D9 /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesModel.m; sourceTree = "<group>"; };
 		43F20EE015822A7B001EB39A /* JFHotkeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHotkeyManager.h; sourceTree = "<group>"; };
 		43F20EE115822A7B001EB39A /* JFHotkeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHotkeyManager.m; sourceTree = "<group>"; };
 		43F20F0015822BFD001EB39A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -81,22 +84,24 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				43F214FC1585B1B9001EB39A /* LoginItemsModel.h */,
-				43F214FD1585B1B9001EB39A /* LoginItemsModel.m */,
-				43F211F5158420F8001EB39A /* StatusItemView.h */,
-				43F211F6158420F8001EB39A /* StatusItemView.m */,
-				43F210ED158321EA001EB39A /* AboutController.h */,
-				43F210EE158321EA001EB39A /* AboutController.m */,
-				43F210D915831E11001EB39A /* PreferencesController.h */,
-				43F210DA15831E11001EB39A /* PreferencesController.m */,
 				43F20EE015822A7B001EB39A /* JFHotkeyManager.h */,
 				43F20EE115822A7B001EB39A /* JFHotkeyManager.m */,
-				437CFB2F15750ED400B8BE1E /* MenuletController.h */,
-				437CFB3015750ED400B8BE1E /* MenuletController.m */,
-				256AC3D80F4B6AC300CF3369 /* AppDelegate.h */,
-				256AC3D90F4B6AC300CF3369 /* AppDelegate.m */,
+				43F214FC1585B1B9001EB39A /* LoginItemsModel.h */,
+				43F214FD1585B1B9001EB39A /* LoginItemsModel.m */,
+				43DC6081158B6A2C00ADE8D9 /* PreferencesModel.h */,
+				43DC6082158B6A2C00ADE8D9 /* PreferencesModel.m */,
 				4397DABF1575FBF7001FF33A /* CalendarModel.h */,
 				4397DAC01575FBF7001FF33A /* CalendarModel.m */,
+				43F210D915831E11001EB39A /* PreferencesController.h */,
+				43F210DA15831E11001EB39A /* PreferencesController.m */,
+				43F210ED158321EA001EB39A /* AboutController.h */,
+				43F210EE158321EA001EB39A /* AboutController.m */,
+				437CFB2F15750ED400B8BE1E /* MenuletController.h */,
+				437CFB3015750ED400B8BE1E /* MenuletController.m */,
+				43F211F5158420F8001EB39A /* StatusItemView.h */,
+				43F211F6158420F8001EB39A /* StatusItemView.m */,
+				256AC3D80F4B6AC300CF3369 /* AppDelegate.h */,
+				256AC3D90F4B6AC300CF3369 /* AppDelegate.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				43F210EF158321EA001EB39A /* AboutController.m in Sources */,
 				43F211F7158420F8001EB39A /* StatusItemView.m in Sources */,
 				43F214FE1585B1B9001EB39A /* LoginItemsModel.m in Sources */,
+				43DC6083158B6A2C00ADE8D9 /* PreferencesModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

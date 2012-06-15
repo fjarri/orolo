@@ -57,27 +57,6 @@
 	IBOutlet NSTextField *titleLength;
 }
 
-+ (void)addObserver:(id)target selector:(SEL)selector;
-+ (void)removeObserver:(id)target;
-
-+ (void)setDefaults;
-
-+ (NSColor *)prefFadeInColor;
-+ (void)setPrefFadeInColor:(NSColor *)color;
-+ (NSColor *)prefFadeOutColor;
-+ (void)setPrefFadeOutColor:(NSColor *)color;
-+ (BOOL)prefLaunchAtLogin;
-+ (void)setPrefLaunchAtLogin:(BOOL)launch;
-+ (int)prefFadeInInterval;
-+ (void)setPrefFadeInInterval:(int)interval;
-+ (int)prefFadeOutInterval;
-+ (void)setPrefFadeOutInterval:(int)interval;
-+ (NSArray *)prefCalendarUIDs;
-+ (void)setPrefCalendarUIDs:(NSArray *)uids;
-+ (int)prefTitleLength;
-+ (void)setPrefTitleLength:(int)length;
-
-
 - (void)calendarsUpdated:(NSNotification *)notification;
 
 - (IBAction)changeFadeInColor:(id)sender;

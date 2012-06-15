@@ -8,8 +8,7 @@
 
 #import <CalendarStore/CalendarStore.h>
 #import "CalendarModel.h"
-#import "PreferencesController.h"
-
+#import "PreferencesModel.h"
 
 @implementation CalResult
 
@@ -91,7 +90,7 @@
 
 - (NSArray *)watchedCalendars {
 	NSArray *cldrs = [self calendars];
-	NSArray *uids = [PreferencesController prefCalendarUIDs];
+	NSArray *uids = [PreferencesModel prefCalendarUIDs];
 
 	if (!uids) {
 		return cldrs;
@@ -107,8 +106,8 @@
 }
 
 - (CalResult *)closestEvent {
-	int fadeInInterval = [PreferencesController prefFadeInInterval] * 60;
-	int fadeOutInterval = [PreferencesController prefFadeOutInterval] * 60;
+	int fadeInInterval = [PreferencesModel prefFadeInInterval] * 60;
+	int fadeOutInterval = [PreferencesModel prefFadeOutInterval] * 60;
 	NSArray *cldrs = [self watchedCalendars];
 
 	CalResult *fwResult = [self closestEventInRange:fadeInInterval fadeIn:YES calendars:cldrs];

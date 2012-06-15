@@ -10,14 +10,7 @@
 #import "PreferencesController.h"
 #import "LoginItemsModel.h"
 #import "CalendarModel.h"
-
-static NSString * const keyFadeInColor = @"FadeInColor";
-static NSString * const keyFadeOutColor = @"FadeOutColor";
-static NSString * const keyFadeInInterval = @"FadeInInterval";
-static NSString * const keyFadeOutInterval = @"FadeOutInterval";
-static NSString * const keyCalendarUIDs = @"CalendarUIDs";
-static NSString * const keyWatchAllCalendars = @"WatchAllCalendars";
-static NSString * const keyTitleLength = @"TitleLength";
+#import "PreferencesModel.h"
 
 
 @implementation IntegerForcingDelegate
@@ -83,7 +76,7 @@ static NSString * const keyTitleLength = @"TitleLength";
 - (void)update {
 	NSArray *calendars = [calendarModel calendars];
 
-	NSArray *watched_uids = [PreferencesController prefCalendarUIDs];
+	NSArray *watched_uids = [PreferencesModel prefCalendarUIDs];
 
 	[calendarUIDs removeAllObjects];
 	[calendarTitles removeAllObjects];
@@ -127,7 +120,7 @@ static NSString * const keyTitleLength = @"TitleLength";
 				[watched_uids addObject:[calendarUIDs objectAtIndex:i]];
 			}
 		}
-		[PreferencesController setPrefCalendarUIDs:watched_uids];
+		[PreferencesModel setPrefCalendarUIDs:watched_uids];
 	}
 }
 
@@ -145,7 +138,7 @@ static NSString * const keyTitleLength = @"TitleLength";
 	// It may be called at the same time with instance calendarsUpdated: method,
 	// but that's ok, since old UIDs will just be ignored there.
 
-	NSArray *uids = [PreferencesController prefCalendarUIDs];
+	NSArray *uids = [PreferencesModel prefCalendarUIDs];
 	if (!uids) {
 		return;
 	}
@@ -164,125 +157,7 @@ static NSString * const keyTitleLength = @"TitleLength";
 			[result addObject:uid];
 		}
 	}
-	[PreferencesController setPrefCalendarUIDs:result];
-}
-
-+ (void)addObserver:(id)target selector:(SEL)selector {
-	NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
-	[ncenter addObserver:target
-				selector:selector
-					name:NSUserDefaultsDidChangeNotification
-				  object:nil];
-}
-
-+ (void)removeObserver:(id)target {
-	NSNotificationCenter *ncenter = [NSNotificationCenter defaultCenter];
-	[ncenter removeObserver:target
-					   name:NSUserDefaultsDidChangeNotification
-					 object:nil];
-}
-
-+ (void)setDefaults {
-	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
-
-	[defaultValues setObject:[NSKeyedArchiver archivedDataWithRootObject:[NSColor redColor]]
-					  forKey:keyFadeInColor];
-	[defaultValues setObject:[NSKeyedArchiver archivedDataWithRootObject:[NSColor blueColor]]
-					  forKey:keyFadeOutColor];
-	[defaultValues setObject:[NSNumber numberWithInt:5] forKey:keyFadeInInterval];
-	[defaultValues setObject:[NSNumber numberWithInt:3] forKey:keyFadeOutInterval];
-	[defaultValues setObject:[[[NSArray alloc] init] autorelease] forKey:keyCalendarUIDs];
-	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:keyWatchAllCalendars];
-	[defaultValues setObject:[NSNumber numberWithInt:10] forKey:keyTitleLength];
-
-	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
-}
-
-+ (NSColor *)prefFadeInColor {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *colorAsData = [defaults objectForKey:keyFadeInColor];
-	return [NSKeyedUnarchiver unarchiveObjectWithData:colorAsData];
-}
-
-+ (void)setPrefFadeInColor:(NSColor *)color {
-	NSData *colorAsData = [NSKeyedArchiver archivedDataWithRootObject:color];
-	[[NSUserDefaults standardUserDefaults] setObject:colorAsData forKey:keyFadeInColor];
-}
-
-+ (NSColor *)prefFadeOutColor {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSData *colorAsData = [defaults objectForKey:keyFadeOutColor];
-	return [NSKeyedUnarchiver unarchiveObjectWithData:colorAsData];
-}
-
-+ (void)setPrefFadeOutColor:(NSColor *)color {
-	NSData *colorAsData = [NSKeyedArchiver archivedDataWithRootObject:color];
-	[[NSUserDefaults standardUserDefaults] setObject:colorAsData forKey:keyFadeOutColor];
-}
-
-+ (BOOL)prefLaunchAtLogin {
-	LoginItemsModel *loginItems = [[[LoginItemsModel alloc] init] autorelease];
-	return [loginItems loginItemExists];
-}
-
-+ (void)setPrefLaunchAtLogin:(BOOL)launch {
-	LoginItemsModel *loginItems = [[[LoginItemsModel alloc] init] autorelease];
-	if (launch) {
-		[loginItems enableLoginItem];
-	}
-	else {
-		[loginItems disableLoginItem];
-	}
-}
-
-+ (int)prefFadeInInterval {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	return [defaults integerForKey:keyFadeInInterval];
-}
-
-+ (void)setPrefFadeInInterval:(int)interval {
-	[[NSUserDefaults standardUserDefaults] setInteger:interval forKey:keyFadeInInterval];
-}
-
-+ (int)prefFadeOutInterval {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	return [defaults integerForKey:keyFadeOutInterval];
-}
-
-+ (void)setPrefFadeOutInterval:(int)interval {
-	[[NSUserDefaults standardUserDefaults] setInteger:interval forKey:keyFadeOutInterval];
-}
-
-+ (NSArray *)prefCalendarUIDs {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSNumber *watchAllCalendars = [defaults objectForKey:keyWatchAllCalendars];
-	if ([watchAllCalendars boolValue]) {
-		return nil;
-	}
-	else {
-		return [defaults objectForKey:keyCalendarUIDs];
-	}
-}
-
-+ (void)setPrefCalendarUIDs:(NSArray *)uids {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	if (uids) {
-		[defaults setObject:uids forKey:keyCalendarUIDs];
-		[defaults setObject:[NSNumber numberWithBool:NO] forKey:keyWatchAllCalendars];
-	}
-	else {
-		[defaults setObject:[[[NSArray alloc] init] autorelease] forKey:keyCalendarUIDs];
-		[defaults setObject:[NSNumber numberWithBool:YES] forKey:keyWatchAllCalendars];
-	}
-}
-
-+ (int)prefTitleLength {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	return [defaults integerForKey:keyTitleLength];
-}
-
-+ (void)setPrefTitleLength:(int)length {
-	[[NSUserDefaults standardUserDefaults] setInteger:length forKey:keyTitleLength];
+	[PreferencesModel setPrefCalendarUIDs:result];
 }
 
 
@@ -317,12 +192,12 @@ static NSString * const keyTitleLength = @"TitleLength";
 - (void)windowDidLoad {
 	[super windowDidLoad];
 
-	[fadeInColorWell setColor:[PreferencesController prefFadeInColor]];
-	[fadeOutColorWell setColor:[PreferencesController prefFadeOutColor]];
-	[launchAtLogin setState:[PreferencesController prefLaunchAtLogin]];
+	[fadeInColorWell setColor:[PreferencesModel prefFadeInColor]];
+	[fadeOutColorWell setColor:[PreferencesModel prefFadeOutColor]];
+	[launchAtLogin setState:[PreferencesModel prefLaunchAtLogin]];
 
-	int fade_in = [PreferencesController prefFadeInInterval];
-	int fade_out = [PreferencesController prefFadeOutInterval];
+	int fade_in = [PreferencesModel prefFadeInInterval];
+	int fade_out = [PreferencesModel prefFadeOutInterval];
 	[fadeInInterval setIntValue:fade_in];
 	if (fade_out == 0) {
 		[fadeOutEnabled setState:NO];
@@ -333,7 +208,7 @@ static NSString * const keyTitleLength = @"TitleLength";
 	}
 	[self changeFadeOutEnabled:nil];
 
-	BOOL watching_all = ![PreferencesController prefCalendarUIDs];
+	BOOL watching_all = ![PreferencesModel prefCalendarUIDs];
 	[watchAllCalendars setState:watching_all];
 	[calendarListSource setViewIsEnabled:!watching_all];
 	[calendarList setEnabled:!watching_all];
@@ -359,23 +234,23 @@ static NSString * const keyTitleLength = @"TitleLength";
 }
 
 - (IBAction)changeFadeInColor:(id)sender {
-	[PreferencesController setPrefFadeInColor:[fadeInColorWell color]];
+	[PreferencesModel setPrefFadeInColor:[fadeInColorWell color]];
 }
 
 - (IBAction)changeFadeOutColor:(id)sender {
-	[PreferencesController setPrefFadeOutColor:[fadeOutColorWell color]];
+	[PreferencesModel setPrefFadeOutColor:[fadeOutColorWell color]];
 }
 
 - (IBAction)changeLaunchAtLogin:(id)sender {
-	[PreferencesController setPrefLaunchAtLogin:[launchAtLogin state]];
+	[PreferencesModel setPrefLaunchAtLogin:[launchAtLogin state]];
 }
 
 - (IBAction)changeFadeInInterval:(id)sender {
-	[PreferencesController setPrefFadeInInterval:[fadeInInterval intValue]];
+	[PreferencesModel setPrefFadeInInterval:[fadeInInterval intValue]];
 }
 
 - (IBAction)changeFadeOutInterval:(id)sender {
-	[PreferencesController setPrefFadeOutInterval:[fadeOutInterval intValue]];
+	[PreferencesModel setPrefFadeOutInterval:[fadeOutInterval intValue]];
 }
 
 - (IBAction)changeFadeOutEnabled:(id)sender {
@@ -389,7 +264,7 @@ static NSString * const keyTitleLength = @"TitleLength";
 	}
 	else {
 		[fadeOutInterval setStringValue:@""];
-		[PreferencesController setPrefFadeOutInterval:0];
+		[PreferencesModel setPrefFadeOutInterval:0];
 	}
 }
 
@@ -400,7 +275,7 @@ static NSString * const keyTitleLength = @"TitleLength";
 	[calendarList reloadData];
 
 	if (state) {
-		[PreferencesController setPrefCalendarUIDs:nil];
+		[PreferencesModel setPrefCalendarUIDs:nil];
 	}
 	else {
 		NSArray *calendars = [calendarModel calendars];
@@ -408,12 +283,12 @@ static NSString * const keyTitleLength = @"TitleLength";
 		for (CalCalendar *cldr in calendars) {
 			[uids addObject:[cldr uid]];
 		}
-		[PreferencesController setPrefCalendarUIDs:uids];
+		[PreferencesModel setPrefCalendarUIDs:uids];
 	}
 }
 
 - (IBAction)changeTitleLength:(id)sender {
-	[PreferencesController setPrefTitleLength:[titleLength intValue]];
+	[PreferencesModel setPrefTitleLength:[titleLength intValue]];
 }
 
 @end

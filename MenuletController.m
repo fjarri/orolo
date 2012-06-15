@@ -10,6 +10,7 @@
 #import "MenuletController.h"
 #import "CalendarModel.h"
 #import "PreferencesController.h"
+#import "PreferencesModel.h"
 #import "AboutController.h"
 #import "JFHotkeyManager.h"
 #import "StatusItemView.h"
@@ -22,12 +23,12 @@ static float realTimeInterval = 5.0;
 @implementation MenuletController
 
 + (void)initialize {
-	[PreferencesController setDefaults];
+	[PreferencesModel setDefaults];
 }
 
 
 - (void)dealloc {
-	[PreferencesController removeObserver:self];
+	[PreferencesModel removeObserver:self];
 	[CalendarModel removeEventsObserver:self];
 	[CalendarModel removeCalendarsObserver:self];
 
@@ -91,7 +92,7 @@ static float realTimeInterval = 5.0;
 	// prepare notifications
 	[CalendarModel addEventsObserver:self selector:@selector(calendarsChanged:)];
 	[CalendarModel addCalendarsObserver:self selector:@selector(calendarsChanged:)];
-	[PreferencesController addObserver:self selector:@selector(preferencesChanged:)];
+	[PreferencesModel addObserver:self selector:@selector(preferencesChanged:)];
 
 	[self updateStatus];
 }
@@ -120,15 +121,15 @@ static float realTimeInterval = 5.0;
 		float fraction = [closest_event fraction];
 
 		NSColor *target_color = [closest_event isForward] ?
-			[PreferencesController prefFadeInColor] :
-			[PreferencesController prefFadeOutColor];
+			[PreferencesModel prefFadeInColor] :
+			[PreferencesModel prefFadeOutColor];
 
 		NSColor *starting_color = [NSColor controlTextColor];
 		NSColor *color = [target_color blendedColorWithFraction:fraction ofColor:starting_color];
 
 		NSString *full_event_title = [[closest_event event] title];
 		NSString *event_title;
-		int max_length = [PreferencesController prefTitleLength];
+		int max_length = [PreferencesModel prefTitleLength];
 		if (full_event_title.length > max_length) {
 			event_title = [full_event_title substringToIndex:max_length];
 			event_title = [event_title stringByAppendingString:@"..."];
