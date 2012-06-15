@@ -213,6 +213,8 @@
 	[calendarListSource setViewIsEnabled:!watching_all];
 	[calendarList setEnabled:!watching_all];
 	[calendarList reloadData];
+
+	[titleLength setIntValue:[PreferencesModel prefTitleLength]];
 }
 
 - (void)calendarsUpdated:(NSNotification *)aNotification {
