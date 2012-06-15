@@ -14,11 +14,11 @@
 		4397DADC1576054D001FF33A /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4397DADB1576054D001FF33A /* CalendarStore.framework */; };
 		43DC6083158B6A2C00ADE8D9 /* PreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DC6082158B6A2C00ADE8D9 /* PreferencesModel.m */; };
 		43DC6124158B855000ADE8D9 /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 43DC6123158B855000ADE8D9 /* app.icns */; };
+		43DC6164158B8D8D00ADE8D9 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43DC6163158B8D8D00ADE8D9 /* Preferences.xib */; };
 		43F20EE315822A7B001EB39A /* JFHotkeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F20EE115822A7B001EB39A /* JFHotkeyManager.m */; };
 		43F20F0115822BFD001EB39A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F20F0015822BFD001EB39A /* Carbon.framework */; };
 		43F210DB15831E11001EB39A /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F210DA15831E11001EB39A /* PreferencesController.m */; };
 		43F210EF158321EA001EB39A /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F210EE158321EA001EB39A /* AboutController.m */; };
-		43F2110615832363001EB39A /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F2110515832363001EB39A /* Preferences.xib */; };
 		43F2111915832753001EB39A /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F2111815832753001EB39A /* About.xib */; };
 		43F211F7158420F8001EB39A /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F211F6158420F8001EB39A /* StatusItemView.m */; };
 		43F214FE1585B1B9001EB39A /* LoginItemsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F214FD1585B1B9001EB39A /* LoginItemsModel.m */; };
@@ -54,7 +54,7 @@
 		43F210DA15831E11001EB39A /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		43F210ED158321EA001EB39A /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
 		43F210EE158321EA001EB39A /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
-		43F2110515832363001EB39A /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		43F2110515832363001EB39A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
 		43F2111815832753001EB39A /* About.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = About.xib; sourceTree = "<group>"; };
 		43F211F5158420F8001EB39A /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
 		43F211F6158420F8001EB39A /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 				8D1107310486CEB800E47090 /* orolo-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* Main.xib */,
-				43F2110515832363001EB39A /* Preferences.xib */,
+				43DC6163158B8D8D00ADE8D9 /* Preferences.xib */,
 				43F2111815832753001EB39A /* About.xib */,
 			);
 			name = Resources;
@@ -229,7 +229,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* Main.xib in Resources */,
 				43F815B41575204A00BD214A /* README.rst in Resources */,
-				43F2110615832363001EB39A /* Preferences.xib in Resources */,
+				43DC6164158B8D8D00ADE8D9 /* Preferences.xib in Resources */,
 				43F2111915832753001EB39A /* About.xib in Resources */,
 				43DC6124158B855000ADE8D9 /* app.icns in Resources */,
 			);
@@ -272,6 +272,14 @@
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
 			name = Main.xib;
+			sourceTree = "<group>";
+		};
+		43DC6163158B8D8D00ADE8D9 /* Preferences.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43F2110515832363001EB39A /* English */,
+			);
+			name = Preferences.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
