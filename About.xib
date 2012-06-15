@@ -12,6 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -45,8 +46,9 @@
 				<string key="NSWindowTitle"/>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
+				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<object class="NSView" key="NSWindowView" id="840488327">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -73,7 +75,7 @@
 								<int key="NSCellFlags2">33554432</int>
 								<object class="NSCustomResource" key="NSContents">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">icon-big</string>
+									<string key="NSResourceName">app</string>
 								</object>
 								<int key="NSAlign">0</int>
 								<int key="NSScale">3</int>
@@ -121,13 +123,13 @@
 						<object class="NSTextField" id="198799367">
 							<reference key="NSNextResponder" ref="840488327"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{147, 100}, {101, 17}}</string>
+							<string key="NSFrame">{{147, 100}, {117, 17}}</string>
 							<reference key="NSSuperview" ref="840488327"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="608036656">
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">version 0.0.1</string>
+								<string key="NSContents">version 0.0.2-dev</string>
 								<object class="NSFont" key="NSSupport">
 									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">13</double>
@@ -160,6 +162,7 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{303, 162}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
@@ -310,9 +313,9 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>{{456, 209}, {303, 162}}</string>
+					<string>{{354, 280}, {303, 162}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{456, 209}, {303, 162}}</string>
+					<string>{{354, 280}, {303, 162}}</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -820,8 +823,8 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">orolo.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">icon-big</string>
-			<string key="NS.object.0">{128, 128}</string>
+			<string key="NS.key.0">app</string>
+			<string key="NS.object.0">{512, 512}</string>
 		</object>
 	</data>
 </archive>
