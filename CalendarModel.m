@@ -143,12 +143,12 @@
 		float close_end_distance = [close_end timeIntervalSinceNow] * time_direction;
 		float far_end_distance = [far_end timeIntervalSinceNow] * time_direction;
 
-		if (close_end_distance >= 0 && close_end_distance < best_distance) {
+		if (close_end_distance >= 0 && close_end_distance < best_distance && close_end_distance <= range) {
 			best_event = event;
 			best_beginning = fadeIn;
 			best_distance = close_end_distance;
 		}
-		else if (far_end_distance >= 0 && far_end_distance < best_distance) {
+		else if (far_end_distance >= 0 && far_end_distance < best_distance && far_end_distance <= range) {
 			best_event = event;
 			best_beginning = !fadeIn;
 			best_distance = far_end_distance;
