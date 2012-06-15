@@ -54,6 +54,7 @@
 
 	IBOutlet NSTableView *calendarList;
 	IBOutlet NSButton *watchAllCalendars;
+	IBOutlet NSTextField *titleLength;
 }
 
 + (void)addObserver:(id)target selector:(SEL)selector;
@@ -73,6 +74,9 @@
 + (void)setPrefFadeOutInterval:(int)interval;
 + (NSArray *)prefCalendarUIDs;
 + (void)setPrefCalendarUIDs:(NSArray *)uids;
++ (int)prefTitleLength;
++ (void)setPrefTitleLength:(int)length;
+
 
 - (void)calendarsUpdated:(NSNotification *)notification;
 
@@ -83,5 +87,6 @@
 - (IBAction)changeFadeOutInterval:(id)sender;
 - (IBAction)changeFadeOutEnabled:(id)sender;
 - (IBAction)changeWatchAllCalendars:(id)sender;
+- (IBAction)changeTitleLength:(id)sender;
 
 @end

@@ -17,7 +17,7 @@
 // TODO: move to preferences?
 static float colorUpdateInterval = 10.0;
 static float realTimeInterval = 5.0;
-static int StatusTitleLength = 10;
+
 
 @implementation MenuletController
 
@@ -128,8 +128,9 @@ static int StatusTitleLength = 10;
 
 		NSString *full_event_title = [[closest_event event] title];
 		NSString *event_title;
-		if (full_event_title.length > StatusTitleLength) {
-			event_title = [full_event_title substringToIndex:StatusTitleLength];
+		int max_length = [PreferencesController prefTitleLength];
+		if (full_event_title.length > max_length) {
+			event_title = [full_event_title substringToIndex:max_length];
 			event_title = [event_title stringByAppendingString:@"..."];
 		}
 		else {

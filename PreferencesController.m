@@ -17,6 +17,7 @@ static NSString * const keyFadeInInterval = @"FadeInInterval";
 static NSString * const keyFadeOutInterval = @"FadeOutInterval";
 static NSString * const keyCalendarUIDs = @"CalendarUIDs";
 static NSString * const keyWatchAllCalendars = @"WatchAllCalendars";
+static NSString * const keyTitleLength = @"TitleLength";
 
 
 @implementation IntegerForcingDelegate
@@ -192,6 +193,7 @@ static NSString * const keyWatchAllCalendars = @"WatchAllCalendars";
 	[defaultValues setObject:[NSNumber numberWithInt:3] forKey:keyFadeOutInterval];
 	[defaultValues setObject:[[[NSArray alloc] init] autorelease] forKey:keyCalendarUIDs];
 	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:keyWatchAllCalendars];
+	[defaultValues setObject:[NSNumber numberWithInt:10] forKey:keyTitleLength];
 
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
 }
@@ -274,6 +276,16 @@ static NSString * const keyWatchAllCalendars = @"WatchAllCalendars";
 	}
 }
 
++ (int)prefTitleLength {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	return [defaults integerForKey:keyTitleLength];
+}
+
++ (void)setPrefTitleLength:(int)length {
+	[[NSUserDefaults standardUserDefaults] setInteger:length forKey:keyTitleLength];
+}
+
+
 - (id)init {
 	self = [super initWithWindowNibName:@"Preferences"];
 	ifDelegate = [[IntegerForcingDelegate alloc] init];
@@ -297,6 +309,7 @@ static NSString * const keyWatchAllCalendars = @"WatchAllCalendars";
 - (void)awakeFromNib {
 	[fadeInInterval setDelegate:ifDelegate];
 	[fadeOutInterval setDelegate:ifDelegate];
+	[titleLength setDelegate:ifDelegate];
 	[calendarList setDataSource:calendarListSource];
 	[calendarList reloadData];
 }
@@ -397,6 +410,10 @@ static NSString * const keyWatchAllCalendars = @"WatchAllCalendars";
 		}
 		[PreferencesController setPrefCalendarUIDs:uids];
 	}
+}
+
+- (IBAction)changeTitleLength:(id)sender {
+	[PreferencesController setPrefTitleLength:[titleLength intValue]];
 }
 
 @end
