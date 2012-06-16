@@ -11,7 +11,6 @@
 #import "CalendarModel.h"
 #import "PreferencesController.h"
 #import "PreferencesModel.h"
-#import "AboutController.h"
 #import "JFHotkeyManager.h"
 #import "StatusItemView.h"
 #import "RightmostMenulet.h"
