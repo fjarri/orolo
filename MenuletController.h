@@ -27,6 +27,8 @@
 	IBOutlet NSMenu *theMenu;
 	IBOutlet NSMenuItem *menuFullTitle;
 	IBOutlet NSMenuItem *menuShowRealTime;
+	IBOutlet NSMenuItem *menuConstantlyShowRealTime;
+	IBOutlet NSMenuItem *menuShowTimeTillNextEvent;
 	IBOutlet NSMenuItem	*menuPreferences;
 	IBOutlet NSMenuItem *menuAbout;
 	IBOutlet NSMenuItem *menuQuit;
@@ -55,5 +57,7 @@
 
 - (void)stopShowingRealTime:(NSTimer*)theTimer;
 - (IBAction)actionShowRealTime:(id)sender;
+- (IBAction)actionConstantlyShowRealTime:(id)sender;
+- (IBAction)actionShowTimeTillNextEvent:(id)sender;
 
 @end

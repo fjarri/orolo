@@ -12,6 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="536"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1338,6 +1339,22 @@
 						<reference key="NSOnImage" ref="35465992"/>
 						<reference key="NSMixedImage" ref="502551668"/>
 					</object>
+					<object class="NSMenuItem" id="489482177">
+						<reference key="NSMenu" ref="393496882"/>
+						<string key="NSTitle">Constantly Show Real Time</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
+					<object class="NSMenuItem" id="318053381">
+						<reference key="NSMenu" ref="393496882"/>
+						<string key="NSTitle">Show Time Till Next Event</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
 					<object class="NSMenuItem" id="462022572">
 						<reference key="NSMenu" ref="393496882"/>
 						<bool key="NSIsDisabled">YES</bool>
@@ -2139,6 +2156,38 @@
 						<reference key="destination" ref="866550764"/>
 					</object>
 					<int key="connectionID">602</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menuConstantlyShowRealTime</string>
+						<reference key="source" ref="200809320"/>
+						<reference key="destination" ref="489482177"/>
+					</object>
+					<int key="connectionID">605</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menuShowTimeTillNextEvent</string>
+						<reference key="source" ref="200809320"/>
+						<reference key="destination" ref="318053381"/>
+					</object>
+					<int key="connectionID">606</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">actionConstantlyShowRealTime:</string>
+						<reference key="source" ref="200809320"/>
+						<reference key="destination" ref="489482177"/>
+					</object>
+					<int key="connectionID">607</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">actionShowTimeTillNextEvent:</string>
+						<reference key="source" ref="200809320"/>
+						<reference key="destination" ref="318053381"/>
+					</object>
+					<int key="connectionID">608</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3187,6 +3236,8 @@
 							<reference ref="703641817"/>
 							<reference ref="564867506"/>
 							<reference ref="866550764"/>
+							<reference ref="318053381"/>
+							<reference ref="489482177"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Popup Menu</string>
@@ -3230,6 +3281,18 @@
 						<reference key="object" ref="866550764"/>
 						<reference key="parent" ref="393496882"/>
 						<string key="objectName">About</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">603</int>
+						<reference key="object" ref="318053381"/>
+						<reference key="parent" ref="393496882"/>
+						<string key="objectName">Show Time Till Next Event</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">604</int>
+						<reference key="object" ref="489482177"/>
+						<reference key="parent" ref="393496882"/>
+						<string key="objectName">Constantly Show Real Time </string>
 					</object>
 				</object>
 			</object>
@@ -3464,6 +3527,8 @@
 					<string>570.IBPluginDependency</string>
 					<string>58.IBPluginDependency</string>
 					<string>58.ImportedFromIB2</string>
+					<string>603.IBPluginDependency</string>
+					<string>604.IBPluginDependency</string>
 					<string>72.IBPluginDependency</string>
 					<string>72.ImportedFromIB2</string>
 					<string>73.IBPluginDependency</string>
@@ -3703,7 +3768,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{333, 722}, {159, 123}}</string>
+					<string>{{333, 693}, {236, 163}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3720,6 +3785,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3764,7 +3831,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">602</int>
+			<int key="maxID">608</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3804,12 +3871,16 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>actionAbout:</string>
+							<string>actionConstantlyShowRealTime:</string>
 							<string>actionPreferences:</string>
 							<string>actionQuit:</string>
 							<string>actionShowRealTime:</string>
+							<string>actionShowTimeTillNextEvent:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -3821,14 +3892,20 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>actionAbout:</string>
+							<string>actionConstantlyShowRealTime:</string>
 							<string>actionPreferences:</string>
 							<string>actionQuit:</string>
 							<string>actionShowRealTime:</string>
+							<string>actionShowTimeTillNextEvent:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">actionAbout:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">actionConstantlyShowRealTime:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -3843,6 +3920,10 @@
 								<string key="name">actionShowRealTime:</string>
 								<string key="candidateClassName">id</string>
 							</object>
+							<object class="IBActionInfo">
+								<string key="name">actionShowTimeTillNextEvent:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
@@ -3850,14 +3931,18 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>menuAbout</string>
+							<string>menuConstantlyShowRealTime</string>
 							<string>menuFullTitle</string>
 							<string>menuPreferences</string>
 							<string>menuQuit</string>
 							<string>menuShowRealTime</string>
+							<string>menuShowTimeTillNextEvent</string>
 							<string>theMenu</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
 							<string>NSMenuItem</string>
 							<string>NSMenuItem</string>
 							<string>NSMenuItem</string>
@@ -3871,16 +3956,22 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>menuAbout</string>
+							<string>menuConstantlyShowRealTime</string>
 							<string>menuFullTitle</string>
 							<string>menuPreferences</string>
 							<string>menuQuit</string>
 							<string>menuShowRealTime</string>
+							<string>menuShowTimeTillNextEvent</string>
 							<string>theMenu</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">menuAbout</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">menuConstantlyShowRealTime</string>
 								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -3897,6 +3988,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">menuShowRealTime</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">menuShowTimeTillNextEvent</string>
 								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">

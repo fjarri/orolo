@@ -62,15 +62,29 @@ static float realTimeInterval = 5.0;
 
 	[self setNoEventsStatus];
 
-	// Set a hotkey
+	// Set hotkeys
 	hkm = [[JFHotkeyManager alloc] init];
+
 	[hkm bindKeyRef:1 // 's' key
 	  withModifiers:cmdKey + controlKey
 			 target:self
 			 action:@selector(actionShowRealTime:)];
-
 	[menuShowRealTime setKeyEquivalentModifierMask: NSControlKeyMask | NSCommandKeyMask];
 	[menuShowRealTime setKeyEquivalent:@"s"]; // FIXME: remove hardcode
+
+	[hkm bindKeyRef:0x0E // 'e' key
+	  withModifiers:cmdKey + controlKey
+			 target:self
+			 action:@selector(actionShowTimeTillNextEvent:)];
+	[menuShowTimeTillNextEvent setKeyEquivalentModifierMask: NSControlKeyMask | NSCommandKeyMask];
+	[menuShowTimeTillNextEvent setKeyEquivalent:@"e"]; // FIXME: remove hardcode
+
+	[hkm bindKeyRef:0x11 // 't' key
+	  withModifiers:cmdKey + controlKey
+			 target:self
+			 action:@selector(actionConstantlyShowRealTime:)];
+	[menuConstantlyShowRealTime setKeyEquivalentModifierMask: NSControlKeyMask | NSCommandKeyMask];
+	[menuConstantlyShowRealTime setKeyEquivalent:@"t"]; // FIXME: remove hardcode
 
 
 	calendarModel = [[CalendarModel alloc] init];
@@ -190,6 +204,14 @@ static float realTimeInterval = 5.0;
 
 - (void)setTextStatus:(NSString *)title withColor:(NSColor *)color {
 	[statusItemView setImage:nil withTitle:title withColor:color];
+}
+
+- (IBAction)actionConstantlyShowRealTime:(id)sender {
+	[menuConstantlyShowRealTime setState:![menuConstantlyShowRealTime state]];
+}
+
+- (IBAction)actionShowTimeTillNextEvent:(id)sender {
+
 }
 
 @end
