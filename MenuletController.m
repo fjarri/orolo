@@ -58,7 +58,6 @@ static float realTimeInterval = 5.0;
 	[statusItem setView:statusItemView];
 
 	// Tune menu
-	[statusItem setMenu:theMenu];
 	[theMenu setAutoenablesItems:NO];
 
 	[self setNoEventsStatus];
