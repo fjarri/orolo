@@ -3,7 +3,7 @@
 //  orolo
 //
 //  Created by Bogdan Opanchuk on 9/06/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Bogdan Opanchuk. All rights reserved.
 //
 
 #import <CalendarStore/CalendarStore.h>
@@ -210,7 +210,7 @@
 	[calendarListSource update];
 	if (!enabled) {
 		// setting to enabled because otherwise reloadData: will have no effect
-		[calendarList setEnabled:YES]; 
+		[calendarList setEnabled:YES];
 	}
 	[calendarList reloadData];
 	[calendarList setEnabled:enabled];

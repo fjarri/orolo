@@ -3,7 +3,7 @@
 //  orolo
 //
 //  Created by Bogdan Opanchuk on 15/06/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Bogdan Opanchuk. All rights reserved.
 //
 
 #import "PreferencesModel.h"
@@ -37,7 +37,7 @@ static NSString * const keyTitleLength = @"TitleLength";
 
 + (void)setDefaults {
 	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
-	
+
 	[defaultValues setObject:[NSKeyedArchiver archivedDataWithRootObject:[NSColor redColor]]
 					  forKey:keyFadeInColor];
 	[defaultValues setObject:[NSKeyedArchiver archivedDataWithRootObject:[NSColor blueColor]]
@@ -47,7 +47,7 @@ static NSString * const keyTitleLength = @"TitleLength";
 	[defaultValues setObject:[[[NSArray alloc] init] autorelease] forKey:keyCalendarUIDs];
 	[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:keyWatchAllCalendars];
 	[defaultValues setObject:[NSNumber numberWithInt:10] forKey:keyTitleLength];
-	
+
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
 }
 

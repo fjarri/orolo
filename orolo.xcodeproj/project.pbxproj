@@ -230,6 +230,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Bogdan Opanchuk";
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "orolo" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;

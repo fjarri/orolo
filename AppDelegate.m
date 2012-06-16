@@ -3,7 +3,7 @@
 //  orolo
 //
 //  Created by Bogdan Opanchuk on 29/05/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Bogdan Opanchuk. All rights reserved.
 //
 
 #import "AppDelegate.h"

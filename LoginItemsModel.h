@@ -3,9 +3,9 @@
 //  orolo
 //
 //  Created by Bogdan Opanchuk on 11/06/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Bogdan Opanchuk. All rights reserved.
 //
-//  Code taken from: https://github.com/carpeaqua/Shared-File-List-Example
+//  Based on: https://github.com/carpeaqua/Shared-File-List-Example
 
 #import <Cocoa/Cocoa.h>
 
