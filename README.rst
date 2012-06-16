@@ -21,12 +21,16 @@ Future
 0.0.2
 ~~~~~
 
-- Remove all hardcoding (including hardcoding of the version)
++ Removed all hardcoding (including hardcoding of the version)
++ Added localization (at least remove string hardcoding)
+
 - Hotkey for "Show time till closest event"
 - Add "always real time mode" for cases when one needs to turn off the oven in 20 minutes or something
-- Add localization (at least remove string hardcoding)
 - Set global hotkey for Show Real Time in Preferences
-- Put a link to project page in About
+
+Before release:
+- Remove --tags key from version generator
+- Check if no-restart menulet works in Lion
 
 0.0.1
 ~~~~~
