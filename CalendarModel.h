@@ -17,14 +17,17 @@
 	BOOL isForward; // YES if it is event in the future
 	BOOL isBeginning; // YES if we caught a beginning of the event
 	float fraction; // time from event till now divided by the time interval
+	NSTimeInterval distance; // time in seconds till the event
 }
 
 @property (readonly) CalEvent *event;
 @property (readonly) BOOL isForward;
 @property (readonly) BOOL isBeginning;
 @property (readonly) float fraction;
+@property (readonly) NSTimeInterval distance;
 
-- (CalResult *)initWithEvent:(CalEvent *)ev forward:(BOOL)forward beginning:(BOOL)beginning fraction:(float)frac;
+- (CalResult *)initWithEvent:(CalEvent *)ev forward:(BOOL)forward beginning:(BOOL)beginning
+	fraction:(float)frac distance:(NSTimeInterval)dist;
 
 @end
 

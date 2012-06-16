@@ -16,8 +16,10 @@
 @synthesize isForward;
 @synthesize isBeginning;
 @synthesize fraction;
+@synthesize distance;
 
-- (CalResult *)initWithEvent:(CalEvent *)ev forward:(BOOL)forward beginning:(BOOL)beginning fraction:(float)frac {
+- (CalResult *)initWithEvent:(CalEvent *)ev forward:(BOOL)forward beginning:(BOOL)beginning
+					fraction:(float)frac distance:(NSTimeInterval)dist {
 	self = [super init];
 
 	[ev retain];
@@ -25,6 +27,7 @@
 	isForward = forward;
 	isBeginning = beginning;
 	fraction = frac;
+	distance = dist;
 
 	return self;
 }
@@ -134,7 +137,7 @@
 
 	CalEvent *best_event = nil;
 	BOOL best_beginning = NO;
-	float best_distance = 1e10; // hope that's big enough
+	NSTimeInterval best_distance = 1e10; // hope that's big enough
 
 	for(CalEvent *event in events) {
 		NSDate *close_end = [event performSelector:closeDate];
@@ -159,7 +162,8 @@
 		return [[[CalResult alloc] initWithEvent:best_event
 										 forward:fadeIn
 									   beginning:best_beginning
-										fraction:best_distance / range] autorelease];
+										fraction:best_distance / (float)range
+										distance:best_distance] autorelease];
 	}
 	else {
 		return nil;
