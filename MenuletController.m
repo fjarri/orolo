@@ -38,7 +38,6 @@ static float realTimeInterval = 5.0;
 	[realTimeTimer release];
 	[hkm release];
 	[dateFormatter release];
-	[statusIcon release];
 	[super dealloc];
 }
 
@@ -49,9 +48,6 @@ static float realTimeInterval = 5.0;
 	dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateStyle:NSDateFormatterNoStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-
-	statusIcon = [[NSImage alloc] initWithContentsOfFile:
-				  [[NSBundle mainBundle] pathForResource:@"icon-menubar" ofType:@"png"]];
 
 	statusItem = [[[NSStatusBar systemStatusBar]
 				   statusItemWithLength:NSVariableStatusItemLength]

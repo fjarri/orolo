@@ -38,7 +38,6 @@
 	NSDateFormatter *dateFormatter;
 
 	Boolean showingRealTime;
-	NSImage *statusIcon;
 }
 
 - (void)setNoEventsStatus;
