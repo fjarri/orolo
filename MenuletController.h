@@ -15,12 +15,13 @@
 @class JFHotkeyManager;
 @class CalEvent;
 @class StatusItemView;
+@class RightmostMenulet;
 
 @interface MenuletController : NSObject {
 	PreferencesController *preferencesController;
 	AboutController *aboutController;
 
-	NSStatusItem *statusItem;
+	RightmostMenulet *menulet;
 	StatusItemView *statusItemView;
 
 	IBOutlet NSMenu *theMenu;

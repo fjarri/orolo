@@ -14,6 +14,8 @@
 #import "AboutController.h"
 #import "JFHotkeyManager.h"
 #import "StatusItemView.h"
+#import "RightmostMenulet.h"
+
 
 // TODO: move to preferences?
 static float colorUpdateInterval = 10.0;
@@ -33,7 +35,7 @@ static float realTimeInterval = 5.0;
 	[CalendarModel removeCalendarsObserver:self];
 
 	[calendarModel release];
-    [statusItem release];
+    [menulet release];
 	[colorUpdateTimer release];
 	[realTimeTimer release];
 	[hkm release];
@@ -49,13 +51,12 @@ static float realTimeInterval = 5.0;
 	[dateFormatter setDateStyle:NSDateFormatterNoStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 
-	statusItem = [[[NSStatusBar systemStatusBar]
-				   statusItemWithLength:NSVariableStatusItemLength]
-				  retain];
+	menulet = [[[RightmostMenulet alloc] init] retain];
 	statusItemView = [[[StatusItemView alloc] init] retain];
-	statusItemView.statusItem = statusItem;
+	// FIXME: do view and menulet really need to reference each other?
+	statusItemView.statusItem = menulet.statusItem;
 	[statusItemView setMenu:theMenu];
-	[statusItem setView:statusItemView];
+	[menulet.statusItem setView:statusItemView];
 
 	// Tune menu
 	[theMenu setAutoenablesItems:NO];

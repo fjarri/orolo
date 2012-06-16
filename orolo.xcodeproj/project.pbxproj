@@ -16,6 +16,7 @@
 		43DC6124158B855000ADE8D9 /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 43DC6123158B855000ADE8D9 /* app.icns */; };
 		43DC6164158B8D8D00ADE8D9 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43DC6163158B8D8D00ADE8D9 /* Preferences.xib */; };
 		43DC6170158C1C5A00ADE8D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43DC616F158C1C5A00ADE8D9 /* Localizable.strings */; };
+		43DC6201158C518200ADE8D9 /* RightmostMenulet.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DC6200158C518200ADE8D9 /* RightmostMenulet.m */; };
 		43F20EE315822A7B001EB39A /* JFHotkeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F20EE115822A7B001EB39A /* JFHotkeyManager.m */; };
 		43F20F0115822BFD001EB39A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F20F0015822BFD001EB39A /* Carbon.framework */; };
 		43F210DB15831E11001EB39A /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F210DA15831E11001EB39A /* PreferencesController.m */; };
@@ -49,6 +50,8 @@
 		43DC6082158B6A2C00ADE8D9 /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesModel.m; sourceTree = "<group>"; };
 		43DC6123158B855000ADE8D9 /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = app.icns; sourceTree = "<group>"; };
 		43DC616D158C1C4E00ADE8D9 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43DC61FF158C518200ADE8D9 /* RightmostMenulet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightmostMenulet.h; sourceTree = "<group>"; };
+		43DC6200158C518200ADE8D9 /* RightmostMenulet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightmostMenulet.m; sourceTree = "<group>"; };
 		43F20EE015822A7B001EB39A /* JFHotkeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHotkeyManager.h; sourceTree = "<group>"; };
 		43F20EE115822A7B001EB39A /* JFHotkeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHotkeyManager.m; sourceTree = "<group>"; };
 		43F20F0015822BFD001EB39A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -96,6 +99,8 @@
 				43F210DA15831E11001EB39A /* PreferencesController.m */,
 				43F210ED158321EA001EB39A /* AboutController.h */,
 				43F210EE158321EA001EB39A /* AboutController.m */,
+				43DC61FF158C518200ADE8D9 /* RightmostMenulet.h */,
+				43DC6200158C518200ADE8D9 /* RightmostMenulet.m */,
 				437CFB2F15750ED400B8BE1E /* MenuletController.h */,
 				437CFB3015750ED400B8BE1E /* MenuletController.m */,
 				43F211F5158420F8001EB39A /* StatusItemView.h */,
@@ -256,6 +261,7 @@
 				43F211F7158420F8001EB39A /* StatusItemView.m in Sources */,
 				43F214FE1585B1B9001EB39A /* LoginItemsModel.m in Sources */,
 				43DC6083158B6A2C00ADE8D9 /* PreferencesModel.m in Sources */,
+				43DC6201158C518200ADE8D9 /* RightmostMenulet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
