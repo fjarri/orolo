@@ -138,8 +138,12 @@ static float realTimeInterval = 5.0;
 			event_title = full_event_title;
 		}
 
-		NSString *type_marker = [closest_event isBeginning] ? @"Starts: " : @"Ends: "; // FIXME: remove hardcoding
-		NSString *type_symbol = [NSString stringWithFormat:@"%C ", [closest_event isBeginning] ? 0x25B8 : 0x25A0];
+		NSString *type_marker = [closest_event isBeginning] ?
+			NSLocalizedString(@"Starts: ", nil) :
+			NSLocalizedString(@"Ends: ", nil);
+		NSString *type_symbol = [closest_event isBeginning] ?
+			NSLocalizedString(@"START_SYMBOL", nil) :
+			NSLocalizedString(@"STOP_SYMBOL", nil);
 
 		[self setTextStatus:[type_symbol stringByAppendingString:event_title] withColor:color];
 		[menuFullTitle setTitle:[type_marker stringByAppendingString:full_event_title]];
@@ -187,9 +191,9 @@ static float realTimeInterval = 5.0;
 
 - (void)setNoEventsStatus {
 	[statusItemView setImage:nil
-				   withTitle:[NSString stringWithFormat:@"%C", 0x221E]
+				   withTitle:NSLocalizedString(@"NO_EVENTS_SYMBOL", nil)
 				   withColor:[NSColor controlTextColor]];
-	[menuFullTitle setTitle:@"<No events>"]; // FIXME: remove hardcoding
+	[menuFullTitle setTitle:NSLocalizedString(@"<No events>", nil)];
 }
 
 - (void)setTextStatus:(NSString *)title withColor:(NSColor *)color {

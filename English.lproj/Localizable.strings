@@ -1,0 +1,14 @@
+/*
+   Localizable.strings
+   orolo
+
+   Created by Bogdan Opanchuk on 16/06/12.
+   Copyright 2012 __MyCompanyName__. All rights reserved.
+ */
+
+"<No events>" = "<No events>";
+"Starts: " = "Starts: ";
+"Ends: " = "Ends: ";
+"START_SYMBOL" = "▸ ";
+"STOP_SYMBOL" = "■ ";
+"NO_EVENTS_SYMBOL" = "∞";
