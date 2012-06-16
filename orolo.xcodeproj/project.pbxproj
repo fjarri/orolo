@@ -6,6 +6,20 @@
 	objectVersion = 45;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		43DC63AB158C9E5F00ADE8D9 /* Generate version */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 43DC63AE158C9E8100ADE8D9 /* Build configuration list for PBXAggregateTarget "Generate version" */;
+			buildPhases = (
+				43DC63AA158C9E5F00ADE8D9 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Generate version";
+			productName = "Generate version";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* Main.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */; };
@@ -17,11 +31,10 @@
 		43DC6164158B8D8D00ADE8D9 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43DC6163158B8D8D00ADE8D9 /* Preferences.xib */; };
 		43DC6170158C1C5A00ADE8D9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43DC616F158C1C5A00ADE8D9 /* Localizable.strings */; };
 		43DC6201158C518200ADE8D9 /* RightmostMenulet.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DC6200158C518200ADE8D9 /* RightmostMenulet.m */; };
+		43DC638D158C97EA00ADE8D9 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 43DC638C158C97EA00ADE8D9 /* Credits.html */; };
 		43F20EE315822A7B001EB39A /* JFHotkeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F20EE115822A7B001EB39A /* JFHotkeyManager.m */; };
 		43F20F0115822BFD001EB39A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F20F0015822BFD001EB39A /* Carbon.framework */; };
 		43F210DB15831E11001EB39A /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F210DA15831E11001EB39A /* PreferencesController.m */; };
-		43F210EF158321EA001EB39A /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F210EE158321EA001EB39A /* AboutController.m */; };
-		43F2111915832753001EB39A /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F2111815832753001EB39A /* About.xib */; };
 		43F211F7158420F8001EB39A /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F211F6158420F8001EB39A /* StatusItemView.m */; };
 		43F214FE1585B1B9001EB39A /* LoginItemsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F214FD1585B1B9001EB39A /* LoginItemsModel.m */; };
 		43F815B41575204A00BD214A /* README.rst in Resources */ = {isa = PBXBuildFile; fileRef = 43F815B31575204A00BD214A /* README.rst */; };
@@ -29,6 +42,16 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		43DC63AF158C9E8300ADE8D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43DC63AB158C9E5F00ADE8D9 /* Generate version */;
+			remoteInfo = "Generate version";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -52,15 +75,13 @@
 		43DC616D158C1C4E00ADE8D9 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		43DC61FF158C518200ADE8D9 /* RightmostMenulet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightmostMenulet.h; sourceTree = "<group>"; };
 		43DC6200158C518200ADE8D9 /* RightmostMenulet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightmostMenulet.m; sourceTree = "<group>"; };
+		43DC638C158C97EA00ADE8D9 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		43F20EE015822A7B001EB39A /* JFHotkeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFHotkeyManager.h; sourceTree = "<group>"; };
 		43F20EE115822A7B001EB39A /* JFHotkeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHotkeyManager.m; sourceTree = "<group>"; };
 		43F20F0015822BFD001EB39A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		43F210D915831E11001EB39A /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		43F210DA15831E11001EB39A /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
-		43F210ED158321EA001EB39A /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
-		43F210EE158321EA001EB39A /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		43F2110515832363001EB39A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
-		43F2111815832753001EB39A /* About.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = About.xib; sourceTree = "<group>"; };
 		43F211F5158420F8001EB39A /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
 		43F211F6158420F8001EB39A /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
 		43F214FC1585B1B9001EB39A /* LoginItemsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItemsModel.h; sourceTree = "<group>"; };
@@ -97,8 +118,6 @@
 				4397DAC01575FBF7001FF33A /* CalendarModel.m */,
 				43F210D915831E11001EB39A /* PreferencesController.h */,
 				43F210DA15831E11001EB39A /* PreferencesController.m */,
-				43F210ED158321EA001EB39A /* AboutController.h */,
-				43F210EE158321EA001EB39A /* AboutController.m */,
 				43DC61FF158C518200ADE8D9 /* RightmostMenulet.h */,
 				43DC6200158C518200ADE8D9 /* RightmostMenulet.m */,
 				437CFB2F15750ED400B8BE1E /* MenuletController.h */,
@@ -163,13 +182,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				43DC638C158C97EA00ADE8D9 /* Credits.html */,
 				43DC6123158B855000ADE8D9 /* app.icns */,
 				43F815B31575204A00BD214A /* README.rst */,
 				8D1107310486CEB800E47090 /* orolo-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* Main.xib */,
 				43DC6163158B8D8D00ADE8D9 /* Preferences.xib */,
-				43F2111815832753001EB39A /* About.xib */,
 				43DC616F158C1C5A00ADE8D9 /* Localizable.strings */,
 			);
 			name = Resources;
@@ -198,6 +217,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				43DC63B0158C9E8300ADE8D9 /* PBXTargetDependency */,
 			);
 			name = orolo;
 			productInstallPath = "$(HOME)/Applications";
@@ -225,6 +245,7 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* orolo */,
+				43DC63AB158C9E5F00ADE8D9 /* Generate version */,
 			);
 		};
 /* End PBXProject section */
@@ -238,13 +259,29 @@
 				1DDD58160DA1D0A300B32029 /* Main.xib in Resources */,
 				43F815B41575204A00BD214A /* README.rst in Resources */,
 				43DC6164158B8D8D00ADE8D9 /* Preferences.xib in Resources */,
-				43F2111915832753001EB39A /* About.xib in Resources */,
 				43DC6124158B855000ADE8D9 /* app.icns in Resources */,
 				43DC6170158C1C5A00ADE8D9 /* Localizable.strings in Resources */,
+				43DC638D158C97EA00ADE8D9 /* Credits.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		43DC63AA158C9E5F00ADE8D9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "python - <<EOF\nimport os\nimport re\nimport subprocess\n\n# FIXME: remove hardcoded git revision\nfull_version = subprocess.Popen(\"cd $PROJECT_DIR; /usr/local/git/bin/git describe --tags\", \n\tstdout=subprocess.PIPE, shell=True).communicate()[0].strip()\n\nm = re.match(r'^(.*)-\\d+-([a-z0-9]+)$', full_version)\nif m is not None:\n    short_ver = m.group(1)\n    long_ver = 'dev-' + m.group(2)\nelse:\n    short_ver = full_version\n    long_ver = ''\n\nf = open(os.path.join(os.environ['PROJECT_DIR'], 'InfoPlist.h'), 'w')\nf.write(\"\"\"#define LONG_VERSION {long_ver}\n#define SHORT_VERSION {short_ver}\n\"\"\".format(long_ver=long_ver, short_ver=short_ver))\nf.close()\nos.system('touch orolo-Info.plist')\nEOF";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
@@ -257,7 +294,6 @@
 				4397DAC11575FBF7001FF33A /* CalendarModel.m in Sources */,
 				43F20EE315822A7B001EB39A /* JFHotkeyManager.m in Sources */,
 				43F210DB15831E11001EB39A /* PreferencesController.m in Sources */,
-				43F210EF158321EA001EB39A /* AboutController.m in Sources */,
 				43F211F7158420F8001EB39A /* StatusItemView.m in Sources */,
 				43F214FE1585B1B9001EB39A /* LoginItemsModel.m in Sources */,
 				43DC6083158B6A2C00ADE8D9 /* PreferencesModel.m in Sources */,
@@ -266,6 +302,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		43DC63B0158C9E8300ADE8D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43DC63AB158C9E5F00ADE8D9 /* Generate version */;
+			targetProxy = 43DC63AF158C9E8300ADE8D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
@@ -303,6 +347,27 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		43DC63AC158C9E5F00ADE8D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Generate version";
+			};
+			name = Debug;
+		};
+		43DC63AD158C9E5F00ADE8D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Generate version";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -315,6 +380,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = orolo_Prefix.pch;
 				INFOPLIST_FILE = "orolo-Info.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = InfoPlist.h;
+				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = orolo;
 			};
@@ -329,6 +397,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = orolo_Prefix.pch;
 				INFOPLIST_FILE = "orolo-Info.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = InfoPlist.h;
+				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = orolo;
 			};
@@ -364,6 +435,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		43DC63AE158C9E8100ADE8D9 /* Build configuration list for PBXAggregateTarget "Generate version" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43DC63AC158C9E5F00ADE8D9 /* Debug */,
+				43DC63AD158C9E5F00ADE8D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "orolo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

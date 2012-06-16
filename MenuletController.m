@@ -157,10 +157,7 @@ static float realTimeInterval = 5.0;
 }
 
 - (IBAction)actionAbout:(id)sender {
-	if (!aboutController) {
-		aboutController = [[AboutController alloc] init];
-	}
-	[aboutController showWindow:self];
+	[NSApp orderFrontStandardAboutPanel:sender];
 }
 
 - (IBAction)actionQuit:(id)sender {
