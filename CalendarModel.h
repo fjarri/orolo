@@ -45,6 +45,7 @@
 - (id) init;
 - (NSArray *)calendars;
 - (NSArray *)watchedCalendars;
+- (CalResult *)closestFutureEvent;
 - (CalResult *)closestEvent;
 - (CalResult *)closestEventInRange:(int)range fadeIn:(BOOL)fadeIn calendars:(NSArray *)cldrs;
 

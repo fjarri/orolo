@@ -121,6 +121,11 @@
 	return [self closestEventInRange:fadeOutInterval fadeIn:NO calendars:cldrs];
 }
 
+- (CalResult *)closestFutureEvent {
+	NSArray *cldrs = [self watchedCalendars];
+	return [self closestEventInRange:24 * 60 fadeIn:YES calendars:cldrs];
+}
+
 - (CalResult *)closestEventInRange:(int)range fadeIn:(BOOL)fadeIn calendars:(NSArray *)cldrs {
 
 	float time_direction = fadeIn ? 1 : -1;
