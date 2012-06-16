@@ -17,12 +17,23 @@
 @class StatusItemView;
 @class RightmostMenulet;
 
+
+typedef enum {
+	MenuletShowingEvents,
+	MenuletShowingTimeBriefly,
+	MenuletShowingTimeConstantly,
+	MenuletShowingTimeRemaining
+} MenuletState;
+
+
 @interface MenuletController : NSObject {
 	PreferencesController *preferencesController;
 	AboutController *aboutController;
 
 	RightmostMenulet *menulet;
 	StatusItemView *statusItemView;
+
+	MenuletState menuletState;
 
 	IBOutlet NSMenu *theMenu;
 	IBOutlet NSMenuItem *menuFullTitle;
@@ -39,8 +50,6 @@
 	JFHotkeyManager *hkm;
 
 	NSDateFormatter *dateFormatter;
-
-	Boolean showingRealTime;
 }
 
 - (void)setNoEventsStatus;

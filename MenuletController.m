@@ -43,7 +43,7 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)awakeFromNib {
-	showingRealTime = NO;
+	menuletState = MenuletShowingEvents;
 
 	// prepare date formatter
 	dateFormatter = [[NSDateFormatter alloc] init];
@@ -119,14 +119,15 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)updateStatus {
-	if (showingRealTime) {
-		[self setTextStatus:[dateFormatter stringFromDate:[NSDate date]] withColor:[NSColor blackColor]];
-		return;
-	}
+	if (menuletState == MenuletShowingEvents) {
 
-	CalResult *closest_event = [calendarModel closestEvent];
+		CalResult *closest_event = [calendarModel closestEvent];
 
-	if (closest_event) {
+		if (!closest_event) {
+			[self setNoEventsStatus];
+			return;
+		}
+
 		float fraction = [closest_event fraction];
 
 		NSColor *target_color = [closest_event isForward] ?
@@ -157,8 +158,25 @@ static float realTimeInterval = 5.0;
 		[self setTextStatus:[type_symbol stringByAppendingString:event_title] withColor:color];
 		[menuFullTitle setTitle:[type_marker stringByAppendingString:full_event_title]];
 	}
+	else if (menuletState == MenuletShowingTimeRemaining) {
+		CalResult *closest_event = [calendarModel closestFutureEvent];
+		if(!closest_event) {
+			[self setTextStatus:NSLocalizedString(@">day", nil)
+					  withColor:[NSColor controlTextColor]];
+		}
+		int hours = [closest_event distance] / 60.0;
+		int minutes = [closest_event distance] - hours * 60;
+		NSString *status;
+		if (hours == 0) {
+			status = [NSString stringWithFormat:NSLocalizedString(@"~%d minutes", nil), minutes];
+		}
+		else {
+			status = [NSString stringWithFormat:NSLocalizedString(@"~%d hours", nil), hours];
+		}
+		[self setTextStatus:status withColor:[NSColor controlTextColor]];
+	}
 	else {
-		[self setNoEventsStatus];
+		[self setTextStatus:[dateFormatter stringFromDate:[NSDate date]] withColor:[NSColor controlTextColor]];
 	}
 }
 
@@ -178,13 +196,13 @@ static float realTimeInterval = 5.0;
 }
 
 - (void)stopShowingRealTime:(NSTimer*)theTimer {
-	showingRealTime = NO;
+	menuletState = MenuletShowingEvents;
 	[self updateStatus];
 }
 
 - (IBAction)actionShowRealTime:(id)sender {
-	if (!showingRealTime) {
-		showingRealTime = YES;
+	if (menuletState == MenuletShowingEvents) {
+		menuletState = MenuletShowingTimeBriefly;
 		realTimeTimer = [NSTimer
 						  scheduledTimerWithTimeInterval:realTimeInterval
 						  target:self
