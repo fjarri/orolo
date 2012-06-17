@@ -7,6 +7,7 @@
 //
 
 #import "RightmostMenulet.h"
+#import <CoreServices/CoreServices.h>
 
 static const int RightmostPriority = INT_MAX - 1; // INT_MAX seems to be the priority of Spotlight
 
@@ -93,8 +94,21 @@ static const int RightmostPriority = INT_MAX - 1; // INT_MAX seems to be the pri
 - (RightmostMenulet *)init {
 	self = [super init];
 
+	// Get OS version
+	SInt32 major = 0;
+	SInt32 minor = 0;
+	Gestalt(gestaltSystemVersionMajor, &major);
+	Gestalt(gestaltSystemVersionMinor, &minor);
+
 	// try to apply private API
-	statusItem = [self itemWithoutRestart];
+	if ((major == 10 && minor > 6) || major >= 11) {
+		// no-restart method does not work on Lion
+		statusItem = [self itemWithRestart];
+	}
+	else {
+		statusItem = [self itemWithoutRestart];
+	}
+
 	if (!statusItem) {
 		// fallback to usual non-rightmost item
 		statusItem = [self itemFallback];
