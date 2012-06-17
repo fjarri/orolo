@@ -12,3 +12,6 @@
 "START_SYMBOL" = "▸ ";
 "STOP_SYMBOL" = "■ ";
 "NO_EVENTS_SYMBOL" = "∞";
+">day" = ">day";
+"~%d minutes" = "~%d minutes";
+"~%d hours" = "~%d hours";
