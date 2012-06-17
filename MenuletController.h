@@ -1,5 +1,5 @@
 //
-//  oroloMenulet.h
+//  MenuletController.h
 //  orolo
 //
 //  Created by Bogdan Opanchuk on 30/05/12.

@@ -1,5 +1,5 @@
 //
-//  oroloAppDelegate.h
+//  AppDelegate.h
 //  orolo
 //
 //  Created by Bogdan Opanchuk on 29/05/12.
