@@ -17,8 +17,8 @@
 
 
 // TODO: move to preferences?
-static float colorUpdateInterval = 10.0;
-static float realTimeInterval = 5.0;
+static float colorUpdateInterval = 10.0; // interval for color update in Show Events mode
+static float briefShowInterval = 5.0; // interval for briefly showing some info in status
 
 
 @implementation MenuletController
@@ -35,15 +35,16 @@ static float realTimeInterval = 5.0;
 
 	[calendarModel release];
     [menulet release];
-	[colorUpdateTimer release];
-	[realTimeTimer release];
+	[constantUpdateTimer invalidate];
+
 	[hkm release];
 	[dateFormatter release];
 	[super dealloc];
 }
 
 - (void)awakeFromNib {
-	menuletState = MenuletShowingEvents;
+	menuletMode = MenuletModeEvents;
+	menuletState = MenuletStateMode;
 
 	// prepare date formatter
 	dateFormatter = [[NSDateFormatter alloc] init];
@@ -88,22 +89,16 @@ static float realTimeInterval = 5.0;
 
 
 	calendarModel = [[CalendarModel alloc] init];
+	[self updateStatus];
 
-	colorUpdateTimer = [[NSTimer
-					scheduledTimerWithTimeInterval:colorUpdateInterval
-					target:self
-					selector:@selector(updateColor:)
-					userInfo:nil
-					repeats:YES]
-				   retain];
-	[colorUpdateTimer fire];
+	constantUpdateTimer = nil;
+	[self setTimerForMode];
 
 	// prepare notifications
 	[CalendarModel addEventsObserver:self selector:@selector(calendarsChanged:)];
 	[CalendarModel addCalendarsObserver:self selector:@selector(calendarsChanged:)];
 	[PreferencesModel addObserver:self selector:@selector(preferencesChanged:)];
 
-	[self updateStatus];
 }
 
 - (void)preferencesChanged:(NSNotification *)notification {
@@ -114,12 +109,43 @@ static float realTimeInterval = 5.0;
 	[self updateStatus];
 }
 
+- (void)setTimerForMode {
+	[constantUpdateTimer invalidate];
+	if (menuletMode == MenuletModeEvents) {
+		constantUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:colorUpdateInterval
+															   target:self
+															 selector:@selector(updateColor:)
+															 userInfo:nil
+															  repeats:YES];
+	}
+	else {
+		// calculate the closest date with whole number of minutes
+		NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+		NSUInteger comp_flags = NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit
+			| NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
+		NSDateComponents *components = [gregorian components:comp_flags
+													fromDate:[NSDate date]];
+		[components setMinute:[components minute] + 1]; // hours and other greater units will update automatically
+		NSDate *date = [gregorian dateFromComponents:components];
+		[gregorian release];
+
+		constantUpdateTimer = [[[NSTimer alloc] initWithFireDate:date
+													   interval:60
+														 target:self
+													   selector:@selector(updateColor:)
+													   userInfo:nil
+														repeats:YES] autorelease];
+		[[NSRunLoop currentRunLoop] addTimer:constantUpdateTimer
+									 forMode:NSDefaultRunLoopMode];
+	}
+}
+
 - (void)updateColor:(NSTimer*)theTimer {
 	[self updateStatus];
 }
 
 - (void)updateStatus {
-	if (menuletState == MenuletShowingEvents) {
+	if (menuletMode == MenuletModeEvents && menuletState == MenuletStateMode) {
 
 		CalResult *closest_event = [calendarModel closestEvent];
 
@@ -158,7 +184,7 @@ static float realTimeInterval = 5.0;
 		[self setTextStatus:[type_symbol stringByAppendingString:event_title] withColor:color];
 		[menuFullTitle setTitle:[type_marker stringByAppendingString:full_event_title]];
 	}
-	else if (menuletState == MenuletShowingTimeRemaining) {
+	else if (menuletState == MenuletStateTimeRemaining) {
 		CalResult *closest_event = [calendarModel closestFutureEvent];
 		if(!closest_event) {
 			[self setTextStatus:NSLocalizedString(@">day", nil)
@@ -195,20 +221,45 @@ static float realTimeInterval = 5.0;
 	[NSApp terminate:sender];
 }
 
-- (void)stopShowingRealTime:(NSTimer*)theTimer {
-	menuletState = MenuletShowingEvents;
+- (void)restoreStateToMode:(NSTimer*)theTimer {
+	menuletState = MenuletStateMode;
 	[self updateStatus];
 }
 
 - (IBAction)actionShowRealTime:(id)sender {
-	if (menuletState == MenuletShowingEvents) {
-		menuletState = MenuletShowingTimeBriefly;
-		realTimeTimer = [NSTimer
-						  scheduledTimerWithTimeInterval:realTimeInterval
+	if (menuletMode == MenuletModeEvents && menuletState == MenuletStateMode) {
+		menuletState = MenuletStateTimeBriefly;
+		briefStatusTimer = [NSTimer
+						  scheduledTimerWithTimeInterval:briefShowInterval
 						  target:self
-						  selector:@selector(stopShowingRealTime:)
+						selector:@selector(restoreStateToMode:)
 						  userInfo:nil
 						  repeats:NO];
+		[self updateStatus];
+	}
+}
+
+- (IBAction)actionConstantlyShowRealTime:(id)sender {
+	[menuConstantlyShowRealTime setState:![menuConstantlyShowRealTime state]];
+	if (menuletMode == MenuletModeEvents) {
+		menuletMode = MenuletModeTime;
+	}
+	else {
+		menuletMode = MenuletModeEvents;
+	}
+	[self setTimerForMode];
+	[self updateStatus];
+}
+
+- (IBAction)actionShowTimeTillNextEvent:(id)sender {
+	if (menuletState == MenuletStateMode) {
+		menuletState = MenuletStateTimeRemaining;
+		briefStatusTimer = [NSTimer
+							scheduledTimerWithTimeInterval:briefShowInterval
+							target:self
+							selector:@selector(restoreStateToMode:)
+							userInfo:nil
+							repeats:NO];
 		[self updateStatus];
 	}
 }
@@ -222,14 +273,6 @@ static float realTimeInterval = 5.0;
 
 - (void)setTextStatus:(NSString *)title withColor:(NSColor *)color {
 	[statusItemView setImage:nil withTitle:title withColor:color];
-}
-
-- (IBAction)actionConstantlyShowRealTime:(id)sender {
-	[menuConstantlyShowRealTime setState:![menuConstantlyShowRealTime state]];
-}
-
-- (IBAction)actionShowTimeTillNextEvent:(id)sender {
-
 }
 
 @end

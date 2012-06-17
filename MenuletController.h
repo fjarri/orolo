@@ -19,10 +19,14 @@
 
 
 typedef enum {
-	MenuletShowingEvents,
-	MenuletShowingTimeBriefly,
-	MenuletShowingTimeConstantly,
-	MenuletShowingTimeRemaining
+	MenuletModeEvents, // showing events
+	MenuletModeTime // showing current time
+} MenuletMode;
+
+typedef enum {
+	MenuletStateMode, // normal state, showing things for current mode
+	MenuletStateTimeBriefly, // briefly showing current time
+	MenuletStateTimeRemaining // briefly showing time remaining till the closest event
 } MenuletState;
 
 
@@ -33,6 +37,7 @@ typedef enum {
 	RightmostMenulet *menulet;
 	StatusItemView *statusItemView;
 
+	MenuletMode menuletMode;
 	MenuletState menuletState;
 
 	IBOutlet NSMenu *theMenu;
@@ -44,13 +49,16 @@ typedef enum {
 	IBOutlet NSMenuItem *menuAbout;
 	IBOutlet NSMenuItem *menuQuit;
 
-	NSTimer *colorUpdateTimer;
-	NSTimer *realTimeTimer;
+	NSTimer *briefStatusTimer;
+	NSTimer *constantUpdateTimer;
+
 	CalendarModel *calendarModel;
 	JFHotkeyManager *hkm;
 
 	NSDateFormatter *dateFormatter;
 }
+
+- (void)setTimerForMode;
 
 - (void)setNoEventsStatus;
 - (void)setTextStatus:(NSString *)title withColor:(NSColor *)color;
@@ -64,7 +72,7 @@ typedef enum {
 - (IBAction)actionAbout:(id)sender;
 - (IBAction)actionQuit:(id)sender;
 
-- (void)stopShowingRealTime:(NSTimer*)theTimer;
+- (void)restoreStateToMode:(NSTimer*)theTimer;
 - (IBAction)actionShowRealTime:(id)sender;
 - (IBAction)actionConstantlyShowRealTime:(id)sender;
 - (IBAction)actionShowTimeTillNextEvent:(id)sender;
