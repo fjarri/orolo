@@ -23,10 +23,8 @@ Future
 
 + Removed all hardcoding (including hardcoding of the version)
 + Added localization (at least remove string hardcoding)
-
-- Hotkey for "Show time till closest event"
-- Add "always real time mode" for cases when one needs to turn off the oven in 20 minutes or something
-- Set global hotkey for Show Real Time in Preferences
++ Added "Show time till closest event" and "Always real time" mode
+- Set global hotkeys in Preferences
 
 Before release:
 - Remove --tags key from version generator
