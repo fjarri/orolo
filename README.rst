@@ -18,6 +18,7 @@ Future
 - Make text in status bar more aesthetical
 - Use sliders for intervals in Preferences?
 - Set global hotkeys in Preferences
+- Fix possible bug when the timer for Constant Real Time may not be initialized if the call is very close to the whole minute border
 
 1.0.0
 ~~~~~
