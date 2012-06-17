@@ -95,18 +95,10 @@ static float briefShowInterval = 5.0; // interval for briefly showing some info 
 	[self setTimerForMode];
 
 	// prepare notifications
-	[CalendarModel addEventsObserver:self selector:@selector(calendarsChanged:)];
-	[CalendarModel addCalendarsObserver:self selector:@selector(calendarsChanged:)];
-	[PreferencesModel addObserver:self selector:@selector(preferencesChanged:)];
+	[CalendarModel addEventsObserver:self selector:@selector(updateStatus)];
+	[CalendarModel addCalendarsObserver:self selector:@selector(updateStatus)];
+	[PreferencesModel addObserver:self selector:@selector(updateStatus)];
 
-}
-
-- (void)preferencesChanged:(NSNotification *)notification {
-	[self updateStatus];
-}
-
-- (void)calendarsChanged:(NSNotification *)notification {
-	[self updateStatus];
 }
 
 - (void)setTimerForMode {
@@ -114,7 +106,7 @@ static float briefShowInterval = 5.0; // interval for briefly showing some info 
 	if (menuletMode == MenuletModeEvents) {
 		constantUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:colorUpdateInterval
 															   target:self
-															 selector:@selector(updateColor:)
+															 selector:@selector(updateStatus)
 															 userInfo:nil
 															  repeats:YES];
 	}
@@ -132,16 +124,12 @@ static float briefShowInterval = 5.0; // interval for briefly showing some info 
 		constantUpdateTimer = [[[NSTimer alloc] initWithFireDate:date
 													   interval:60
 														 target:self
-													   selector:@selector(updateColor:)
+													   selector:@selector(updateStatus)
 													   userInfo:nil
 														repeats:YES] autorelease];
 		[[NSRunLoop currentRunLoop] addTimer:constantUpdateTimer
 									 forMode:NSDefaultRunLoopMode];
 	}
-}
-
-- (void)updateColor:(NSTimer*)theTimer {
-	[self updateStatus];
 }
 
 - (void)updateStatus {

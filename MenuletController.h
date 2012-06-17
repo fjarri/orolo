@@ -63,9 +63,6 @@ typedef enum {
 - (void)setNoEventsStatus;
 - (void)setTextStatus:(NSString *)title withColor:(NSColor *)color;
 
-- (void)preferencesChanged:(NSNotification *)notification;
-- (void)calendarsChanged:(NSNotification *)notification;
-- (void)updateColor:(NSTimer*)theTimer;
 - (void)updateStatus;
 
 - (IBAction)actionPreferences:(id)sender;
