@@ -177,9 +177,10 @@ static float briefShowInterval = 5.0; // interval for briefly showing some info 
 		if(!closest_event) {
 			[self setTextStatus:NSLocalizedString(@">day", nil)
 					  withColor:[NSColor controlTextColor]];
+			return;
 		}
-		int hours = [closest_event distance] / 60.0;
-		int minutes = [closest_event distance] - hours * 60;
+		int hours = [closest_event distance] / (60 * 60);
+		int minutes = ([closest_event distance] - hours * 60 * 60) / 60;
 		NSString *status;
 		if (hours == 0) {
 			status = [NSString stringWithFormat:NSLocalizedString(@"~%d minutes", nil), minutes];
