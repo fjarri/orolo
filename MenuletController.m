@@ -66,19 +66,19 @@ static float briefShowInterval = 5.0; // interval for briefly showing some info 
 	// Set hotkeys
 	hkm = [[JFHotkeyManager alloc] init];
 
-	[hkm bindKeyRef:1 // 's' key
+	[hkm bindKeyRef:0x01 // 's' key
 	  withModifiers:cmdKey + controlKey
 			 target:self
 			 action:@selector(actionShowRealTime:)];
 	[menuShowRealTime setKeyEquivalentModifierMask: NSControlKeyMask | NSCommandKeyMask];
 	[menuShowRealTime setKeyEquivalent:@"s"]; // FIXME: remove hardcode
 
-	[hkm bindKeyRef:0x0E // 'e' key
+	[hkm bindKeyRef:0x0F // 'r' key
 	  withModifiers:cmdKey + controlKey
 			 target:self
 			 action:@selector(actionShowTimeTillNextEvent:)];
 	[menuShowTimeTillNextEvent setKeyEquivalentModifierMask: NSControlKeyMask | NSCommandKeyMask];
-	[menuShowTimeTillNextEvent setKeyEquivalent:@"e"]; // FIXME: remove hardcode
+	[menuShowTimeTillNextEvent setKeyEquivalent:@"r"]; // FIXME: remove hardcode
 
 	[hkm bindKeyRef:0x11 // 't' key
 	  withModifiers:cmdKey + controlKey
