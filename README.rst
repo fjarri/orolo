@@ -22,8 +22,8 @@ Future
 1.0.0
 ~~~~~
 
-- Removed all hardcoding (including hardcoding of the version)
-- Added localization (at least remove string hardcoding)
+- Removed all hardcoding
+- Added localization stub
 - Added "Show time till closest event" and "Always real time" mode
 - Placing menu item to the right of the clock
 
