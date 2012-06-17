@@ -86,7 +86,7 @@
 		43F211F6158420F8001EB39A /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
 		43F214FC1585B1B9001EB39A /* LoginItemsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItemsModel.h; sourceTree = "<group>"; };
 		43F214FD1585B1B9001EB39A /* LoginItemsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginItemsModel.m; sourceTree = "<group>"; };
-		43F815B31575204A00BD214A /* README.rst */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.rst; sourceTree = "<group>"; };
+		43F815B31575204A00BD214A /* README.rst */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.rst; sourceTree = "<group>"; wrapsLines = 1; };
 		8D1107310486CEB800E47090 /* orolo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "orolo-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* orolo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orolo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */

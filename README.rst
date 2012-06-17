@@ -1,8 +1,9 @@
 Orolo, yet another clock menulet
 ================================
 
-Idea: does not show you anything until there is something in your iCal nearby.
-Then it shows the event and slowly changes color to red.
+The menulet does not show anything until there is something in your iCal nearby (either a start or the end of the event).
+Then it shows the event title and slowly changes its color from black to user defined (fade-in), and after the event has passed, back to black (fade-out).
+In addition, by hotkey you can briefly look at current time, look how long it is untill the closest event in the future (not further than a day), and switch to a real-time mode, when the menulet is indistinguishable from system clock.
 
 Release history
 ---------------
@@ -12,23 +13,19 @@ Future
 
 - Click on event to go to iCal
 - A way to specifically mark events (like, process only start date etc). Notes maybe?
-- Menulet can be moved around the menubar, like others (with Cmd key pressed). - seems to be impossible
 - Set the interval between timer updates in Preferences (governs the smoothness of color change)
 - Show date/weekday near the clock
 - Make text in status bar more aesthetical
 - Use sliders for intervals in Preferences?
-
-0.0.2
-~~~~~
-
-+ Removed all hardcoding (including hardcoding of the version)
-+ Added localization (at least remove string hardcoding)
-+ Added "Show time till closest event" and "Always real time" mode
 - Set global hotkeys in Preferences
 
-Before release:
-- Remove --tags key from version generator
-- Check if no-restart menulet works in Lion
+1.0.0
+~~~~~
+
+- Removed all hardcoding (including hardcoding of the version)
+- Added localization (at least remove string hardcoding)
+- Added "Show time till closest event" and "Always real time" mode
+- Placing menu item to the right of the clock
 
 0.0.1
 ~~~~~
