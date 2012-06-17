@@ -48,7 +48,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 43DC63AB158C9E5F00ADE8D9 /* Generate version */;
+			remoteGlobalIDString = 43DC63AB158C9E5F00ADE8D9;
 			remoteInfo = "Generate version";
 		};
 /* End PBXContainerItemProxy section */
