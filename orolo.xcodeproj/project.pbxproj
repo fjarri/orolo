@@ -282,7 +282,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python - <<EOF\nimport os\nimport re\nimport subprocess\n\n# FIXME: remove hardcoded git revision\nfull_version = subprocess.Popen(\"cd $PROJECT_DIR; /usr/local/git/bin/git describe --tags\", \n\tstdout=subprocess.PIPE, shell=True).communicate()[0].strip()\n\nm = re.match(r'^(.*)-\\d+-([a-z0-9]+)$', full_version)\nif m is not None:\n    short_ver = m.group(1)\n    long_ver = 'dev-' + m.group(2)\nelse:\n    short_ver = full_version\n    long_ver = ''\n\nf = open(os.path.join(os.environ['PROJECT_DIR'], 'InfoPlist.h'), 'w')\nf.write(\"\"\"#define LONG_VERSION {long_ver}\n#define SHORT_VERSION {short_ver}\n\"\"\".format(long_ver=long_ver, short_ver=short_ver))\nf.close()\nos.system('touch orolo-Info.plist')\nEOF";
+			shellScript = "python - <<EOF\nimport os\nimport re\nimport subprocess\n\n# FIXME: remove hardcoded git revision\nfull_version = subprocess.Popen(\"cd $PROJECT_DIR; /usr/local/git/bin/git describe\", \n\tstdout=subprocess.PIPE, shell=True).communicate()[0].strip()\n\nm = re.match(r'^(.*)-\\d+-([a-z0-9]+)$', full_version)\nif m is not None:\n    short_ver = m.group(1)\n    long_ver = 'dev-' + m.group(2)\nelse:\n    short_ver = full_version\n    long_ver = ''\n\nf = open(os.path.join(os.environ['PROJECT_DIR'], 'InfoPlist.h'), 'w')\nf.write(\"\"\"#define LONG_VERSION {long_ver}\n#define SHORT_VERSION {short_ver}\n\"\"\".format(long_ver=long_ver, short_ver=short_ver))\nf.close()\nos.system('touch orolo-Info.plist')\nEOF";
 		};
 /* End PBXShellScriptBuildPhase section */
 
