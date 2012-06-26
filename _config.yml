@@ -1,0 +1,5 @@
+# github's enforced properties
+safe: true
+lsi: false
+pygments: true
+exclude: ["orolo-ghpages.tmproj"]
