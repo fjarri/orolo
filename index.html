@@ -5,20 +5,68 @@ title: Orolo menulet
 
 <div class="row">
 <div class="span12">
-    <h1>Orolo</h1>
+	<div class="hero-unit">
+		<h1>Orolo</h1>
+		<p>Occasionally synchronous clock menulet</p>
+	</div>
 </div>
 </div>
 
 <div class="row">
-    <div class="span8">
-        <p>
-        Under construction.
-        </p>
-    </div>
-
-    <div class="span2">
-        <p class="hyphenate">
-            Sidebar.
-        </p>
-    </div>
+	<div class="span8">
+		<p>
+			Have you ever thought that you do not really need to see the clock all the time (except maybe when you are cooking)?
+			What really matters is if there is some event nearby, the exact time is not that important.
+			That is exactly what this menulet does: it stays low-profile until there is the start or the end of some event in predefined interval, and then it starts to show the event's name, more and more noticeable, until the event passes.
+			The events are taken from selected calendars in your iCal.
+		</p>
+		<p>
+			This is how the menulet looks like when there is nothing on the horizon:<br/>
+			<img src="/menubar-no-events.png" />
+		</p>
+		<p>
+			When the event starts in a few minutes it starts to fade in, reaching the final colour:<br/>
+			<img src="/menubar-event-starts-far.png" /><br/>
+			<img src="/menubar-event-starts-close.png" />
+		</p>
+		<p>
+			The title is truncated if it is too long; the full title is show in the drop-out menu:<br/>
+			<img src="/menubar-event-drop-out.png" />
+		</p>
+		<p>
+			... and a few minutes after this the event title fades out:<br/>
+			<img src="/menubar-event-passed-close.png" /><br/>
+			<img src="/menubar-event-passed-far.png" />
+		</p>
+		<p>
+			Same happens near the end of the event, the only difference being the symbol in front of the title:<br/>
+			<img src="/menubar-event-stops.png" />
+		</p>
+		<p>
+			Hotkeys allow you to quickly look at the current time when you need it, or switch to the mode when the time is shown constantly.
+			This would defeat the whole purpose though, so, as an alternative, there is also a hotkey to find out how much time remains until the closest event:<br/>
+			<img src="/menubar-time-remaining.png" />
+		</p>
+		<p>
+			<span class="label label-info">Warning</span>
+			Orolo makes use of a private API to place itself to the right of the menubar.
+			That is why Orolo has to reload the menubar when it launches or quits; the alternative would be empty holes in the menubar and menu items overlapping under certain conditions.
+			Do not worry, this is normal and will not affect other menu items.
+		</p>
+	</div>
+	<div class="span2">
+		<p><a href="https://github.com/downloads/Manticore/orolo/orolo.app.zip">
+			Download the app
+		</a></p>
+		<p><a href="https://github.com/Manticore/orolo/zipball/master">
+			Download the source code
+		</a></p>
+		<p><a href="https://github.com/Manticore/orolo">
+			Go to the repo
+		</a></p>
+	</div>
 </div>
+
+<footer class="footer">
+	<p>&copy; 2012 Bogdan Opanchuk</p>
+</footer>
