@@ -14,7 +14,7 @@
 
 }
 
-- (void)controlTextDidChange:(NSNotification *)aNotification;
+- (IBAction)controlTextDidChange:(NSNotification *)aNotification;
 
 @end
 
