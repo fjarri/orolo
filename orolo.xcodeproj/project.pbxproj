@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -231,10 +231,11 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Bogdan Opanchuk";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "orolo" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -282,7 +283,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python - <<EOF\nimport os\nimport re\nimport subprocess\n\n# FIXME: remove hardcoded git revision\nfull_version = subprocess.Popen(\"cd $PROJECT_DIR; /usr/local/git/bin/git describe\", \n\tstdout=subprocess.PIPE, shell=True).communicate()[0].strip()\n\nm = re.match(r'^(.*)-\\d+-([a-z0-9]+)$', full_version)\nif m is not None:\n    short_ver = m.group(1)\n    long_ver = 'dev-' + m.group(2)\nelse:\n    short_ver = full_version\n    long_ver = ''\n\nf = open(os.path.join(os.environ['PROJECT_DIR'], 'InfoPlist.h'), 'w')\nf.write(\"\"\"#define LONG_VERSION {long_ver}\n#define SHORT_VERSION {short_ver}\n\"\"\".format(long_ver=long_ver, short_ver=short_ver))\nf.close()\nos.system('touch orolo-Info.plist')\nEOF";
+			shellScript = "python - <<EOF\nimport os\nimport re\nimport subprocess\n\n# FIXME: remove hardcoded git revision\nfull_version = subprocess.Popen(\"cd $PROJECT_DIR; /usr/local/bin/git describe\", \n\tstdout=subprocess.PIPE, shell=True).communicate()[0].strip()\n\nm = re.match(r'^(.*)-\\d+-([a-z0-9]+)$', full_version)\nif m is not None:\n    short_ver = m.group(1)\n    long_ver = 'dev-' + m.group(2)\nelse:\n    short_ver = full_version\n    long_ver = ''\n\nf = open(os.path.join(os.environ['PROJECT_DIR'], 'InfoPlist.h'), 'w')\nf.write(\"\"\"#define LONG_VERSION {long_ver}\n#define SHORT_VERSION {short_ver}\n\"\"\".format(long_ver=long_ver, short_ver=short_ver))\nf.close()\nos.system('touch orolo-Info.plist')\nEOF";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -353,6 +354,7 @@
 		43DC63AC158C9E5F00ADE8D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -363,9 +365,9 @@
 		43DC63AD158C9E5F00ADE8D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = "Generate version";
 				ZERO_LINK = NO;
 			};
@@ -375,9 +377,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -395,6 +397,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -411,27 +414,25 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
