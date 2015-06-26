@@ -13,7 +13,6 @@
 #import "PreferencesModel.h"
 #import "JFHotkeyManager.h"
 #import "StatusItemView.h"
-#import "RightmostMenulet.h"
 
 
 // TODO: move to preferences?
@@ -51,12 +50,14 @@ static float briefShowInterval = 5.0; // interval for briefly showing some info 
 	[dateFormatter setDateStyle:NSDateFormatterNoStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 
-	menulet = [[[RightmostMenulet alloc] init] retain];
+    menulet = [[[NSStatusBar systemStatusBar]
+               statusItemWithLength:NSVariableStatusItemLength]
+               retain];
 	statusItemView = [[[StatusItemView alloc] init] retain];
 	// FIXME: do view and menulet really need to reference each other?
-	statusItemView.statusItem = menulet.statusItem;
+	statusItemView.statusItem = menulet;
 	[statusItemView setMenu:theMenu];
-	[menulet.statusItem setView:statusItemView];
+	[menulet setView:statusItemView];
 
 	// Tune menu
 	[theMenu setAutoenablesItems:NO];

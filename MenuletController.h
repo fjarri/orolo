@@ -15,7 +15,6 @@
 @class JFHotkeyManager;
 @class CalEvent;
 @class StatusItemView;
-@class RightmostMenulet;
 
 
 typedef enum {
@@ -34,7 +33,7 @@ typedef enum {
 	PreferencesController *preferencesController;
 	AboutController *aboutController;
 
-	RightmostMenulet *menulet;
+	NSStatusItem *menulet;
 	StatusItemView *statusItemView;
 
 	MenuletMode menuletMode;
